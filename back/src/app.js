@@ -1,7 +1,8 @@
 import express from 'express';
 import userRouter from './router/api.user.routes.js';
 import { sequelize } from './database/database.js'
-
+import { Patient } from './models/user.js';
+import { Doctor } from './models/doctor.js'
 
 async function main() {
     const app = express();
@@ -16,7 +17,7 @@ async function main() {
 
     app.use('/api/user', userRouter);
     try {
-        await sequelize.authenticate();
+        await sequelize.sync();
         console.log('Connection has been established successfully')
         app.listen(PORT, () => console.log(`servidor escuchando en el puerto ${PORT}`));
 
