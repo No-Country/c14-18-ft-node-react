@@ -1,8 +1,11 @@
 import express from 'express';
 import userRouter from './router/api.user.routes.js';
+import authRouter from './router/api.auth.routes.js';
 import { sequelize } from './database/database.js'
 import { Patient } from './models/user.js';
-import { Doctor } from './models/doctor.js'
+import { Doctor } from './models/doctor.js';
+
+
 
 async function main() {
     const app = express();
@@ -15,6 +18,7 @@ async function main() {
         res.send('hola mundo')
     });
 
+    app.use('/api/auth',authRouter);
     app.use('/api/user', userRouter);
     try {
         await sequelize.sync();
