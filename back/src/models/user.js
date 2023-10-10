@@ -31,5 +31,8 @@ export const Patient = sequelize.define('patients', {
     },
     address: {
         type: DataTypes.STRING
+    },
+    password: {
+        type: DataTypes.STRING
     }
 })

@@ -6,11 +6,11 @@ import { Patient } from './models/user.js';
 import { Doctor } from './models/doctor.js';
 
 
-
 async function main() {
     const app = express();
     const PORT = process.env.PORT || 8080;
 
+    app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
 
