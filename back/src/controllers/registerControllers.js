@@ -1,13 +1,21 @@
 import { Patient } from '../models/user.js';
 import { hash } from 'bcrypt'
 
-export const register = async (req,res) =>{
+export const register = async (req, res) => {
+
+    const requiredFields = ['documentId', 'name', 'lastName', 'email', 'phone', 'password'];
+
+    for (const field of requiredFields) {
+        if (!req.body[field]) {
+            return res.status(400).send(`Missing required field: ${field}`);
+        }
+    }
+
     const { documentId, email } = req.body
-    console.log(documentId)
 
     try {
-        let patient = await Patient.findOne({ where: { documentId: documentId }})
-        let patientEmail = await Patient.findOne({ where: { email: email }})
+        let patient = await Patient.findOne({ where: { documentId: documentId } })
+        let patientEmail = await Patient.findOne({ where: { email: email } })
 
         //Si el paciente ya existe en la base de datos
         if (patient || patientEmail) {
@@ -15,7 +23,6 @@ export const register = async (req,res) =>{
             return res.status(400).send('El documento de identidad ya está registrado');
         } else {
             //Si no existe lo agregamos a la base de datos
-
             const hashedPassword = await hash(req.body.password, 10)
 
             //Agregamos el req.body a la base de datos con el metodo create y devolvemos un status 200
@@ -32,7 +39,7 @@ export const register = async (req,res) =>{
             return res.status(200).send('Registro exitoso');
         }
 
-    } catch(error) {
+    } catch (error) {
         console.log('Ocurrió un error:', error);
         return res.status(500).send('Hubo un error en el servidor.');
     }
