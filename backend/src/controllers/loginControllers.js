@@ -11,7 +11,7 @@ export const login = async(req,res) =>{
 
         if (!identityID || !password) return res.status(400).send({status:"error",message:"valores incompletos!"});
         const user = await Patient.findOne({ where: {documentId:identityID}});//si existe el usuario me retorna los datos o sino null;
-        if (!user) return res.send({status:"error",error:"el usuario no esta registrado"});
+        if (!user) return res.send({status:"error",error:"el DNI ingresado es incorrecto o no esta registrado"});
         const passwordValidation = await compare(password, user.password);//comparo las contraseñas 
         if(passwordValidation === false) return res.send({status:"error",error:"la clave ingresada es incorrecta"});
         //construyo el usuario con los valores que necesito,para guarar en la cookie
