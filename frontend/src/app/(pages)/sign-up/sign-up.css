@@ -13,24 +13,26 @@
     max-width: 900px;
     width: 100%;
     background-color: #fff;
-    padding: 30px;
+    padding: 25px 30px 20px 30px;
     margin: 0 15px;
     color: black;
-    border-radius: 6px;
+    border-radius: 6px; 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .register-form form {
     position: relative;
+    padding: 0 5px 0 5px;
     margin-top: 16px;
     background-color: #fff;
 }
 
 .register-form header h1{
     position: relative;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     color: #333;
+    margin-left: 5px;
 }
 
 .register-form header h1::before{
@@ -53,15 +55,20 @@
     text-align: start;
 }
 
-header .back-btn {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #aaa;
+header{
+    position: relative;
 }
 
-header .back-btn span{
-    padding-top: 0.1px;
+header .back-btn {
+    display: flex;
+    text-decoration: none;
+    color: #aaa;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.back-btn span {
+    padding-top: 1.2px;
 }
 
 header .back-btn:hover {
@@ -122,6 +129,7 @@ header .back-btn:hover {
     display: flex;
     align-items: center;
     justify-items: center;
+    font-size: 15px;
     height: 45px;
     max-width: 200px;
     width: 100%;

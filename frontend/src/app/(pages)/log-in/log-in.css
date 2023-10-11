@@ -104,6 +104,7 @@
     display: flex;
     align-items: center;
     justify-items: center;
+    font-size: 15px;
     height: 45px;
     max-width: 200px;
     width: 100%;

@@ -29,6 +29,9 @@ const Login = () => {
 
         console.log(res)
 
+        if (res.status === 200) {
+            router.push('/appointments')
+        }
     }
 
     return (

@@ -1,7 +1,7 @@
 const Appointments = () => {
     return ( 
         <div>
-            Citas Medicas
+            Aqui va la pagina de citas medicas
         </div>
      );
 }
