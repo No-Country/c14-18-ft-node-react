@@ -1,8 +1,10 @@
 'use client'
-import './register-form.css'
+import Link from 'next/link'
+import './sign-up.css'
 import { useRouter } from 'next/navigation'
+import { BackArrowIcon } from '@/components/Icons'
 
-const Register = () => {
+const SignUp = () => {
     const router = useRouter()
 
     const handleSubmit = async (event) => {
@@ -39,7 +41,7 @@ const Register = () => {
         }
 
             alert('Se ha registrado el usuario correctamente')
-            router.push('/')
+            router.push('/log-in')
             form.reset()
     }
 
@@ -47,58 +49,62 @@ const Register = () => {
         <div className="container">
             <div className="register-form">
                 <header >
-                    Registro
+                    <Link href={'/log-in'} className='back-btn'>
+                        <BackArrowIcon/>
+                        <span>Regresar al login</span> 
+                    </Link>
+                    <h1>Registro</h1>
                 </header>
                 <form onSubmit={handleSubmit}>
                     <span className='title'>Ingrese sus datos</span>
 
                     <div className='fields'>
                         <div className='input-field'>
-                            <label htmlFor="" >Dni</label>
-                            <input required name='dni' maxLength='8' type="number" placeholder='Ingrese su documento' />
+                            <label for="dni" >Dni</label>
+                            <input required name='dni' maxLength='8' type="text" placeholder='Ingrese su documento' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Nombres</label>
+                            <label for="name">Nombres</label>
                             <input required name='name' type="text" placeholder='Ingrese su nombre' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Apellidos</label>
+                            <label for="lastName">Apellidos</label>
                             <input required name='lastName' type="text" placeholder='Ingrese sus apellidos' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Email</label>
+                            <label for="email">Email</label>
                             <input required name='email' type="email" placeholder='Ingrese su email' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Contacto </label>
+                            <label for="phone">Contacto </label>
                             <input required name='phone' type="number" placeholder='Ingrese su numero telofonico' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Fecha de nacimiento</label>
+                            <label for="birthDate">Fecha de nacimiento</label>
                             <input required name='birthDate' type="date" />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="gender">Genero</label>
-                            <select name="gender">
-                                <option value="select" defaultValue={true} >Selecciona uno</option>
+                            <label for="gender">Genero</label>
+                            <select name="gender" defaultValue={'select'}>
+                                <option value="select" disabled >Selecciona uno</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                             </select>
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Direccion</label>
+                            <label for="address">Direccion</label>
                             <input required name='address' type="text" placeholder='Ingrese el numero' />
                         </div>
 
                         <div className='input-field'>
-                            <label htmlFor="">Password</label>
+                            <label for="password">Password</label>
                             <input required name='password' type="password" placeholder='Ingrese su password' />
                         </div>
                     </div>
@@ -113,4 +119,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default SignUp;

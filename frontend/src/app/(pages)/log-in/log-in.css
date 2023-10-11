@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #4070f4;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    margin: 0 15px;
+    color: black;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container header h1{
+    font-size: 36px;
+    font-weight: 600;
+    position: relative;
+    color: #333;
+}
+
+.form-container header h1::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+
+.form-container form{
+    max-width: 300px;
+    width: 100%;
+}
+
+.form-cotainer form .title{
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.input-field{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.input-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2e2e2e;
+}
+
+.input-field input{
+    position: relative;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-field .eye-icon {
+    position: absolute;
+    bottom: 23px;
+    right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.button-container button{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.button-container button:hover {
+    background-color: #265df2;
+}

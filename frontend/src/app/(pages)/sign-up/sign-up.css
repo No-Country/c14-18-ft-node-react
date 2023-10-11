@@ -26,14 +26,14 @@
     background-color: #fff;
 }
 
-.register-form header{
+.register-form header h1{
     position: relative;
     font-size: 24px;
     font-weight: 600;
     color: #333;
 }
 
-.register-form header::before{
+.register-form header h1::before{
     content: "";
     position: absolute;
     left: 0;
@@ -44,13 +44,31 @@
     background-color: #4070f4;
 }
 
-form .title{
+.register-form form .title{
     display: block;
     font-size: 16px;
     font-weight: 500;
     margin: 25px 0 5px 0;
     color: #333;
+    text-align: start;
 }
+
+header .back-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #aaa;
+}
+
+header .back-btn span{
+    padding-top: 1.5px;
+}
+
+header .back-btn:hover {
+    color: #4070f4;
+    text-decoration: underline;
+}
+
 
 .register-form .fields{
     display: flex;
@@ -96,6 +114,10 @@ form .title{
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+.input-field select:is(:focus) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
 .register-form form button {
     display: flex;
     align-items: center;
@@ -117,6 +139,6 @@ span {
     width: 100%;
 }
 
-form button:hover {
+.register-form form button:hover {
     background-color: #265df2;
 }
