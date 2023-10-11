@@ -3,7 +3,7 @@ import { hash } from 'bcrypt'
 
 export const register = async (req, res) => {
 
-    const requiredFields = ['documentId', 'name', 'lastName', 'email', 'phone', 'password'];
+    const requiredFields = ['documentId', 'name', 'lastName', 'email', 'phone', 'password','birthDate','gender', 'address'];
 
     for (const field of requiredFields) {
         if (!req.body[field]) {
@@ -32,6 +32,9 @@ export const register = async (req, res) => {
                 last_name: req.body.lastName,
                 email: req.body.email,
                 phone: req.body.phone,
+                birthDate: req.body.birthDate,
+                gender: req.body.gender,
+                address: req.body.address,
                 password: hashedPassword
             })
 
