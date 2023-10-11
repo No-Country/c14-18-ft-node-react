@@ -32,17 +32,15 @@ const Register = () => {
             body: JSON.stringify(jsonData),
             })
 
-            console.log(res)
+            console.log(res.status)
         } catch(error) {
             console.log(error)
             alert('Ese documento de indentidad ya esta registrado')
         }
 
-        if(res.status === 200) {
             alert('Se ha registrado el usuario correctamente')
             router.push('/')
             form.reset()
-        }
     }
 
     return (
@@ -56,8 +54,8 @@ const Register = () => {
 
                     <div className='fields'>
                         <div className='input-field'>
-                            <label htmlFor="">Dni</label>
-                            <input required name='dni' type="number" placeholder='Ingrese su documento' />
+                            <label htmlFor="" >Dni</label>
+                            <input required name='dni' maxLength='8' type="number" placeholder='Ingrese su documento' />
                         </div>
 
                         <div className='input-field'>
@@ -88,7 +86,7 @@ const Register = () => {
                         <div className='input-field'>
                             <label htmlFor="gender">Genero</label>
                             <select name="gender">
-                                <option value="select" selected disabled>Selecciona uno</option>
+                                <option value="select" defaultValue={true} >Selecciona uno</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                             </select>
