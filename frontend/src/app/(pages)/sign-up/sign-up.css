@@ -61,7 +61,7 @@ header .back-btn {
 }
 
 header .back-btn span{
-    padding-top: 1.5px;
+    padding-top: 0.1px;
 }
 
 header .back-btn:hover {

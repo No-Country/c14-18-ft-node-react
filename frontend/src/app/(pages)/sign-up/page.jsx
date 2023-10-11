@@ -61,7 +61,14 @@ const SignUp = () => {
                     <div className='fields'>
                         <div className='input-field'>
                             <label for="dni" >Dni</label>
-                            <input required name='dni' maxLength='8' type="text" placeholder='Ingrese su documento' />
+                            <input 
+                                required 
+                                name='dni' 
+                                maxLength='8' 
+                                type="text" 
+                                placeholder='Ingrese su documento'
+                                onInput={(e) => (e.target.value = e.target.value.replace(/[^0-9]/g, ''))}
+                            />
                         </div>
 
                         <div className='input-field'>

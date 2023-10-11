@@ -28,6 +28,7 @@ const Login = () => {
         })
 
         console.log(res)
+
     }
 
     return (
@@ -37,27 +38,28 @@ const Login = () => {
                     <h1>Login</h1>
                 </header>
                 <form onSubmit={handleSubmit}>
-                    <span className='title'>Accede si ya tienes una cuenta</span>
+                    <span className='login-title'>Accede si ya tienes una cuenta</span>
                     <div className='fields'>
                         <div className='input-field'>
                             <label for='dni' >Ingrese su numero de documento</label>
-                            <input 
+                            <input
+                                required
                                 type="text" 
                                 maxLength={8} 
                                 name='dni' 
                                 placeholder='DNI' 
-                                onInput={(e) => (e.target.value = e.target.value.replace(/[^0-9]/g, ''))} 
+                                onInput={(e) => (e.target.value = e.target.value.replace(/[^0-9]/g, ''))}
                             />
                         </div>
                         <div className='input-field'>
                             <label for='dni'>Ingrese su contraseña</label>
-                            <input type={visible ? 'text' : 'password'} name='password' placeholder='Contraseña'/>
+                            <input type={visible ? 'text' : 'password'} name='password' required placeholder='Contraseña'/>
                             <button type='button' className='eye-icon' onClick={() => setVisible(!visible)}>
                                 {visible ? <ClosedEyeIcon/> : <OpenEyeIcon/>}
                             </button>
                         </div>
 
-                        <span> Olvidaste tu contraseña? </span>
+                        <span className='password'> Olvidaste tu contraseña? </span>
 
                         <div className='button-container'>
                             <button type='submit'>
