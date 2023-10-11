@@ -21,7 +21,7 @@ export const Patient = sequelize.define('patients', {
         type: DataTypes.STRING
     },
     phone: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
     birthDate: {
         type: DataTypes.DATE
