@@ -7,10 +7,10 @@ dotenv.config();
 
 export const login = async(req,res) =>{
     try {
-        const {identityID,password} = req.body;
+        const {documentId,password} = req.body;
 
-        if (!identityID || !password) return res.status(400).send({status:"error",message:"valores incompletos!"});
-        const user = await Patient.findOne({ where: {documentId:identityID}});//si existe el usuario me retorna los datos o sino null;
+        if (!documentId || !password) return res.status(400).send({status:"error",message:"valores incompletos!"});
+        const user = await Patient.findOne({ where: {documentId:documentId}});//si existe el usuario me retorna los datos o sino null;
         if (!user) return res.send({status:"error",error:"el DNI ingresado es incorrecto o no esta registrado"});
         const passwordValidation = await compare(password, user.password);//comparo las contraseñas 
         if(passwordValidation === false) return res.send({status:"error",error:"la clave ingresada es incorrecta"});
