@@ -3,6 +3,8 @@ import { useState } from 'react';
 import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+
 
 const Login = () => {
     const [visible, setVisible] = useState(false)
@@ -28,10 +30,14 @@ const Login = () => {
             body: JSON.stringify(jsonData),
         })
 
-        console.log(res)
+        console.log(res.body)
 
         if (res.status === 200) {
             router.push('/appointments')
+        }
+        
+        if( res.status === 400) {
+            toast.error('documento o contraseña incorrecta')
         }
     }
 

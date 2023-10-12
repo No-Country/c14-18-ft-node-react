@@ -1,54 +1,5 @@
-.landing-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 70px;
-    padding: 0 20px 0 20px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    flex-basis: 0;
-    flex-grow: 1;
-    gap: 6px;
-}
-
-.header-logo span{
-    font-family: inherit;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 32px;
-}
-
-.header-buttons{
-    display: flex;
-    gap: 10px;
-    flex-grow: 1;
-    justify-content: end;
-    flex-basis: 0;
-}
-
-
-.main-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-}
-
-.main-nav .nav-items{
-    display: flex;
-    padding: 0;
-    gap: 48px;
-    list-style: none;
-}
-
 .main-banner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -64,6 +15,8 @@
 }
 
 .main-banner div p{
+    margin: 0;
+    padding-bottom: 30px;
     font-size: 55px;
 }
 
