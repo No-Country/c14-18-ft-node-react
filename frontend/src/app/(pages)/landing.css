@@ -1,0 +1,36 @@
+.landing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 60px;
+    border-bottom: solid 1px blue;
+    padding: 0 20px 0 20px;
+}
+
+.landing-header h1{
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.landing-header div{
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: end;
+    flex-basis: 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-nav .nav-items{
+    display: flex;
+    padding: 0;
+    gap: 10px;
+    list-style: none;
+}
+
