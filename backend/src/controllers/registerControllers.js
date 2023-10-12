@@ -11,14 +11,13 @@ export const register = async (req, res) => {
         }
     }
 
-    const { documentId, email } = req.body
+    const { documentId } = req.body
 
     try {
         let patient = await Patient.findOne({ where: { documentId: documentId } })
-        let patientEmail = await Patient.findOne({ where: { email: email } })
 
         //Si el paciente ya existe en la base de datos
-        if (patient || patientEmail) {
+        if (patient) {
             console.log('Este documento de identidad ya esta registrado')
             return res.status(400).send('El documento de identidad ya está registrado');
         } else {

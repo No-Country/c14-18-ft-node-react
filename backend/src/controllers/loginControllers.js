@@ -11,9 +11,9 @@ export const login = async(req,res) =>{
 
         if (!documentId || !password) return res.status(400).send({status:"error",message:"valores incompletos!"});
         const user = await Patient.findOne({ where: {documentId:documentId}});//si existe el usuario me retorna los datos o sino null;
-        if (!user) return res.send({status:"error",error:"el DNI ingresado es incorrecto o no esta registrado"});
+        if (!user) return res.status(400).send({status:"error",error:"el DNI ingresado es incorrecto o no esta registrado"});
         const passwordValidation = await compare(password, user.password);//comparo las contraseñas 
-        if(passwordValidation === false) return res.send({status:"error",error:"la clave ingresada es incorrecta"});
+        if(passwordValidation === false) return res.status(400).send({status:"error",error:"la clave ingresada es incorrecta"});
         //construyo el usuario con los valores que necesito,para guarar en la cookie
         const userCredential = {
             name: user.name,
@@ -22,7 +22,7 @@ export const login = async(req,res) =>{
         //creo el token y guardo las credenciales del usuario.
         const token = jwt.sign(userCredential,process.env.JWT_SECRET,{expiresIn:"1h"});
         //guardo el token en una cookie
-        res.cookie(process.env.JWT_NAME,token,{sameSite:'none',secure:true}).send({status:"success",messages:"usuario logeado con exito!"});
+        res.cookie(process.env.JWT_NAME,token,{sameSite:'none',secure:true}).status(200).send({status:"success",messages:"usuario logeado con exito!"});
     } catch (error) {
         return res.status(500).send({status:"error",error:"Hubo un error en el servidor."});
     };
