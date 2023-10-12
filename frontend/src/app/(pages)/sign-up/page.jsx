@@ -34,15 +34,12 @@ const SignUp = () => {
             body: JSON.stringify(jsonData),
             })
 
-            console.log(res.status)
+            console.log(res)
         } catch(error) {
             console.log(error)
             alert('Ese documento de indentidad ya esta registrado')
         }
 
-            alert('Se ha registrado el usuario correctamente')
-            router.push('/log-in')
-            form.reset()
     }
 
     return (
