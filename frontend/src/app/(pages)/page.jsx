@@ -1,11 +1,17 @@
 import Link from 'next/link'
 import './landing.css'
+import { CalendarIcon, CrossIcon, RightArrowIcon } from '@/components/Icons'
+import Button from '@/components/Button'
 
 export default function Home() {
   return (
     <>
       <header className='landing-header'>
-        <h1>LOGO</h1>
+        <div className='header-logo'>
+          <CrossIcon/>
+          <span>CLINICONNECT</span>
+        </div>
+
         <nav className='main-nav'>
           <ul className='nav-items'>
             <li>Home</li>
@@ -15,18 +21,32 @@ export default function Home() {
           </ul>
         </nav>
 
-        <div>
-          <Link href={'/log-in'} style={{ backgroundColor: '#4070f4', color: '#fff', padding: '10px 20px', borderRadius: '6px', textDecoration: 'none' }}>
-            Ingresar
-          </Link>
-          <Link href={'/sign-up'} style={{ backgroundColor: '#4070f4', color: '#fff', padding: '10px 20px', borderRadius: '6px', textDecoration: 'none' }}>
-            Registrarse
+        <div className='header-buttons'>
+          <Link href={'/log-in'} style={{maxWidth: '150px', width: '100%'}}>
+            <Button>
+              <i><CalendarIcon/></i> 
+              <span>Agendar Cita</span>
+            </Button>
           </Link>
         </div>
       </header>
 
       <main style={{display: 'flex', flexDirection: 'column', placeItems: 'center' }}>
-        <h1>Landing Page</h1>
+        <section className='main-banner'>
+          <div>
+            <p> <strong>Comprometidos</strong> con tu <br /> Bienestar y una <strong>Mejor</strong>  <br /> Calidad De <strong> Vida</strong> </p>
+            <Link href={'/log-in'} >
+              <Button className={'invert'}>
+                <span>Agenda Una Cita</span>
+                <RightArrowIcon/>
+              </Button>
+            </Link>
+            
+          </div>
+          <div>
+            IMAGEN
+          </div>
+        </section>
 
       </main>
     </>
