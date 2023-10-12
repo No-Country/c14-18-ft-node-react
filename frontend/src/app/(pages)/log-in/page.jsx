@@ -9,6 +9,11 @@ import { toast } from 'sonner';
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
+    const jwtToken = document.cookie
+
+    if (jwtToken) {
+        return router.push('/appointments')
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -30,7 +35,7 @@ const Login = () => {
             body: JSON.stringify(jsonData),
         })
 
-        console.log(res.body)
+        console.log(res)        
 
         if (res.status === 200) {
             router.push('/appointments')

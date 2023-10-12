@@ -3,6 +3,7 @@ import Link from 'next/link'
 import './sign-up.css'
 import { useRouter } from 'next/navigation'
 import { BackArrowIcon } from '@/components/Icons'
+import { toast } from 'sonner'
 
 const SignUp = () => {
     const router = useRouter()
@@ -34,6 +35,11 @@ const SignUp = () => {
             body: JSON.stringify(jsonData),
             })
 
+            if(res.status === 200){
+                toast.success('Registro existoso')
+                router.push('/log-in')
+            }
+
             console.log(res)
         } catch(error) {
             console.log(error)
@@ -41,6 +47,8 @@ const SignUp = () => {
         }
 
     }
+
+
 
     return (
         <div className="container">
