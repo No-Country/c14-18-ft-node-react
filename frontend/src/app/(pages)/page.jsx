@@ -8,8 +8,10 @@ export default function Home() {
     <>
       <main style={{display: 'flex', flexDirection: 'column', placeItems: 'center' }}>
         <section className='main-banner'>
-          <div>
-            <p> <strong>Comprometidos</strong> con tu <br /> Bienestar y una <strong>Mejor</strong>  <br /> Calidad De <strong> Vida</strong> </p>
+          <div className='dotted'/>
+          <div className='circle'/>
+          <div className='banner-content'>
+            <p> <strong>Comprometidos</strong> con tu <br /> Bienestar y una <strong>Mejor</strong>  <br /> Calidad de <strong> Vida</strong> </p>
             <Link href={'/log-in'} >
               <Button className={'invert'}>
                 <span>Agenda Una Cita</span>
@@ -18,8 +20,8 @@ export default function Home() {
             </Link>
             
           </div>
-          <div>
-            Image
+          <div className='banner-image'>
+            <img src="doctor-banner.webp" alt="" />
           </div>
         </section>
 

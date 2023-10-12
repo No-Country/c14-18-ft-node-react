@@ -1,23 +1,19 @@
 .main-banner {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     min-height: 600px;
     height: 100%;
     width: 100%;
     background-color: #265df2;
     color: #fff;
-}
-
-.main-banner div{
-    padding: 0 100px;
+    overflow: hidden;
 }
 
 .main-banner div p{
     margin: 0;
     padding-bottom: 30px;
-    font-size: 55px;
+    font-size: 60px;
 }
 
 .main-banner div a{
@@ -25,4 +21,85 @@
     max-width: 200px;
     max-height: 45px;
     height: 100%;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 10;
+    padding: 112px 0 110px 90px;
+}
+
+.banner-image {
+    position: relative;
+    z-index: 10;
+    padding: 120px 110px 0 90px;
+}
+
+.banner-image img{
+    position: relative;
+    height: 350px;
+    width: 450px;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 20px;
+}
+
+.banner-image::before{
+    content: '';
+    position: absolute;
+    top: 105px;
+    right: 95px;
+    background-color: #333;
+    height: 350px;
+    width: 450px;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 20px;
+}
+
+.dotted {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: transparent;
+    background-image: radial-gradient(circle, black 2.5px, transparent 0);
+    background-size: 22px 22px;
+    height: 140px;
+    width: 140px;
+}
+
+.circle {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    bottom: -90px;
+    left: -90px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid #333 45px;
+    box-shadow: 2px -1px   rgba(0, 0, 0, 0.1);
+}
+
+.main-banner::before {
+    content: '';
+    position: absolute;
+    top: 85px;
+    right: 500px;
+    background-color: transparent;
+    background-image: radial-gradient(circle, #fff 2.5px, transparent 0);
+    background-size: 22px 22px;
+    height: 140px;
+    width: 140px;
+}
+
+.main-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background-color: transparent;
+    background-image: radial-gradient(circle, #fff 2.5px, transparent 0);
+    background-size: 22px 22px;
+    height: 140px;
+    width: 140px;
 }
