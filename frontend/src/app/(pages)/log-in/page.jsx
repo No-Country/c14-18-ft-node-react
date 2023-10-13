@@ -4,6 +4,7 @@ import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -38,9 +39,19 @@ const Login = () => {
         console.log(res)        
 
         if (res.status === 200) {
-            router.push('/appointments')
-        }
-        
+            Swal.fire({
+                title:'Bienvenido a Cliniconnect',
+                text:'¡Inicio de session exitoso!',
+                icon:'success',
+                iconColor: "#7DCE4F",
+                timer:2000,
+                timerProgressBar:true,
+                showConfirmButton:false,
+            }).then(()=>{
+                router.push('/appointments')
+            });
+        };
+
         if( res.status === 400) {
             toast.error('documento o contraseña incorrecta')
         }

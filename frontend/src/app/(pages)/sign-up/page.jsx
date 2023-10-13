@@ -3,7 +3,8 @@ import Link from 'next/link'
 import './sign-up.css'
 import { useRouter } from 'next/navigation'
 import { BackArrowIcon } from '@/components/Icons'
-import { toast } from 'sonner'
+import Swal from 'sweetalert2'
+
 
 const SignUp = () => {
     const router = useRouter()
@@ -28,24 +29,35 @@ const SignUp = () => {
 
         try {
             const res = await fetch('http://localhost:8080/api/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(jsonData),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
             })
 
             if(res.status === 200){
-                toast.success('Registro existoso')
-                router.push('/log-in')
+                Swal.fire({
+                    title:"Registro exitoso",
+                    text:"¡usuario guardado correctamente!",
+                    icon:"success",
+                    confirmButtonColor:"#4070f4",
+                    iconColor: "#7DCE4F",
+                }).then(()=>{
+                    router.push('/log-in');
+                });
             }
 
             console.log(res)
         } catch(error) {
             console.log(error)
-            alert('Ese documento de indentidad ya esta registrado')
+            Swal.fire({
+                title:"Ooops!",
+                icon:"error",
+                text:'Este DNI ya esta registrado',
+                confirmButtonColor:"#4070f4",
+            });
         }
-
     }
 
 
