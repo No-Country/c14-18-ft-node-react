@@ -10,7 +10,20 @@ import Swal from 'sweetalert2';
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
-    const jwtToken = document.cookie
+        
+    const getCookie = () => {
+        const value = document.cookie
+        const parts = value.split(`=`)
+        
+        return parts.pop()
+    }
+
+    const jwtToken = getCookie()
+
+    if (jwtToken) {
+        sessionStorage.setItem('clinicaUser', jwtToken);
+    }
+
 
     if (jwtToken) {
         return router.push('/appointments')
@@ -36,7 +49,10 @@ const Login = () => {
             body: JSON.stringify(jsonData),
         })
 
-        console.log(res)        
+        const data = await res.json()
+        
+        console.log(data)
+        console.log(data.token)
 
         if (res.status === 200) {
             Swal.fire({
