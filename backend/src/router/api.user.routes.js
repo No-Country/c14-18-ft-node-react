@@ -1,13 +1,9 @@
 import { Router } from "express";
-import { Patient } from "../models/user.js";
+import userControllers from "../controllers/userControllers.js";
 
 const router = Router();
 
-router.get('/',async(req,res)=>{
-    const data = await Patient.findAll();
-    res.send({status:"success",payload:data});
-})
-
-
+router.get('/all ',userControllers.getAllUser);
+router.get('/doctor',userControllers.getAllDoctor);
 
 export default router;
