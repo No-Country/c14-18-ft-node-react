@@ -46,3 +46,12 @@
     gap: 48px;
     list-style: none;
 }
+
+.nav-items li a {
+    color: #333;
+    transition: all 0.1s linear;
+}
+
+.nav-items li a:hover {
+    color: #4070f4;
+}
