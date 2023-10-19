@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import './landing.css'
-import { RightArrowIcon } from '@/components/Icons'
 import Button from '@/components/Button'
+import { RightArrowIcon } from '@/components/Icons'
 
 export default function Home() {
   return (
@@ -12,10 +12,10 @@ export default function Home() {
           <div className='circle'/>
           <div className='banner-content'>
             <p> <strong>Comprometidos</strong> con tu <br /> Bienestar y una <strong>Mejor</strong>  <br /> Calidad de <strong> Vida</strong> </p>
-            <Link href={'/log-in'} >
+            <Link href={'/myaccount/citas'} >
               <Button className={'invert'}>
                 <span>Agenda Una Cita</span>
-                <RightArrowIcon/>
+                <RightArrowIcon />
               </Button>
             </Link>
             

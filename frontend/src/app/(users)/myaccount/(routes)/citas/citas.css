@@ -1,0 +1,137 @@
+.citas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #f6f3fc;
+}
+
+.citas {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    width: 100%;
+    min-height: 500px;
+    background-color: #fff;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 0.1);
+}
+
+.citas__header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.citas__title {
+    position: relative;
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    margin-left: 5px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.filters__select {
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+    cursor: pointer;
+    color: #4070f4;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.filter__doctor {
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.filters__input {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    padding: 0 15px 0 35px;
+    height: 42px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.filter__icon {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    color: #265df2;
+}
+
+.filters__input:is(:focus) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: solid 1px #265df2;
+}
+
+.filters__select:is(:focus) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: solid 1px #265df2;
+}
+
+.filters__title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.filters__title span{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: #265df2;
+    font-weight: 600;
+    width: 100%;
+}
+
+.filters__title span::before {
+    position: absolute;
+    bottom: -5px;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: #265df2;
+}
+
+
+.doctors {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 10px;
+}
+
+@media (max-width:480px) {
+    .citas-container {
+        padding: 0 10px;
+    }
+}

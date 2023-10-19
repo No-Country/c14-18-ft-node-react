@@ -1,9 +1,37 @@
+'use client'
+
 import Link from "next/link";
+import {usePathname} from "next/navigation"
 import { CalendarIcon, CrossIcon } from "./Icons";
 import Button from "./Button";
 import './Navbar.css'
 
 const Navbar = () => {
+    const pathname = usePathname()
+
+    const routes = [
+        {
+            title: 'Home',
+            path: '/',
+            active: pathname === '/' ? true : false
+        },
+        {
+            title: 'Servicios',
+            path: '/services',
+            active: pathname === '/services' ? true : false
+        },
+        {
+            title: 'Medicos',
+            path: '/specialties',
+            active: pathname === '/specialties' ? true : false
+        },
+        {
+            title: 'Contacto',
+            path: '/contact',
+            active: pathname === '/contact' ? true : false
+        },
+    ]
+
     return (
         <header className='landing-header'>
             <div className='header-logo'>
@@ -13,18 +41,11 @@ const Navbar = () => {
 
             <nav className='main-nav'>
                 <ul className='nav-items'>
-                    <li>
-                        <Link href={'/'}>Home</Link>
-                    </li>
-                    <li>
-                        <Link href={'/services'}>Servicios</Link>
-                    </li>
-                    <li>
-                        <Link href={'/specialties'}>Medicos</Link>
-                    </li>
-                    <li>
-                        <Link href={'/contact'}>Contacto</Link>
-                    </li>
+                    {routes.map(({title, path, active}) => (
+                        <li key={title}>
+                            <Link href={path} className={active ? 'active-link' : ''}>{title}</Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
 

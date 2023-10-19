@@ -1,14 +1,24 @@
-.landing-header {
+.usernav__container {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     min-height: 70px;
     padding: 0 20px 0 20px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
 }
 
+.usernav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+}
 
-.header-logo {
+.usernav__logo {
     display: flex;
     align-items: center;
     flex-basis: 0;
@@ -16,22 +26,14 @@
     gap: 6px;
 }
 
-.header-logo span{
+.usernav__logo span {
     font-family: inherit;
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
 }
 
-.header-buttons{
-    display: flex;
-    gap: 10px;
-    flex-grow: 1;
-    justify-content: end;
-    flex-basis: 0;
-}
-
-.main-nav {
+.mainNav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,23 +42,31 @@
     line-height: 20px;
 }
 
-.main-nav .nav-items{
+.mainNav__items {
     display: flex;
     padding: 0;
     gap: 48px;
     list-style: none;
 }
 
-.nav-items li a {
+.mainNav__item a{
     color: #333;
     transition: all 0.1s linear;
 }
 
-.nav-items li a:hover {
+.mainNav__item a:hover{
+    color: #4070f4;
+    transition: all 0.1s linear;
+}
+
+.mainNav__item .active-link{
     color: #4070f4;
 }
 
-.nav-items li .active-link{
-    color: #4070f4;
-    transition: all 0.1s linear;
+.usernav__button {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: end;
+    flex-basis: 0;
 }
