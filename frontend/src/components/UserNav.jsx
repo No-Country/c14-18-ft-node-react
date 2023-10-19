@@ -31,7 +31,7 @@ const UserNav = () => {
             <div className="usernav">
                 <div className='usernav__logo'>
                     <CrossIcon />
-                    <span>CLINICONNECT</span>
+                    <Link href={'/'}>CLINICONNECT</Link>
                 </div>
 
                 <nav className='mainNav'>

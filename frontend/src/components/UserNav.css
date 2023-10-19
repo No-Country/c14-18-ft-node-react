@@ -26,11 +26,12 @@
     gap: 6px;
 }
 
-.usernav__logo span {
+.usernav__logo a {
     font-family: inherit;
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
+    color: #333;
 }
 
 .mainNav {
