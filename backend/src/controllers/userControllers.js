@@ -22,5 +22,5 @@ const getAllUser = async(req,res) =>{
 
 export default {
     getAllDoctor,
-    getAllUser
+    getAllUser,
 }
