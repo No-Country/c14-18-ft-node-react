@@ -16,6 +16,8 @@
     "sweetalert2": "^11.7.32"
   },
   "devDependencies": {
+    "@types/node": "20.8.6",
+    "@types/react": "18.2.28",
     "eslint": "^8",
     "eslint-config-next": "13.5.4"
   }

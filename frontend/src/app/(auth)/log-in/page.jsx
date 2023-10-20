@@ -4,17 +4,19 @@ import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import Swal from 'sweetalert2';
 
 
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
-    const jwtToken = document.cookie
-
-    if (jwtToken) {
-        return router.push('/appointments')
+        
+    const getCookie = () => {
+        const value = document.cookie
+        const parts = value.split(`=`)
+        
+        return parts.pop()
     }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -36,20 +38,14 @@ const Login = () => {
             body: JSON.stringify(jsonData),
         })
 
-        console.log(res)        
+        const data = await res.json()
+        
+        console.log(data)
+        console.log(res)
 
         if (res.status === 200) {
-            Swal.fire({
-                title:'Bienvenido a Cliniconnect',
-                text:'¡Inicio de session exitoso!',
-                icon:'success',
-                iconColor: "#7DCE4F",
-                timer:2000,
-                timerProgressBar:true,
-                showConfirmButton:false,
-            }).then(()=>{
-                router.push('/appointments')
-            });
+            router.refresh()
+            router.push('/myaccount/citas')
         };
 
         if( res.status === 400) {
