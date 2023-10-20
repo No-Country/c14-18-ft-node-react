@@ -1,17 +1,20 @@
 'use client'
 
 import { CloseIcon, SearchIcon } from '@/components/Icons';
-import './citas.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import  mockDoctors  from '@/mocks/doctors.json'
 import { useDebounce } from '@/hooks/useDebouncer';
+import { generateTimeInterval } from '@/utils/generateIntervals';
+
+import './citas.css'
 
 const Citas = () => {
 
     const [inputValue, setInputValue] = useState('')
+    const [intervals, setIntervals] = useState([])
     const [active, setActive] = useState(false)
-    const [selectedSpecialty, setSelectedSpecialty] = useState()
     const [modalName, setModalName] = useState('')
+    const [selectedSpecialty, setSelectedSpecialty] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
 
     const doctors = mockDoctors.doctors
@@ -29,30 +32,11 @@ const Citas = () => {
         )
     })
 
-    const handleClick = ({ name, specialty }) => {
+    const openModal = ({ name, availability }) => {
         setModalName(name)
         setActive(true)
+        setIntervals(generateTimeInterval(availability))
     }
-
-    const generateTimeIntervals = () => {
-        const availability = '10:00 - 18:00'
-        const [start, end] = availability.split(' - ');
-        const startTime = new Date(`01/01/2000 ${start}`);
-        const endTime = new Date(`01/01/2000 ${end}`);
-        const intervalMinutes = 30; // Duración de cada intervalo en minutos
-        const intervals = [];
-
-        for (let time = startTime; time < endTime; time.setMinutes(time.getMinutes() + intervalMinutes)) {
-            intervals.push({
-                start: new Date(time),
-            });
-        }
-
-        return intervals;
-    }
-
-    const intervals = generateTimeIntervals()
-
 
     return (
         <div className="citas-container">
@@ -96,8 +80,8 @@ const Citas = () => {
 
                     <div className='doctors'>
                         <div className='doctors__grid'>
-                            {filteredDoctors.map(({ name, specialty }) => (
-                                <div onClick={() => handleClick({ name })} className='doctor__card' key={name}>
+                            {filteredDoctors.map(({ name, specialty, availability }) => (
+                                <div onClick={() => openModal({ name, availability })} className='doctor__card' key={name}>
                                     <img src='/medicos-icon.png' alt="" />
                                     <div className='doctor__card__content'>
                                         <span className='doctor__card__title'>Dr. {name}</span>
@@ -139,7 +123,7 @@ const Citas = () => {
                             <h2>Disponibilidad del Doctor</h2>
                             
                             <div className='modal__main__intervals'>
-                                {intervals.map((interval, index) => (
+                                {intervals?.map((interval, index) => (
                                     <div key={index}>
                                         <span>{`${interval.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}</span>
                                     </div>
