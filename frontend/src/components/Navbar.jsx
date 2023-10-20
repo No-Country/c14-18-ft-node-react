@@ -1,13 +1,14 @@
 'use client'
 
 import Link from "next/link";
-import {usePathname} from "next/navigation"
+import {usePathname, useRouter} from "next/navigation"
 import { CalendarIcon, CrossIcon } from "./Icons";
 import Button from "./Button";
 import './Navbar.css'
 
 const Navbar = () => {
     const pathname = usePathname()
+    const router = useRouter()
 
     const routes = [
         {
@@ -32,6 +33,18 @@ const Navbar = () => {
         },
     ]
 
+    const handleClick = async () => {
+        const res = await fetch('http://localhost:8080/api/auth/logout', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials:"include",
+        })
+
+        if (res.status === 200)  router.refresh()
+    }
+
     return (
         <header className='landing-header'>
             <div className='header-logo'>
@@ -50,6 +63,12 @@ const Navbar = () => {
             </nav>
 
             <div className='header-buttons'>
+                <div onClick={handleClick}>
+                    <Button className={'invert'}>
+                        <span>Log Out</span>
+                    </Button>
+
+                </div>
                 <Link href={'/log-in'} style={{ maxWidth: '150px', width: '100%' }}>
                     <Button>
                         <i><CalendarIcon /></i>
