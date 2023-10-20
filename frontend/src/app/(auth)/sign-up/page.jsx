@@ -4,6 +4,7 @@ import './sign-up.css'
 import { useRouter } from 'next/navigation'
 import { BackArrowIcon } from '@/components/Icons'
 import Swal from 'sweetalert2'
+import Button from '@/components/ui/Button'
 
 
 const SignUp = () => {
@@ -133,9 +134,10 @@ const SignUp = () => {
                         </div>
                     </div>
 
-                    <button className='next-button' type='submit'>
-                        <span>Registrarse</span>
-                    </button>
+                    <Button type={'submit'} >
+                        <span style={{fontWeight: '500'}}>Registrarse</span>
+                    </Button>
+
                 </form>
 
             </div>

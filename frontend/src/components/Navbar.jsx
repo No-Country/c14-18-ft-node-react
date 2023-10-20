@@ -3,7 +3,7 @@
 import Link from "next/link";
 import {usePathname, useRouter} from "next/navigation"
 import { CalendarIcon, CrossIcon } from "./Icons";
-import Button from "./Button";
+import Button from "@/components/ui/Button";
 import './Navbar.css'
 
 const Navbar = () => {
@@ -42,6 +42,8 @@ const Navbar = () => {
             credentials:"include",
         })
 
+        console.log(res)
+
         if (res.status === 200)  router.refresh()
     }
 
@@ -63,18 +65,14 @@ const Navbar = () => {
             </nav>
 
             <div className='header-buttons'>
-                <div onClick={handleClick}>
-                    <Button className={'invert'}>
-                        <span>Log Out</span>
-                    </Button>
+                <Button size={'md'} className={'invert'} onClick={handleClick}>
+                    <span>Log Out</span>
+                </Button>
 
-                </div>
-                <Link href={'/log-in'} style={{ maxWidth: '150px', width: '100%' }}>
-                    <Button>
-                        <i><CalendarIcon /></i>
-                        <span>Agendar Cita</span>
-                    </Button>
-                </Link>
+                <Button size={'md'} onClick={() => router.push('/myaccount/citas')}>
+                    <i><CalendarIcon /></i>
+                    <span>Agendar Cita</span>
+                </Button>
             </div>
         </header>
     );

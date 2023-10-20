@@ -1,0 +1,79 @@
+{
+    "doctors": [
+        {
+            "name": "CARLOS AUGUSTO",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "VERONICA SANCHEZ",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "JUAN BERRIOS",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "GIANFRANCO OCHOA",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "GEORGE FLORES",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "CAROLINA CUBAS",
+            "specialty": "CARDIOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "KATHERINE FERNANDINI",
+            "specialty": "DERMATOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "SEBASTIAN TUESTA",
+            "specialty": "DERMATOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "NURIA ROJAS",
+            "specialty": "DERMATOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "CLAUDIA LOZANO",
+            "specialty": "DERMATOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "JORGE LEON",
+            "specialty": "DERMATOLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "JUAN RETAMOSO",
+            "specialty": "NEUROLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "DAVID RODRIGUEZ",
+            "specialty": "NEUROLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "LUANA DIAZ",
+            "specialty": "NEUROLOGIA",
+            "availability": "08:00 - 16:00"
+        },
+        {
+            "name": "SERGIO SILVA",
+            "specialty": "NEUROLOGIA",
+            "availability": "08:00 - 16:00"
+        }
+    ]
+}

@@ -4,6 +4,7 @@ import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Button from '@/components/ui/Button';
 
 
 const Login = () => {
@@ -84,13 +85,15 @@ const Login = () => {
                         <span className='password'> Olvidaste tu contraseña? </span>
 
                         <div className='button-container'>
-                            <button type='submit'>
-                                <span style={{width: '100%'}}>Iniciar Sesion</span>
-                            </button>
 
-                            <button type='button' onClick={() => router.push('/sign-up')}>
-                                <span style={{width: '100%'}}>Registrarse</span>
-                            </button>
+                            <Button type={'submit'}>
+                                <span style={{fontWeight: '500'}}>Iniciar Sesion</span>
+                            </Button>
+
+                            <Button onClick={() => router.push('/sign-up')} >
+                                <span style={{fontWeight: '500'}}>Registrarse</span>
+                            </Button>
+
                         </div>
                     </div>
                 </form>
