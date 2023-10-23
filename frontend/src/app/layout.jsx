@@ -1,5 +1,6 @@
 import { Toaster } from 'sonner'
 import './globals.css'
+import ModalProvider from '../providers/modal-provider'
 
 
 export const metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <ModalProvider/>
         {children}
         <Toaster position='top-center' richColors/>
       </body>

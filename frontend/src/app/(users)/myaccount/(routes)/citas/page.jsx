@@ -48,8 +48,8 @@ const Citas = () => {
                     <div className='filters'>
                         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                             <div style={{ maxWidth: '290px', width: '100%' }}>
-                                <select name="sedes" onChange={(e) => setSelectedLocation(e.target.value)} className='filters__select'>
-                                    <option value="select">Selecciona una sede</option>
+                                <select name="sedes" defaultValue={'selected-sede'} onChange={(e) => setSelectedLocation(e.target.value)} className='filters__select'>
+                                    <option value="selected-sede" disabled>Selecciona una sede</option>
                                     <option value="1">sede 1</option>
                                     <option value="2">sede 2</option>
                                     <option value="3">sede 3</option>
@@ -57,8 +57,8 @@ const Citas = () => {
                             </div>
 
                             <div style={{ maxWidth: '400px', width: '100%' }}>
-                                <select name="especialidades" onChange={(e) => setSelectedSpecialty(e.target.value)} className='filters__select'>
-                                    <option value="select-specialty">Seleccion una especialidad</option>
+                                <select name="especialidades" defaultValue={'selected-specialty'} onChange={(e) => setSelectedSpecialty(e.target.value)} className='filters__select'>
+                                    <option value="selected-specialty" disabled>Seleccion una especialidad</option>
                                     <option value="CARDIOLOGIA">Cardiologia</option>
                                     <option value="DERMATOLOGIA">Dermatologia</option>
                                     <option value="NEUROLOGIA">Neurologia</option>
@@ -99,7 +99,7 @@ const Citas = () => {
                     <CloseIcon/>
                 </div>
                 <div className='citas__modal__content'>
-                    <header className='modal__header'>
+                    <header className='modal__headerr'>
                         <div className='modal__header__container'>
                             <h2>Agenda una cita | Elige el dia y la hora</h2>
                             <div className='modal__header__details'>

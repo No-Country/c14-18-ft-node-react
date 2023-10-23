@@ -10,15 +10,7 @@ import Button from '@/components/ui/Button';
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
-        
-    const getCookie = () => {
-        const value = document.cookie
-        const parts = value.split(`=`)
-        
-        return parts.pop()
-    }
-
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault()
         
