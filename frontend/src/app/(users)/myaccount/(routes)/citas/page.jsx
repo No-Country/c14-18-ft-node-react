@@ -7,15 +7,18 @@ import { useDebounce } from '@/hooks/useDebouncer';
 import { generateTimeInterval } from '@/utils/generateIntervals';
 
 import './citas.css'
+import { useModal } from '@/hooks/useModal';
 
 const Citas = () => {
-
+    
     const [inputValue, setInputValue] = useState('')
     const [intervals, setIntervals] = useState([])
     const [active, setActive] = useState(false)
     const [modalName, setModalName] = useState('')
     const [selectedSpecialty, setSelectedSpecialty] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
+
+    const { isModalOpen, openModal } = useModal()
 
     const doctors = mockDoctors.doctors
 
@@ -32,7 +35,7 @@ const Citas = () => {
         )
     })
 
-    const openModal = ({ name, availability }) => {
+    const openModall = ({ name, availability }) => {
         setModalName(name)
         setActive(true)
         setIntervals(generateTimeInterval(availability))
@@ -81,7 +84,7 @@ const Citas = () => {
                     <div className='doctors'>
                         <div className='doctors__grid'>
                             {filteredDoctors.map(({ name, specialty, availability }) => (
-                                <div onClick={() => openModal({ name, availability })} className='doctor__card' key={name}>
+                                <div onClick={() => openModal()} className='doctor__card' key={name}>
                                     <img src='/medicos-icon.png' alt="" />
                                     <div className='doctor__card__content'>
                                         <span className='doctor__card__title'>Dr. {name}</span>

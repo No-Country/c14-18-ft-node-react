@@ -16,6 +16,7 @@
     background-color: #fff;
     border-radius: 40px;
     display: flex;
+    position: relative;
 }
 
 .modal {
@@ -23,6 +24,10 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.modal__header {
+    position: relative;
 }
 
 .modal__header__title {
@@ -35,4 +40,16 @@
     font-size: 18px;
     font-weight: 400;
     color: #333;
+}
+
+.modal__close__button {
+    position: absolute;
+    top: 19px;
+    right: 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modal__close__button:hover {
+    color: #265df2;
 }
