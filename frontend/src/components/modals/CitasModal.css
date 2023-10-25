@@ -14,7 +14,7 @@
     height: 600px;
     width: 800px;
     background-color: #fff;
-    border-radius: 40px;
+    border-radius: 20px;
     display: flex;
     position: relative;
 }
@@ -52,4 +52,76 @@
 
 .modal__close__button:hover {
     color: #265df2;
+}
+
+.modal__header__options {
+    display: flex;
+    gap: 20px;
+}
+
+.modal__header__option {
+    display: flex;
+    align-items: center;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+    color: #6d6d6d;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.modal__content__title {
+    color: #265df2;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media (max-width:480px) {
+
+    .modal__container {
+        margin: 0 10px;
+    }
+
+    .modal {
+        padding: 20px 30px;
+    }
+
+    .modal__close__button {
+        top: 13px;
+        right: 0;
+    }
+
+    .modal__header__options {
+        flex-wrap: wrap;
+        gap: 0 !important;
+    }
+
+    .modal__header__title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #265df2;
+    }
+
+    .modal__content__title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .modal__header__title span {
+        font-size: 14px;
+        font-weight: 400;
+        color: #333;
+    }
 }

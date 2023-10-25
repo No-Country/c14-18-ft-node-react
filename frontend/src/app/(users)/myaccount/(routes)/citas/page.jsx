@@ -1,6 +1,6 @@
 'use client'
 
-import { CloseIcon, SearchIcon } from '@/components/Icons';
+import { SearchIcon } from '@/components/Icons';
 import { useState } from 'react';
 import  mockDoctors  from '@/mocks/doctors.json'
 import { useDebounce } from '@/hooks/useDebouncer';
@@ -13,12 +13,10 @@ const Citas = () => {
     
     const [inputValue, setInputValue] = useState('')
     const [intervals, setIntervals] = useState([])
-    const [active, setActive] = useState(false)
-    const [modalName, setModalName] = useState('')
     const [selectedSpecialty, setSelectedSpecialty] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
 
-    const { isModalOpen, openModal } = useModal()
+    const { openModal } = useModal()
 
     const doctors = mockDoctors.doctors
 
@@ -34,12 +32,6 @@ const Citas = () => {
             specialty === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase())
         )
     })
-
-    const openModall = ({ name, availability }) => {
-        setModalName(name)
-        setActive(true)
-        setIntervals(generateTimeInterval(availability))
-    }
 
     return (
         <div className="citas-container">
@@ -84,7 +76,7 @@ const Citas = () => {
                     <div className='doctors'>
                         <div className='doctors__grid'>
                             {filteredDoctors.map(({ name, specialty, availability }) => (
-                                <div onClick={() => openModal()} className='doctor__card' key={name}>
+                                <div onClick={() => openModal(selectedLocation, specialty, name)} className='doctor__card' key={name}>
                                     <img src='/medicos-icon.png' alt="" />
                                     <div className='doctor__card__content'>
                                         <span className='doctor__card__title'>Dr. {name}</span>
@@ -96,46 +88,7 @@ const Citas = () => {
                     </div>
                 </main>
             </div>
-
-            <div className={`citas__modal ${active ? '' : 'hidden'}`}>
-                <div className='close-icon' onClick={() => setActive(false)}>
-                    <CloseIcon/>
-                </div>
-                <div className='citas__modal__content'>
-                    <header className='modal__headerr'>
-                        <div className='modal__header__container'>
-                            <h2>Agenda una cita | Elige el dia y la hora</h2>
-                            <div className='modal__header__details'>
-                                <div>
-                                    <span>Locacion: {selectedLocation}</span>
-                                    <span>Especialidad: {selectedSpecialty}</span>
-                                </div>
-                                <div>
-                                    <span>Medico: {modalName}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-
-                    <main className='modal__main'>
-                        <div className='modal__main__container'>
-                            <div className='modal__main__date'>
-                                <label >Seleccione una fecha:</label>
-                                <input type="date" />
-                            </div>
-                            <h2>Disponibilidad del Doctor</h2>
-                            
-                            <div className='modal__main__intervals'>
-                                {intervals?.map((interval, index) => (
-                                    <div key={index}>
-                                        <span>{`${interval.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </main>
-                </div>
-            </div>
+           
         </div>
     );
 }

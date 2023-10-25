@@ -7,8 +7,10 @@ export const ModalContext = createContext()
 
 const ModalProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState()
+    const [userData, setUserData] = useState({})
 
-    const openModal = () => {
+    const openModal = (sede, specialty, doctor) => {
+        setUserData({sede, specialty, doctor})
         setIsModalOpen(true)
     }
 
@@ -17,7 +19,7 @@ const ModalProvider = ({ children }) => {
     }
 
     return (
-        <ModalContext.Provider value={{ isModalOpen, openModal, closeModal }}>
+        <ModalContext.Provider value={{ isModalOpen, openModal, closeModal, userData }}>
             <CitasModal />
             {children}
         </ModalContext.Provider>
