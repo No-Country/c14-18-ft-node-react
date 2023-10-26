@@ -1,7 +1,6 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenvConfig from "../configs/dotenv.config.js";
 
 
 export const closeSession = (req,res) =>{
-    res.clearCookie(process.env.JWT_NAME).send({status:"success",messages:"usuario deslogeado con exito!"});
+    res.clearCookie(dotenvConfig.JWT.NAME).send({status:"success",messages:"usuario deslogeado con exito!"});
 }
