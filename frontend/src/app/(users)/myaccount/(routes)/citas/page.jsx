@@ -4,10 +4,9 @@ import { SearchIcon } from '@/components/Icons';
 import { useState } from 'react';
 import  mockDoctors  from '@/mocks/doctors.json'
 import { useDebounce } from '@/hooks/useDebouncer';
-import { generateTimeInterval } from '@/utils/generateIntervals';
+import { useModal } from '@/hooks/useModal';
 
 import './citas.css'
-import { useModal } from '@/hooks/useModal';
 
 const Citas = () => {
     
@@ -16,7 +15,7 @@ const Citas = () => {
     const [selectedSpecialty, setSelectedSpecialty] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
 
-    const { openModal } = useModal()
+    const { openCitasModal } = useModal()
 
     const doctors = mockDoctors.doctors
 
@@ -75,9 +74,9 @@ const Citas = () => {
 
                     <div className='doctors'>
                         <div className='doctors__grid'>
-                            {filteredDoctors.map(({ name, specialty, availability }) => (
-                                <div onClick={() => openModal(selectedLocation, specialty, name)} className='doctor__card' key={name}>
-                                    <img src='/medicos-icon.png' alt="" />
+                            {filteredDoctors.map(({ id, name, specialty, availability }) => (
+                                <div onClick={() => openCitasModal(selectedLocation, specialty, name, id)} className='doctor__card' key={id}>
+                                    <img src='/medicos-icon.png' alt="doctor-avatar" />
                                     <div className='doctor__card__content'>
                                         <span className='doctor__card__title'>Dr. {name}</span>
                                         <span>{specialty}</span>

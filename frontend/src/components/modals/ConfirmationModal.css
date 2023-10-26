@@ -1,0 +1,77 @@
+.confirmation__modal__container {
+    min-height: 600px;
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+}
+
+.confirmation__modal {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.confirmation__modal__content {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.confirmation__modal__doctor {
+    display: flex;
+    height: 100%;
+}
+
+.modal__doctor__img {
+    width: 70px;
+    height: 70px;
+    padding: 0 10px;
+}
+
+.modal__doctor__details {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__doctor__name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #265df2;
+}
+
+.modal__patient__details span {
+    color: #265df2;
+    font-size: 16px;
+}
+
+.patient__name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.modal__patient__details {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__cita__details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cita__details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal__footer__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

@@ -1,16 +1,25 @@
 'use client'
 
+import { generateTimeInterval } from '@/utils/generateIntervals';
 import Calendar from '../Calendar';
 import { CloseIcon } from '../Icons';
 import './CitasModal.css'
 import { useModal } from '@/hooks/useModal';
+import ModalOverlay from '../ui/ModalOverlay';
 
 const CitasModal = () => {
 
-    const { isModalOpen, closeModal, userData } = useModal()
+    const { isCitasModalOpen, closeCitasModal, userData, openConfirmationModal, setUserData } = useModal()
+
+    const intervals = generateTimeInterval('08:00 - 16:00')
+
+    const choseDateAndHour = (hour) => {
+        openConfirmationModal(hour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+        closeCitasModal()
+    }
 
     return ( 
-        <div className="modal__overlay" style={isModalOpen ? {} : {display: 'none'}}>
+        <ModalOverlay isOpen={isCitasModalOpen}>
             <div className='modal__container'>
                 <div className='modal'>
                     <header className='modal__header'>
@@ -34,7 +43,7 @@ const CitasModal = () => {
 
                         </div>
 
-                        <div className='modal__close__button' onClick={() => closeModal()}>
+                        <div className='modal__close__button' onClick={() => closeCitasModal()}>
                             <CloseIcon/>
                         </div>
                     </header>
@@ -43,11 +52,20 @@ const CitasModal = () => {
                         <h3 className='modal__content__title'>Seleccione la fecha y hora de su cita</h3>
                         <div className='modal__content__container'>
                             <Calendar/>
+
+                            <div className='modal__content__intervals'>
+                                {intervals.map((interval, index) => (
+                                    <button onClick={() => choseDateAndHour(interval.start)} type='button' key={index} className='modal__content__interval'>
+                                        <span>{`${interval.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}</span>
+                                    </button>
+                                ))}
+                            </div>
+
                         </div>
                     </main>
                 </div>
             </div>
-        </div>
+        </ModalOverlay>
      );
 }
  
