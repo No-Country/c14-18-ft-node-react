@@ -8,7 +8,7 @@ export const Appointments = sequelize.define('appointments', {
         autoIncrement: true,
         allowNull: false
     },
-    Date: {
+    date: {
         type: DataTypes.DATE
     },
     location: {
