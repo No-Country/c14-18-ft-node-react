@@ -1,11 +1,10 @@
 import express from 'express';
 import userRouter from './router/api.user.routes.js';
 import authRouter from './router/api.auth.routes.js';
-import { sequelize } from './database/database.js'
-import { Patient } from './models/user.js';
+import { sequelize } from './database/database.js';
 import { Doctor } from './models/doctor.js';
+import { Appointments } from './models/appointments.js';
 import cors from 'cors'
-
 
 async function main() {
     const app = express();
@@ -26,6 +25,7 @@ async function main() {
 
     app.use('/api/auth',authRouter);
     app.use('/api/user', userRouter);
+
     try {
         await sequelize.sync();
         console.log('Connection has been established successfully')

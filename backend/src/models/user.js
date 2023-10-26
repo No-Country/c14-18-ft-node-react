@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize"
 import { sequelize } from "../database/database.js"
+import { Appointments } from "./appointments.js"
 
 export const Patient = sequelize.define('patients', {
     id: {
@@ -36,3 +37,13 @@ export const Patient = sequelize.define('patients', {
         type: DataTypes.STRING
     }
 })
+
+Patient.hasMany(Appointments, {
+    foreignKey: 'patientId',
+    constraints: false
+})
+
+Appointments.belongsTo(Patient, {
+    foreignKey: 'patientId', // Especifica la clave foránea para la relación con el paciente
+    constraints: false,
+  });
