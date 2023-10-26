@@ -62,17 +62,17 @@ const ConfirmationModal = () => {
         try {
 
             const res = await fetch('http://localhost:8080/api/appointment/createAppointment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials:"include",
-            body: JSON.stringify(jsonData),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: "include",
+                body: JSON.stringify(jsonData),
             })
 
             console.log(res)
 
-            if(res.status === 200) {
+            if (res.status === 200) {
                 toast.success('Tu cita se ha guardado con exito')
                 closeConfirmationModal()
             }
@@ -131,7 +131,7 @@ const ConfirmationModal = () => {
 
                     <footer>
                         <div className="modal__footer__btns">
-                            <Button className={'invert'}>
+                            <Button className={'invert'} onClick={() => closeConfirmationModal()}>
                                 <span>Cancelar</span>
                             </Button>
 
