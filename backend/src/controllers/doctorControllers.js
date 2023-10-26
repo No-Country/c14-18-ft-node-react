@@ -1,5 +1,4 @@
 import { Doctor } from "../models/doctor.js";
-import { Doctor } from "../models/doctor.js";
 
 
 const getAllDoctor = async(req,res)=>{
