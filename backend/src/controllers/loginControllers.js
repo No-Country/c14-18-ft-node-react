@@ -16,6 +16,7 @@ export const login = async (req, res) => {
         //construyo el usuario con los valores que necesito,para guarar en la cookie
         const userCredential = {
             name: user.name,
+            lastName: user.last_name,
             identity: user.documentId
         };
         //creo el token y guardo las credenciales del usuario.
