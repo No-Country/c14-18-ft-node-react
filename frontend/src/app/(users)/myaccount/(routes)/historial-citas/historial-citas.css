@@ -62,8 +62,8 @@
 
 .historial__content__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     width: 100%;
 }
 
@@ -73,4 +73,22 @@
     align-items: center;
     justify-content: center;
     height: 60px;
+}
+
+
+@media (max-width:480px) {
+
+    .historial__container {
+        padding: 0 8px;
+    }
+
+    .historial__header {
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .historial__content {
+        padding: 20px 20px;
+    }
+    
 }
