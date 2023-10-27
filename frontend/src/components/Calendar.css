@@ -1,5 +1,6 @@
 .calendar {
-    max-width: 23rem;
+    max-width: 22rem;
+    width: 100%;
     padding: 0 10px;
 }
 
@@ -77,11 +78,11 @@
 }
 
 .text__gray {
-    color: #333;
+    color: black;
 }
 
 .text__gray__light {
-    color: #aaa;
+    color: #bdbaba;
 }
 
 .bg__blue {
@@ -93,7 +94,7 @@
 }
 
 .hover__bg:hover {
-    background-color: #aaa;
+    background-color: #333;
     color: #fff;
 }
 

@@ -1,30 +1,52 @@
-import { add, eachDayOfInterval, endOfMonth, format, isEqual, isSameMonth, isToday, parse, startOfToday } from 'date-fns';
+import { add, eachDayOfInterval, endOfMonth, endOfWeek, format, getDay, isEqual, isSameMonth, isToday, parse, startOfToday, startOfWeek } from 'date-fns';
+import { es } from 'date-fns/locale';
 import './Calendar.css'
 import { LeftChevronIcon, RightChevronIcon } from './Icons';
 import { useState } from 'react';
+import { useModal } from '@/hooks/useModal';
 
 const Calendar = () => {
-
-    const dayInitials = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+    
     let today = startOfToday()
+    const dayInitials = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+    const { userData, setUserData } = useModal()
+    
     const [selectedDay, setSelectedDay] = useState(today)
     const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
-    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+    
+    let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+    
+
 
     const previousMonth = () => {
-        const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 })
+        let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 })
         setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
     }
     
     const nextMonth = () => {
-        const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 })
+        let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 })
         setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
     }
-
-    const days = eachDayOfInterval({
-        start: firstDayCurrentMonth,
-        end: endOfMonth(firstDayCurrentMonth)
+    
+    let newDays = eachDayOfInterval({
+        start: startOfWeek(firstDayCurrentMonth),
+        end: endOfWeek(endOfMonth(firstDayCurrentMonth))
     })
+
+    const selectDay = (day) => {
+        setSelectedDay(day)
+        setUserData({...userData, day})
+    }
+
+    let colStartClasses = [
+        '',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+      ]
 
     return (
         <div className='calendar'>
@@ -32,7 +54,7 @@ const Calendar = () => {
                 <div className='calendar__container'>
                     <div className="calendar__header__month">
                         <h3 className="calendar__header__title">
-                            {format(firstDayCurrentMonth, 'MMMM yyyy')}
+                            {format(firstDayCurrentMonth, 'MMMM yyyy', {locale: es})}
                         </h3>
                         <button type='button' className="calendar__header__button" onClick={previousMonth}>
                             <LeftChevronIcon/>
@@ -51,8 +73,8 @@ const Calendar = () => {
                     </div>
 
                     <div className='calendar__content__days'>
-                        {days.map((day, dayIndx) => (
-                            <div key={day.toString()} className='day__container'>
+                        {newDays.map((day, dayIndx) => (
+                            <div key={day.toString()} className='day__container' style={{gridColumnStart: colStartClasses[getDay(day)]}}>
                                 <button 
                                     type='button' 
                                     className={`
@@ -71,7 +93,7 @@ const Calendar = () => {
                                         ${ (isEqual(day, selectedDay) || isToday(day)) &&
                                             'selected'}
                                         calendar__content__day`}
-                                    onClick={() => setSelectedDay(day)}
+                                    onClick={() => selectDay(day)}
                                 >
                                     <time dateTime={format(day, 'yyyy-MM-dd')}>
                                         {format(day, 'd')}

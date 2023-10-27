@@ -1,0 +1,76 @@
+.historial__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #4070f4;
+}
+
+.historial {
+    display: flex;
+    flex-direction: column;
+    max-width: 1020px;
+    height: 625px;
+    width: 100%;
+    min-height: 500px;
+    background-color: #fff;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 0.1);
+}
+
+.historial__header {
+    padding: 10px 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.historial__title {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.historial__header__selections {
+    display: flex;
+    width: 100%;
+}
+
+.historial__header__selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.historial__header__selection span {
+    color: #4070f4;
+}
+
+.historial__header__selection hr{
+    height: 1px;
+    width: 100%;
+    background-color: #4070f4;
+}
+
+.historial__content {
+    padding: 20px 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.historial__content__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.historial__content__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}

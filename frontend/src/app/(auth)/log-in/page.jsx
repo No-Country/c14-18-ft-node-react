@@ -32,9 +32,10 @@ const Login = () => {
         })
 
         const data = await res.json()
-        
-        console.log(data)
-        console.log(res)
+
+        const credentials = JSON.stringify(data.userCredential)
+
+        sessionStorage.setItem('userCredentials', credentials)
 
         if (res.status === 200) {
             router.refresh()

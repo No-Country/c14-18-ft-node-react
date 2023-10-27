@@ -1,29 +1,54 @@
 'use client'
 
 import CitasModal from "@/components/modals/CitasModal";
+import ConfirmationModal from "@/components/modals/ConfirmationModal";
 import { createContext, useState } from "react";
 
 export const ModalContext = createContext()
 
 const ModalProvider = ({ children }) => {
-    const [isModalOpen, setIsModalOpen] = useState()
-    const [userData, setUserData] = useState({})
 
-    const openModal = (sede, specialty, doctor) => {
-        setUserData({sede, specialty, doctor})
-        setIsModalOpen(true)
-    }
+  const [isCitasModalOpen, setIsCitasModalOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false)
+  const [userData, setUserData] = useState({})
 
-    const closeModal = () => {
-        setIsModalOpen(false)
-    }
+  const openCitasModal = (sede, specialty, doctor, id) => {
+    setUserData({ sede, specialty, doctor, id });
+    setIsCitasModalOpen(true);
+  };
+
+  const closeCitasModal = () => {
+    setIsCitasModalOpen(false);
+  };
+
+  const openConfirmationModal = (hour) => {
+    setUserData({...userData, hour})
+    setIsConfirmationModalOpen(true);
+  };
+
+  const closeConfirmationModal = () => {
+    setIsConfirmationModalOpen(false);
+    setUserData({})
+  };
 
     return (
-        <ModalContext.Provider value={{ isModalOpen, openModal, closeModal, userData }}>
-            <CitasModal />
-            {children}
-        </ModalContext.Provider>
-    );
+    <ModalContext.Provider
+      value={{
+        isCitasModalOpen,
+        openCitasModal,
+        closeCitasModal,
+        isConfirmationModalOpen,
+        openConfirmationModal,
+        closeConfirmationModal,
+        userData,
+        setUserData
+      }}
+    >
+      <CitasModal />
+      <ConfirmationModal />
+      {children}
+    </ModalContext.Provider>
+  );
 }
 
 export default ModalProvider;
