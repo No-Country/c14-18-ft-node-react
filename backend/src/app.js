@@ -3,6 +3,7 @@ import userRouter from './router/api.user.routes.js';
 import authRouter from './router/api.auth.routes.js';
 import doctorRouter from './router/api.doctor.routes.js';
 import appointRouter from './router/api.appoint.routes.js';
+import emailRouter from './router/api.email.routes.js';
 import { sequelize } from './database/database.js'
 import cors from 'cors'
 import corsOptions from './configs/cors.config.js';
@@ -23,6 +24,7 @@ async function main() {
     app.use('/api/user', userRouter);
     app.use('/api/doctor',doctorRouter);
     app.use('/api/appointment',appointRouter);
+    app.use('/api/email',emailRouter);
     try {
         await sequelize.sync();
         console.log('Connection has been established successfully')

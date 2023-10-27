@@ -14,8 +14,4 @@ export const Appointments = sequelize.define('appointments', {
     location: {
         type: DataTypes.STRING
     }
-})
-
-
-
-  
+});
