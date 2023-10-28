@@ -6,6 +6,7 @@ const Button = ({ children, className, onClick, type, size }) => {
         sm: '100px',
         md: '150px',
         lg: '200px',
+        xl: '250px'
     }
 
     return (
