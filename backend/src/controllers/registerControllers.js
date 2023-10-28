@@ -16,7 +16,7 @@ export const register = async (req, res) => {
 
     try {
         let patient = await Patient.findOne({ where: { documentId: documentId } });
-
+        
         //Si el paciente ya existe en la base de datos
         if (patient?.dataValues.documentId === documentId) {
             console.log('Este documento de identidad ya esta registrado')
@@ -29,7 +29,7 @@ export const register = async (req, res) => {
             const newPatient = await Patient.create(client); 
             console.log(newPatient)
             return res.status(200).send('Registro exitoso');
-        }
+        }  
         
     } catch (error) {
         console.log('Ocurrió un error:', error);

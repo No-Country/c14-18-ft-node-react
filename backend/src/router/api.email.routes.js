@@ -1,8 +1,8 @@
 import { Router } from "express";
-import transport from "../configs/nodemailer.config.js";
+import emailControllers from "../controllers/emailControllers.js";
 
 const routes = Router();
 
-
+routes.post('/send',emailControllers.sendEmail);
 
 export default routes;

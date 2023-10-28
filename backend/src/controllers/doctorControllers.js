@@ -25,6 +25,7 @@ const createDoctor = async(req,res) =>{
         console.log(error);
     }
 }
+
 export default {
     getAllDoctor,
     createDoctor
