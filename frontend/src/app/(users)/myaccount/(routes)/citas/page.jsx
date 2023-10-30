@@ -40,24 +40,20 @@ const Citas = () => {
                 </header>
                 <main className='citas__content'>
                     <div className='filters'>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                            <div style={{ maxWidth: '290px', width: '100%' }}>
+                        <div className='filters__selections'>
                                 <select name="sedes" defaultValue={'selected-sede'} onChange={(e) => setSelectedLocation(e.target.value)} className='filters__select'>
                                     <option value="selected-sede" disabled>Selecciona una sede</option>
                                     <option value="1">sede 1</option>
                                     <option value="2">sede 2</option>
                                     <option value="3">sede 3</option>
                                 </select>
-                            </div>
 
-                            <div style={{ maxWidth: '400px', width: '100%' }}>
                                 <select name="especialidades" defaultValue={'selected-specialty'} onChange={(e) => setSelectedSpecialty(e.target.value)} className='filters__select'>
                                     <option value="selected-specialty" disabled>Seleccion una especialidad</option>
                                     <option value="CARDIOLOGIA">Cardiologia</option>
                                     <option value="DERMATOLOGIA">Dermatologia</option>
                                     <option value="NEUROLOGIA">Neurologia</option>
                                 </select>
-                            </div>
                         </div>
 
                         <div className='filters__title'>
@@ -72,19 +68,22 @@ const Citas = () => {
                         </div>
                     </div>
 
-                    <div className='doctors'>
-                        <div className='doctors__grid'>
-                            {filteredDoctors.map(({ id, name, specialty, availability }) => (
-                                <div onClick={() => openCitasModal(selectedLocation, specialty, name, id)} className='doctor__card' key={id}>
-                                    <img src='/medicos-icon.png' alt="doctor-avatar" />
-                                    <div className='doctor__card__content'>
-                                        <span className='doctor__card__title'>Dr. {name}</span>
-                                        <span>{specialty}</span>
+                    <div className='doctors__container'>
+                        <div className='doctors'>
+                            <div className='doctors__grid'>
+                                {filteredDoctors.map(({ id, name, specialty, availability }) => (
+                                    <div onClick={() => openCitasModal(selectedLocation, specialty, name, id)} className='doctor__card' key={id}>
+                                        <img src='/medicos-icon.png' alt="doctor-avatar" />
+                                        <div className='doctor__card__content'>
+                                            <span className='doctor__card__title'>Dr. {name}</span>
+                                            <span>{specialty}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
+
                 </main>
             </div>
            

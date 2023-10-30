@@ -38,11 +38,16 @@
 .filters {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     max-width: 700px;
     margin: 0 auto;
     width: 100%;
     padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.filters__selections {
+    display: flex;
+    gap: 20px;
 }
 
 .filters__select {
@@ -101,6 +106,7 @@
     position: relative;
     justify-content: center;
     padding: 10px 0;
+    box-sizing: border-box;
 }
 
 .filters__title span{
@@ -110,7 +116,7 @@
     color: #265df2;
     font-weight: 600;
     width: 100%;
-}
+    }
 
 .filters__title span::before {
     position: absolute;
@@ -119,6 +125,13 @@
     height: 3px;
     width: 100%;
     background-color: #265df2;
+}
+
+.doctors__container {
+    display: flex;
+    overflow: auto;
+    padding: 0 5px;
+    max-height: 500px;
 }
 
 
@@ -180,5 +193,18 @@
 @media (max-width:480px) {
     .citas-container {
         padding: 0 10px;
+    }
+
+    .citas__content {
+        padding: 0 20px;
+    }
+
+    .filters__selections {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .doctors__container {
+        max-height: 300px;
     }
 }
