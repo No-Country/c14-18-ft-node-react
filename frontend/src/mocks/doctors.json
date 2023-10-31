@@ -1,0 +1,94 @@
+{
+    "doctors": [
+        {
+          "id": 1,
+          "name": "CARLOS AUGUSTO",
+          "specialty": "CARDIOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 2,
+          "name": "VERONICA SANCHEZ",
+          "specialty": "CARDIOLOGIA",
+          "availability": "10:00 - 16:00"
+        },
+        {
+          "id": 3,
+          "name": "JUAN BERRIOS",
+          "specialty": "CARDIOLOGIA",
+          "availability": "08:00 - 12:00"
+        },
+        {
+          "id": 4,
+          "name": "GIANFRANCO OCHOA",
+          "specialty": "CARDIOLOGIA",
+          "availability": "08:00 - 14:00"
+        },
+        {
+          "id": 5,
+          "name": "GEORGE FLORES",
+          "specialty": "CARDIOLOGIA",
+          "availability": "12:00 - 18:00"
+        },
+        {
+          "id": 6,
+          "name": "CAROLINA CUBAS",
+          "specialty": "CARDIOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 7,
+          "name": "KATHERINE FERNANDINI",
+          "specialty": "DERMATOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 8,
+          "name": "SEBASTIAN TUESTA",
+          "specialty": "DERMATOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 9,
+          "name": "NURIA ROJAS",
+          "specialty": "DERMATOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 10,
+          "name": "CLAUDIA LOZANO",
+          "specialty": "DERMATOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 11,
+          "name": "JORGE LEON",
+          "specialty": "DERMATOLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 12,
+          "name": "JUAN RETAMOSO",
+          "specialty": "NEUROLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 13,
+          "name": "DAVID RODRIGUEZ",
+          "specialty": "NEUROLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 14,
+          "name": "LUANA DIAZ",
+          "specialty": "NEUROLOGIA",
+          "availability": "08:00 - 16:00"
+        },
+        {
+          "id": 15,
+          "name": "SERGIO SILVA",
+          "specialty": "NEUROLOGIA",
+          "availability": "08:00 - 16:00"
+        }
+      ]
+}

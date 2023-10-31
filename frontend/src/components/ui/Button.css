@@ -1,42 +1,45 @@
-.default-button {
+.default-btn {
     display: flex;
     align-items: center;
     justify-items: center;
     font-family: inherit;
     font-size: 15px;
-    height: 45px;
     max-width: 200px;
+    height: 45px;
     width: 100%;
     border: none;
     outline: none;
     color: #fff;
     border-radius: 5px;
-    padding: 0 8px 0 8px;
+    padding: 0 8px;
     background-color: #4070f4;
     cursor: pointer;
     transition: all 0.3s linear;
 }
 
-.default-button:hover {
+
+.default-btn:hover {
     background-color: #265df2;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1);
+    transform: translate(1px, -1px);
 }
 
-.default-button span {
+.default-btn span {
     width: 100%;
     font-weight: 600;
 }
 
-.default-button i {
+.default-btn i {
     padding-top: 5px;
 }
 
-.default-button.invert{
+.default-btn.invert{
     color: #4070f4;
     background-color: #fff;
-    padding-right: 18px;
 }
 
-.default-button.invert:hover{
+.default-btn.invert:hover{
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1);
-    transform: translate(1px, -2px);
+    transform: translate(1px, -1px);
+    background-color: #fff;
 }

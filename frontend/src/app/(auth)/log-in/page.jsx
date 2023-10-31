@@ -4,20 +4,13 @@ import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Button from '@/components/ui/Button';
 
 
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
-        
-    const getCookie = () => {
-        const value = document.cookie
-        const parts = value.split(`=`)
-        
-        return parts.pop()
-    }
-
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault()
         
@@ -39,9 +32,10 @@ const Login = () => {
         })
 
         const data = await res.json()
-        
-        console.log(data)
-        console.log(res)
+
+        const credentials = JSON.stringify(data.userCredential)
+
+        sessionStorage.setItem('userCredentials', credentials)
 
         if (res.status === 200) {
             router.refresh()
@@ -63,19 +57,20 @@ const Login = () => {
                     <span className='login-title'>Accede si ya tienes una cuenta</span>
                     <div className='fields'>
                         <div className='input-field'>
-                            <label for='dni' >Ingrese su numero de documento</label>
+                            <label htmlFor='dni' >Ingrese su numero de documento</label>
                             <input
                                 required
                                 type="text" 
                                 maxLength={8} 
-                                name='dni' 
+                                name='dni'
+                                id='dni'
                                 placeholder='DNI' 
                                 onInput={(e) => (e.target.value = e.target.value.replace(/[^0-9]/g, ''))}
                             />
                         </div>
                         <div className='input-field'>
-                            <label for='dni'>Ingrese su contraseña</label>
-                            <input type={visible ? 'text' : 'password'} name='password' required placeholder='Contraseña'/>
+                            <label htmlFor='password'>Ingrese su contraseña</label>
+                            <input type={visible ? 'text' : 'password'} name='password' id='password' required placeholder='Contraseña'/>
                             <button type='button' className='eye-icon' onClick={() => setVisible(!visible)}>
                                 {visible ? <ClosedEyeIcon/> : <OpenEyeIcon/>}
                             </button>
@@ -84,13 +79,15 @@ const Login = () => {
                         <span className='password'> Olvidaste tu contraseña? </span>
 
                         <div className='button-container'>
-                            <button type='submit'>
-                                <span style={{width: '100%'}}>Iniciar Sesion</span>
-                            </button>
 
-                            <button type='button' onClick={() => router.push('/sign-up')}>
-                                <span style={{width: '100%'}}>Registrarse</span>
-                            </button>
+                            <Button type={'submit'}>
+                                <span style={{fontWeight: '500'}}>Iniciar Sesion</span>
+                            </Button>
+
+                            <Button onClick={() => router.push('/sign-up')} >
+                                <span style={{fontWeight: '500'}}>Registrarse</span>
+                            </Button>
+
                         </div>
                     </div>
                 </form>

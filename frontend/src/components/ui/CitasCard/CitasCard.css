@@ -1,0 +1,60 @@
+.citas__card {
+    width: 100%;
+    border-radius: 10px;
+    border: solid 1px #c3c3c3;
+    box-shadow: 3px 3px 6px 2px rgb(0 0 0 / 10%);
+    height: 200px;
+}
+
+.citas__card__details {
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.card__date__container {
+    padding-left: 12px;
+    text-align: center;
+}
+
+.card__date {
+    width: 80px;
+    background-color: #265df2;
+    padding: 10px 0;
+    color: #fff;
+    line-height: 14px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card__details {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+.card__details span{
+    font-size: 14px;
+}
+
+.citas__card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+@media (max-width:480px) {
+    .citas__card__details {
+        padding-bottom: 5px;
+    }
+
+    .card__details {
+        padding-left: 10px;
+        padding-top: 25px;
+    }
+
+    .citas__card__footer {
+        padding: 0;
+    }
+}

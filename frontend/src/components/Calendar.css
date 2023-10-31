@@ -1,0 +1,103 @@
+.calendar {
+    max-width: 22rem;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.calendar__container {
+    padding-right: 20px;
+}
+
+.calendar__header__month {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.calendar__header__title {
+    flex: 1 1 auto;
+    font-weight: 600;
+    color: #333;
+}
+
+.calendar__header__button {
+    margin: 8px 0;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.calendar__header__days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.calendar__content__days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.calendar__content__day {
+    margin: 0 auto;
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.day__container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 30px;
+}
+
+.text__white {
+    color: #fff;
+}
+
+.text__blue {
+    color: #265df2;
+}
+
+.text__gray {
+    color: black;
+}
+
+.text__gray__light {
+    color: #bdbaba;
+}
+
+.bg__blue {
+    background-color: #265df2;
+}
+
+.bg__gray {
+    background-color: #265df2;
+}
+
+.hover__bg:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.selected {
+    font-weight: 600;
+}

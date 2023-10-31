@@ -1,11 +1,12 @@
 import express from 'express';
 import userRouter from './router/api.user.routes.js';
 import authRouter from './router/api.auth.routes.js';
+import doctorRouter from './router/api.doctor.routes.js';
+import emailRouter from './router/api.email.routes.js';
 import { sequelize } from './database/database.js'
-import { Patient } from './models/user.js';
-import { Doctor } from './models/doctor.js';
+import appointmentRouter from './router/api.appointments.routes.js'
+import corsOptions from './configs/cors.config.js';
 import cors from 'cors'
-
 
 async function main() {
     const app = express();
@@ -13,12 +14,7 @@ async function main() {
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use(
-        cors({
-            credentials: true,
-            origin: ["http://localhost:3000"]
-        })
-    )
+    app.use(cors(corsOptions));
 
     app.get('/', (req, res) => {
         res.send('hola mundo')
@@ -26,10 +22,13 @@ async function main() {
 
     app.use('/api/auth',authRouter);
     app.use('/api/user', userRouter);
+    app.use('/api/doctor',doctorRouter);
+    app.use('/api/email',emailRouter);
+    app.use('/api/appointment', appointmentRouter)
     try {
         await sequelize.sync();
         console.log('Connection has been established successfully')
-        app.listen(PORT, () => console.log(`servidor escuchando en el puerto ${PORT}`));
+        app.listen(PORT, () => console.log(`server listening on port ${PORT}`));
 
     } catch (error) {
         console.error('Unable to connect to the database:', error)

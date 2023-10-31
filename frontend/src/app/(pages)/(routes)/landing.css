@@ -1,8 +1,19 @@
+.landing__container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f3fc;
+    padding: 0;
+    margin-top: 70px;
+}
+
 .main-banner {
     position: relative;
     display: flex;
     justify-content: space-between;
-    min-height: 600px;
+    min-height: 560px;
     height: 100%;
     width: 100%;
     background-color: #265df2;
@@ -26,19 +37,19 @@
 .banner-content {
     position: relative;
     z-index: 10;
-    padding: 112px 0 110px 90px;
+    padding: 100px 0 110px 90px;
 }
 
 .banner-image {
     position: relative;
     z-index: 10;
-    padding: 120px 110px 0 90px;
+    padding: 110px 130px 0 90px;
 }
 
 .banner-image img{
     position: relative;
-    height: 350px;
-    width: 450px;
+    height: 330px;
+    width: 430px;
     object-fit: cover;
     object-position: right;
     border-radius: 20px;
@@ -47,11 +58,11 @@
 .banner-image::before{
     content: '';
     position: absolute;
-    top: 105px;
-    right: 95px;
-    background-color: #333;
-    height: 350px;
-    width: 450px;
+    top: 95px;
+    right: 115px;
+    background-color: #202020;
+    height: 330px;
+    width: 430px;
     object-fit: cover;
     object-position: right;
     border-radius: 20px;
@@ -62,7 +73,7 @@
     top: 8px;
     left: 8px;
     background-color: transparent;
-    background-image: radial-gradient(circle, black 2.5px, transparent 0);
+    background-image: radial-gradient(circle, #202020 2.5px, transparent 0);
     background-size: 22px 22px;
     height: 140px;
     width: 140px;
@@ -70,13 +81,13 @@
 
 .circle {
     position: absolute;
-    height: 120px;
-    width: 120px;
-    bottom: -90px;
-    left: -90px;
+    height: 130px;
+    width: 130px;
+    bottom: -110px;
+    left: -70px;
     background-color: transparent;
     border-radius: 50%;
-    border: solid #333 45px;
+    border: solid #202020 45px;
     box-shadow: 2px -1px   rgba(0, 0, 0, 0.1);
 }
 
@@ -102,4 +113,105 @@
     background-size: 22px 22px;
     height: 140px;
     width: 140px;
+}
+
+.landing__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1380px;
+    box-sizing: border-box;
+}
+
+.landing__content__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    top: -60px;
+    padding: 0 20px;
+}
+
+.landing__content__card {
+    color: #fff;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+    border-radius: 15px;
+    max-width: 380px;
+    box-shadow: 6px 6px 6px rgb(0 0 0 / 0.1);
+}
+
+.landing__content__card.invert {
+    background-color: #fff;
+    color: #202020;
+}
+
+
+.content__card__text {
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+}
+
+.content__card__text span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.content__card__text p {
+    font-size: 12px;
+}
+
+.content__card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.landing__content__card.invert .content__card__icon{
+    background-color: #fff;
+    color: #4070f4;
+}
+
+.landing__content__services {
+    margin-top: 100px;
+    min-height: 700px;
+}
+
+.content__services__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.content__services__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1180px;
+}
+
+.services__header__title {
+    font-size: 36px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.services__header__title span {
+    color: #4070f4;
+}
+
+.services__header__description {
+    text-align: center;
 }

@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Patient } from '../models/user.js';
 import { compare } from 'bcrypt';
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenvConfig from '../configs/dotenv.config.js';
 
 
 export const login = async (req, res) => {
@@ -17,12 +16,13 @@ export const login = async (req, res) => {
         //construyo el usuario con los valores que necesito,para guarar en la cookie
         const userCredential = {
             name: user.name,
+            lastName: user.last_name,
             identity: user.documentId
         };
         //creo el token y guardo las credenciales del usuario.
-        const token = jwt.sign(userCredential, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign(userCredential, dotenvConfig.JWT.SECRET, { expiresIn: "1h" });
         //guardo el token en una cookie
-        res.cookie(process.env.JWT_NAME, token, { sameSite: 'none', secure: true })
+        res.cookie(dotenvConfig.JWT.NAME, token, { sameSite: 'none', secure: true })
         res.status(200).json({ message: 'logged succesfully', userCredential});
     } catch (error) {
         return res.status(500).send({ status: "error", error: "Hubo un error en el servidor." });

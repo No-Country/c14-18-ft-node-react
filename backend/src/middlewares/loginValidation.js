@@ -1,17 +1,16 @@
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv';
-dotenv.config()
-
+import dotenvConfig from "../configs/dotenv.config.js";
 
 export const loggerUserValidation = (req,res,next) =>{
     try {
-        const token = req.cookie([process.env.JWT_NAME]);
+        const token = req.cookie([dotenvConfig.JWT.NAME]);
+        console.log(token)
         if (!token) return res.send({status:"error",error:"no estas logeado!"});
-        const user = jwt.verify(token,process.env.JWT_SECRET);
+        const user = jwt.verify(token,dotenvConfig.JWT.SECRET);
         req.user = user;
         next()
     } catch (error) {
-        res.send({status:"error",payload:error});
+        res.status(400).send({status:"error",error:'a ocurrido un error al obtener el endpoint'});
     }
 
 }
