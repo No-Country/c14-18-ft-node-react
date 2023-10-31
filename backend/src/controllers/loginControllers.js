@@ -22,7 +22,7 @@ export const login = async (req, res) => {
         //creo el token y guardo las credenciales del usuario.
         const token = jwt.sign(userCredential, dotenvConfig.JWT.SECRET, { expiresIn: "1h" });
         //guardo el token en una cookie
-        res.cookie(dotenvConfig.JWT.NAME, token, { sameSite: 'none', secure: true, domain:'c14-18-ft-node-react.vercel.app', httponly: true })
+        res.cookie(dotenvConfig.JWT.NAME, token, {maxAge: 3600000, sameSite: 'none', secure: true, domain:'c14-18-ft-node-react.vercel.app', httponly: true })
         res.status(200).json({ message: 'logged succesfully', userCredential});
     } catch (error) {
         return res.status(500).send({ status: "error", error: "Hubo un error en el servidor." });
