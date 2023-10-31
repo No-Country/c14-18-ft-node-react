@@ -26,10 +26,10 @@ export const CreateAppointment = async(req, res) => {
 
 export const GetAppointment = async(req, res) => {
     const user = await Patient.findOne({where: {documentId: req.body.documentId}})
-    console.log(user.dataValues.id)
+
+    console.log(`userId = ${user.dataValues.id}`)
+
     const appointments = await Appointments.findAll({where: {patientId: user?.dataValues.id}})
-    console.log(appointments[1]?.dataValues.doctorId)
-    const doctorData = await Doctor.findOne({where: {id: appointments[1]?.dataValues.doctorId}})
-    console.log(doctorData)
+
     res.status(200).send({payload:appointments})
 }
