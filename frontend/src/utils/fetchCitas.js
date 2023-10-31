@@ -1,9 +1,10 @@
 export const fetchCitas = async (userId) => {
+    const apiHost = process.env.NEXT_PUBLIC_API_URL;
     
     const patientId = { documentId: userId }
 
     try {
-        const res = await fetch("http://localhost:8080/api/appointment/getAppointment", 
+        const res = await fetch(`${apiHost}/api/appointment/getAppointment`, 
         {
             method: "POST",
             headers: {
