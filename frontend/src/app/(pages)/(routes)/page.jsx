@@ -92,6 +92,12 @@ export default function Home() {
 
         </section>
 
+
+        <section className='landing__'>
+
+
+        </section>
+
       </main>
     </>
   )

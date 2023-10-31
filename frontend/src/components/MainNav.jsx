@@ -19,9 +19,9 @@ const MainNav = () => {
             active: pathname === '/services' ? true : false
         },
         {
-            title: 'Medicos',
-            path: '/specialties',
-            active: pathname === '/specialties' ? true : false
+            title: 'Staff Medico',
+            path: '/staff-medico',
+            active: pathname === '/staff-medico' ? true : false
         },
         {
             title: 'Contacto',
