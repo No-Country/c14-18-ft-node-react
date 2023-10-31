@@ -1,7 +1,7 @@
 .staff__banner {
     display: flex;
-    min-height: 350px;
-    background-color: #265df2;
+    min-height: 300px;
+    background-color: var(--blue);
 }
 
 .staff__banner__title {
@@ -16,20 +16,20 @@
 .staff__banner__title span {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
 }
 
 .staff__content__container {
     max-width: 1120px;
     width: 100%;
     margin: 0 auto;
-    padding: 70px 0;
+    padding: 60px 0;
 }
 
 .staff__content__title {
     font-size: 28px;
     font-weight: 600;
-    color: #265df2;
+    color: var(--blue);
 }
 
 .staff__content__filters {
@@ -43,12 +43,12 @@
     width: 100%;
     font-size: 14px;
     font-weight: 400;
-    border: 1px solid #aaa;
+    border: 1px solid var(--light-gray);
     padding: 0 15px;
     height: 42px;
     margin: 8px 0;
     cursor: pointer;
-    color: #4070f4;
+    color: var(--light-blue);
     font-weight: 600;
     border-radius: 5px;
 }
@@ -66,7 +66,7 @@
     outline: none;
     font-size: 14px;
     font-weight: 400;
-    border: 1px solid #aaa;
+    border: 1px solid var(--light-gray);
     height: 42px;
     box-sizing: border-box;
     width: 100%;
@@ -77,11 +77,11 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    color: #265df2;
+    color: var(--blue);
 }
 
 .staff__content__doctors {
-    min-height: 720px;
+    min-height: 600px;
     padding-top: 50px;
 }
 
@@ -89,4 +89,89 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 32px;
+}
+
+.doctor__card {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    height: 90px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 4px 1px rgb(0 0 0 / 0.2);
+    padding: 0 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.doctor__card:hover {
+    background-color: var(--blue);
+}
+
+.doctor__card:hover span{
+    color: #fff;
+}
+
+.doctor__card img {
+    width: 50px;
+    height: 50px;
+    padding: 0 10px;
+}
+
+.doctor__card__content {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.doctor__card__title {
+    color: var(--blue);
+    font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .staff__content__container {
+        padding: 50px 15px;
+        box-sizing: border-box;
+    }
+
+    .staff__banner__title {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width:540px) {
+
+    .staff__banner {
+        min-height: 200px;
+    }
+
+    .staff__banner__title {
+        max-width: 1120px;
+        width: 100%;
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .staff__banner__title span {
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--white);
+    }
+
+    .staff__content__container {
+        padding: 30px 15px;
+        box-sizing: border-box;
+    }
+
+    .staff__content__filters {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .staff__filter__doctor {
+        grid-column: span 1;
+    }
 }

@@ -22,7 +22,7 @@ const HistorialCitas = () => {
 
         const fetch = async () => {
             const res = await fetchCitas(userDocumentId)
-            const citasData = res.map(cita => {
+            const citasData = res?.map(cita => {
                 const date = new Date(cita.date);
                 const formattedDate = format(date, 'EEE dd MMM p', {locale: es});
                 return { ...cita, date, formattedDate };
