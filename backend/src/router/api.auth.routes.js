@@ -6,7 +6,7 @@ import { loggerUserValidation } from "../middlewares/loginValidation.js";
 
 const router = Router();
 
-router.get('/logout',closeSession);
+router.get('/logout',loggerUserValidation,closeSession);
 
 router.post('/login',login);
 router.post('/register',register);

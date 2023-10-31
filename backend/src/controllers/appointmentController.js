@@ -3,7 +3,7 @@ import { Doctor } from "../models/doctor.js";
 import { Patient } from "../models/user.js";
 
 export const CreateAppointment = async(req, res) => {
-
+    console.log(req.body);
     const userId = await Patient.findOne({where: {documentId: req.body.documentId}})
     console.log(userId.dataValues.id)
     console.log(req.body.date)
@@ -26,15 +26,31 @@ export const CreateAppointment = async(req, res) => {
 
 export const GetAppointment = async(req, res) => {
     const user = await Patient.findOne({where: {documentId: req.body.documentId}})
+    console.log(user.dataValues.id)
+    const appointments = await Appointments.findAll({where: {patientId: user?.dataValues.id}})
+    console.log(appointments[1]?.dataValues.doctorId)
+    const doctorData = await Doctor.findOne({where: {id: appointments[1]?.dataValues.doctorId}})
+    console.log(doctorData)
+    res.status(200).send({payload:appointments})
+}
 
+export const getAvailableAppointments = (req,res) =>{
+
+}
+
+export const getAllApointment = async(req,res) =>{
+    const data = await Appointments.findAll();
+    res.send(data)
+}
+
+//este controlador, permite traer todo el historial de citas que agendo el usuario.
+export const getHistory = async(req,res) =>{
     try {
-        const appointments = await Appointments.findAll({where: {patientId: user?.dataValues.id}})
-        
-        res.status(200).send({payload:appointments})
-    } catch(e) {
-        console.log(e)
-        res.status(500).send('Hubo un error en el servidor')
+        const { userID } = req.body;//obtengo el ID  del usuario registrado;
+        const medicalHistory = await Appointments.findAll({where: { patientId: userID }});
+        if (medicalHistory.length === 0 ) return res.status(200).send({messages:"no tienes citas registradas"})
+        res.status(200).send({payload:medicalHistory});
+    } catch (error) {
+        res.status(500).send('Hubo un error en el servidor.');
     }
-
-
 }
