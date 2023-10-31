@@ -15,5 +15,8 @@ export default {
     NODE:{
         EMAIL: process.env.NODE_EMAIL,
         PWD: process.env.NODE_PWD
+    },
+    CORS:{
+        ORIGIN: process.env.CORS_ORIGIN
     }
 }
