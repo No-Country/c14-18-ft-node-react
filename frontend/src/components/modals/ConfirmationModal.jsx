@@ -1,12 +1,15 @@
+'use client'
+
 import { useModal } from "@/hooks/useModal";
 import ModalOverlay from "../ui/ModalOverlay";
 import { CalendarIcon, ClockIcon, CloseIcon } from "../Icons";
 
-import './ConfirmationModal.css'
 import Button from "../ui/Button";
 import { addHours, format, parse, } from "date-fns";
 import { es } from "date-fns/locale";
 import { toast } from "sonner";
+
+import './ConfirmationModal.css'
 
 const ConfirmationModal = () => {
 
