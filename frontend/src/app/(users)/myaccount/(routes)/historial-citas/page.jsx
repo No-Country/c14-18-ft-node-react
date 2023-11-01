@@ -13,7 +13,7 @@ const HistorialCitas = () => {
     const [citas, setCitas] = useState([])
 
     const doctors = mockDoctors.doctors;
-    const userCredentials = sessionStorage.getItem("userCredentials");
+    const userCredentials = sessionStorage?.getItem("userCredentials");
     const parsedData = JSON.parse(userCredentials);
     const userDocumentId = parsedData?.identity;
     const userName = `${parsedData?.name} ${parsedData?.lastName}`
