@@ -15,9 +15,6 @@ const HistorialCitas = () => {
     const [patientName, setPatientName] = useState()
 
     const doctors = mockDoctors.doctors;
-    const userCredentials = sessionStorage.getItem("userCredentials");
-
-    console.log(userCredentials)
 
     useEffect(() => {
 
@@ -45,7 +42,7 @@ const HistorialCitas = () => {
         } else {
             setCitas([]);
         }
-    }, [userCredentials]);
+    }, []);
     
 
     return (
