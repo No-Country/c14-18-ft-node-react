@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react';
 import './log-in.css'
 import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
@@ -22,7 +23,7 @@ const Login = () => {
             password: formData.get('password'),
         };
 
-        const res = await fetch('http://localhost:8080/api/auth/login', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,19 +58,20 @@ const Login = () => {
                     <span className='login-title'>Accede si ya tienes una cuenta</span>
                     <div className='fields'>
                         <div className='input-field'>
-                            <label for='dni' >Ingrese su numero de documento</label>
+                            <label htmlFor='dni' >Ingrese su numero de documento</label>
                             <input
                                 required
                                 type="text" 
                                 maxLength={8} 
-                                name='dni' 
+                                name='dni'
+                                id='dni'
                                 placeholder='DNI' 
                                 onInput={(e) => (e.target.value = e.target.value.replace(/[^0-9]/g, ''))}
                             />
                         </div>
                         <div className='input-field'>
-                            <label for='dni'>Ingrese su contraseña</label>
-                            <input type={visible ? 'text' : 'password'} name='password' required placeholder='Contraseña'/>
+                            <label htmlFor='password'>Ingrese su contraseña</label>
+                            <input type={visible ? 'text' : 'password'} name='password' id='password' required placeholder='Contraseña'/>
                             <button type='button' className='eye-icon' onClick={() => setVisible(!visible)}>
                                 {visible ? <ClosedEyeIcon/> : <OpenEyeIcon/>}
                             </button>

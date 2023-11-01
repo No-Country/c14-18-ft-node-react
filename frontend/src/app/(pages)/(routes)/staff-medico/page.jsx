@@ -50,12 +50,12 @@ const StaffMedico = () => {
                     <div className='staff__content__doctors__grid' >
                         {doctors.map(({ id, name, specialty, availability }) => (
                             <div className='doctor__card' key={id}>
-                            <img src='/medicos-icon.png' alt="doctor-avatar" />
-                            <div className='doctor__card__content'>
-                                <span className='doctor__card__title'>Dr. {name}</span>
-                                <span>{specialty}</span>
+                                <img src='/medicos-icon.png' alt="doctor-avatar" />
+                                <div className='doctor__card__content'>
+                                    <span className='doctor__card__title'>Dr. {name}</span>
+                                    <span>{specialty}</span>
+                                </div>
                             </div>
-                        </div>
                         ))}
                     </div>
                 </div>

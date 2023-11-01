@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+:root {
+  --blue: #265df2;
+  --light-blue: #4070f4;
+  --white: #fff;
+  --dark: #202020;
+  --gray: #333;
+  --light-gray: #aaa;
+}
+
 html, 
 body {
   box-sizing: border-box;
