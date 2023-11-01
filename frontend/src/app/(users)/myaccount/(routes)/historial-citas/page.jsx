@@ -20,6 +20,9 @@ const HistorialCitas = () => {
     console.log(userCredentials)
 
     useEffect(() => {
+
+        const userCredentials = sessionStorage.getItem("userCredentials");
+
         if (userCredentials) {
             const parsedData = JSON.parse(userCredentials);
             const userDocumentId = parsedData?.identity;
