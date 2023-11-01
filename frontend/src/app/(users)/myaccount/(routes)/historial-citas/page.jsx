@@ -11,29 +11,38 @@ import { es } from "date-fns/locale";
 const HistorialCitas = () => {
 
     const [citas, setCitas] = useState([])
+    const [patientName, setPatientName] = useState()
 
     const doctors = mockDoctors.doctors;
-    const userCredentials = sessionStorage?.getItem("userCredentials");
-    const parsedData = JSON.parse(userCredentials);
-    const userDocumentId = parsedData?.identity;
-    const userName = `${parsedData?.name} ${parsedData?.lastName}`
+    const userCredentials = sessionStorage.getItem("userCredentials");
 
-    useEffect(() => {
+    if (userCredentials) {
+        const parsedData = JSON.parse(userCredentials);
+        const userDocumentId = parsedData?.identity;
+        const userName = `${parsedData?.name} ${parsedData?.lastName}`
 
-        const fetch = async () => {
-            const res = await fetchCitas(userDocumentId)
-            const citasData = res?.map(cita => {
-                const date = new Date(cita.date);
-                const formattedDate = format(date, 'EEE dd MMM p', {locale: es});
-                return { ...cita, date, formattedDate };
-              });
-          
-            setCitas(citasData);
-        }
+        setPatientName(userName)
 
-        fetch()
-        
-    }, [])
+        useEffect(() => {
+
+            const fetch = async () => {
+                const res = await fetchCitas(userDocumentId)
+                const citasData = res?.map(cita => {
+                    const date = new Date(cita.date);
+                    const formattedDate = format(date, 'EEE dd MMM p', {locale: es});
+                    return { ...cita, date, formattedDate };
+                });
+            
+                setCitas(citasData);
+            }
+
+            fetch()
+            
+        }, [])
+    } else {
+        setCitas([])
+    }
+    
 
     return (
         <div className="historial__container">
@@ -65,7 +74,7 @@ const HistorialCitas = () => {
                                     key={cita.id}
                                     doctor={doctor[0].name}
                                     specialty={doctor[0].specialty}
-                                    patient={userName}
+                                    patient={patientName}
                                     date={cita.formattedDate}
                                 />
                             );
