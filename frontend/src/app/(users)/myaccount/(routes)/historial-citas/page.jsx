@@ -1,12 +1,13 @@
 'use client'
 
 import mockDoctors from "@/mocks/doctors.json";
-import "./historial-citas.css";
 import CitasCard from "@/components/ui/CitasCard/CitasCard";
 import { fetchCitas } from "@/utils/fetchCitas";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+
+import "./historial-citas.css";
 
 const HistorialCitas = () => {
 
@@ -16,32 +17,32 @@ const HistorialCitas = () => {
     const doctors = mockDoctors.doctors;
     const userCredentials = sessionStorage.getItem("userCredentials");
 
-    if (userCredentials) {
-        const parsedData = JSON.parse(userCredentials);
-        const userDocumentId = parsedData?.identity;
-        const userName = `${parsedData?.name} ${parsedData?.lastName}`
+    console.log(userCredentials)
 
-        setPatientName(userName)
+    useEffect(() => {
+        if (userCredentials) {
+            const parsedData = JSON.parse(userCredentials);
+            const userDocumentId = parsedData?.identity;
+            const userName = `${parsedData?.name} ${parsedData?.lastName}`;
 
-        useEffect(() => {
+            setPatientName(userName);
 
-            const fetch = async () => {
-                const res = await fetchCitas(userDocumentId)
-                const citasData = res?.map(cita => {
-                    const date = new Date(cita.date);
-                    const formattedDate = format(date, 'EEE dd MMM p', {locale: es});
-                    return { ...cita, date, formattedDate };
-                });
-            
-                setCitas(citasData);
-            }
+            const fetchCitasData = async () => {
+            const res = await fetchCitas(userDocumentId);
+            const citasData = res?.map(cita => {
+                const date = new Date(cita.date);
+                const formattedDate = format(date, 'EEE dd MMM p', { locale: es });
+                return { ...cita, date, formattedDate };
+            });
 
-            fetch()
-            
-        }, [])
-    } else {
-        setCitas([])
-    }
+            setCitas(citasData);
+            };
+
+            fetchCitasData();
+        } else {
+            setCitas([]);
+        }
+    }, [userCredentials]);
     
 
     return (
