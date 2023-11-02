@@ -62,3 +62,4 @@ export const getHistory = async(req,res) =>{
         res.status(500).send('Hubo un error en el servidor.');
     }
 } 
+
