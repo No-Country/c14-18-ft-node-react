@@ -79,11 +79,11 @@ export default function Home() {
               <main className='content__services__main'>
                 <div className='content__services__cards'>
                   <div className='content__services__card'>
-                    Agenda Una Cita
+                    Agenda una cita con tu medico
                   </div>
 
                   <div className='content__services__card'>
-                    Miras los doctores
+                    Revisa nuestro Staff Medico
                   </div>
                 </div>
               </main>
