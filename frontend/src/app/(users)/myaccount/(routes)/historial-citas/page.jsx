@@ -80,8 +80,8 @@ const HistorialCitas = () => {
               return (
                 <CitasCard
                   key={cita.id}
-                  doctor={doctor[0].name}
-                  specialty={doctor[0].speciality}
+                  doctor={doctor[0]?.name}
+                  specialty={doctor[0]?.speciality}
                   patient={patientName}
                   date={cita.formattedDate}
                 />

@@ -87,11 +87,17 @@
     height: 60px;
 }
 
+@media (max-width: 1200px) {
+    .historial__container {
+        padding: 0 20px;
+    }
+}
+
 
 @media (max-width:480px) {
 
     .historial__container {
-        padding: 0 8px;
+        padding: 0 10px;
     }
 
     .historial__header {

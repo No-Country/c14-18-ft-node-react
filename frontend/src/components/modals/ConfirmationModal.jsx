@@ -1,13 +1,12 @@
 'use client'
 
-import { useModal } from "@/hooks/useModal";
-import ModalOverlay from "../ui/ModalOverlay";
-import { CalendarIcon, ClockIcon, CloseIcon } from "../Icons";
-
 import Button from "../ui/Button";
-import { addHours, format, parse, } from "date-fns";
-import { es } from "date-fns/locale";
+import ModalOverlay from "../ui/ModalOverlay";
+import { useModal } from "@/hooks/useModal";
 import { toast } from "sonner";
+import { es } from "date-fns/locale";
+import { addHours, format, parse, } from "date-fns";
+import { CalendarIcon, ClockIcon, CloseIcon } from "../Icons";
 
 import './ConfirmationModal.css'
 
@@ -35,9 +34,6 @@ const ConfirmationModal = () => {
 
         const dateWithTime = parse(timeWithoutSpace, 'hh:mma', new Date())
 
-        console.log(dateWithTime)
-
-
         const dateAndTime = addHours(date, dateWithTime.getHours());
         dateAndTime.setMinutes(dateWithTime.getMinutes());
 
@@ -54,8 +50,6 @@ const ConfirmationModal = () => {
             doctorId: userData.id
         }
 
-        console.log(JSON.stringify(jsonData))
-
         try {
 
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/appointment/createAppointment`, {
@@ -71,6 +65,9 @@ const ConfirmationModal = () => {
 
             if (res.status === 200) {
                 toast.success('Tu cita se ha guardado con exito')
+                closeConfirmationModal()
+            } else {
+                toast.error('Hubo un error al guardar la cita')
                 closeConfirmationModal()
             }
 

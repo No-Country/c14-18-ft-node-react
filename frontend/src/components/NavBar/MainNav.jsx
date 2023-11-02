@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const MainNav = () => {
+const MainNav = ({ column }) => {
 
     const pathname = usePathname()
 
@@ -27,7 +27,7 @@ const MainNav = () => {
 
     return ( 
         <nav className='main-nav'>
-                <ul className='nav-items'>
+                <ul className={`nav-items ${column}`}>
                     {routes.map(({title, path, active}) => (
                         <li key={title}>
                             <Link href={path} className={active ? 'active-link' : ''}>{title}</Link>

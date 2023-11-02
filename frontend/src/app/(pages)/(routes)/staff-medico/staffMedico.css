@@ -130,12 +130,20 @@
 
 @media (max-width: 1200px) {
     .staff__content__container {
-        padding: 50px 15px;
+        padding: 50px 20px;
         box-sizing: border-box;
     }
 
     .staff__banner__title {
-        padding: 0 15px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .staff__content__filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        gap: 20px;
     }
 }
 
@@ -161,7 +169,7 @@
     }
 
     .staff__content__container {
-        padding: 30px 15px;
+        padding: 30px 20px;
         box-sizing: border-box;
     }
 

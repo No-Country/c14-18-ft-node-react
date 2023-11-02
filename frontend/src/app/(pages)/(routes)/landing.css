@@ -37,13 +37,15 @@
 .banner-content {
     position: relative;
     z-index: 10;
-    padding: 100px 50px;
+    padding: 100px 0;
+    padding-left: 50px;
 }
 
 .banner-image {
     position: relative;
     z-index: 10;
-    padding: 110px 50px;
+    padding: 110px 0;
+    padding-right: 50px;
 }
 
 .banner-image img{
@@ -216,7 +218,7 @@
     text-align: center;
 }
 
-@media (min-width: 1210px) {
+@media (min-width: 1300px) {
     .main-banner {
         min-height: 560px;
     }
@@ -224,7 +226,8 @@
     .banner-content {
         position: relative;
         z-index: 10;
-        padding: 110px 100px;
+        padding: 110px 0;
+        padding-left: 100px;
     }
 
     .main-banner div p{
@@ -234,7 +237,8 @@
     .banner-image {
         position: relative;
         z-index: 10;
-        padding: 110px 120px;
+        padding: 110px 0;
+        padding-right: 120px;
     }
 
     .banner-image::before{

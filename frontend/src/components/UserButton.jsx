@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/providers/auth-provider";
 
 const LoginButton = () => {
 
@@ -16,7 +17,7 @@ const LoginButton = () => {
 }
 
 const LogOutButton = () => {
-
+    const {logout} = useAuth()
     const router = useRouter()
 
     const handleClick = async () => {
@@ -29,7 +30,7 @@ const LogOutButton = () => {
         })
 
         if (res.status === 200) {
-            localStorage.removeItem('userCredentials') 
+            logout()
             router.refresh()
         }
     }
@@ -42,25 +43,11 @@ const LogOutButton = () => {
 }
 
 const UserButton = () => {
-
-    const [isLogged, setIsLogged] = useState(false);
-
-    const checkLogged = () => {
-        const storedCredentials = localStorage.getItem('userCrendentials');
-        if(!storedCredentials  || storedCredentials === undefined) {
-            setIsLogged(false)
-            return null
-        }
-        setIsLogged(true)
-    }
-
-    useEffect(() => {
-        checkLogged()
-    }, [isLogged])
-
+    const {isLoggedIn} = useAuth()
+   
     return (
         <>
-           {isLogged ? <LogOutButton/> : <LoginButton/>}
+           {isLoggedIn ? <LogOutButton/> : <LoginButton/>}
         </>
      );
 }
