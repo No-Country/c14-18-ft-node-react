@@ -13,7 +13,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    min-height: 560px;
+    max-height: 520px;
     height: 100%;
     width: 100%;
     background-color: #265df2;
@@ -24,7 +24,7 @@
 .main-banner div p{
     margin: 0;
     padding-bottom: 30px;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .main-banner div a{
@@ -37,19 +37,21 @@
 .banner-content {
     position: relative;
     z-index: 10;
-    padding: 100px 0 110px 90px;
+    padding: 100px 0;
+    padding-left: 50px;
 }
 
 .banner-image {
     position: relative;
     z-index: 10;
-    padding: 110px 130px 0 90px;
+    padding: 110px 0;
+    padding-right: 50px;
 }
 
 .banner-image img{
     position: relative;
-    height: 330px;
-    width: 430px;
+    height: 300px;
+    width: 400px;
     object-fit: cover;
     object-position: right;
     border-radius: 20px;
@@ -59,10 +61,10 @@
     content: '';
     position: absolute;
     top: 95px;
-    right: 115px;
+    right: 35px;
     background-color: #202020;
-    height: 330px;
-    width: 430px;
+    height: 300px;
+    width: 400px;
     object-fit: cover;
     object-position: right;
     border-radius: 20px;
@@ -94,8 +96,8 @@
 .main-banner::before {
     content: '';
     position: absolute;
-    top: 85px;
-    right: 500px;
+    top: 60px;
+    right: 360px;
     background-color: transparent;
     background-image: radial-gradient(circle, #fff 2.5px, transparent 0);
     background-size: 22px 22px;
@@ -106,8 +108,8 @@
 .main-banner::after {
     content: '';
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    bottom: 60px;
+    right: 5px;
     background-color: transparent;
     background-image: radial-gradient(circle, #fff 2.5px, transparent 0);
     background-size: 22px 22px;
@@ -127,11 +129,11 @@
 
 .landing__content__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 20px;
+    gap: 25px;
     box-sizing: border-box;
     position: absolute;
     top: -60px;
@@ -214,4 +216,51 @@
 
 .services__header__description {
     text-align: center;
+}
+
+@media (min-width: 1300px) {
+    .main-banner {
+        min-height: 560px;
+    }
+
+    .banner-content {
+        position: relative;
+        z-index: 10;
+        padding: 110px 0;
+        padding-left: 100px;
+    }
+
+    .main-banner div p{
+        font-size: 54px;
+    }
+
+    .banner-image {
+        position: relative;
+        z-index: 10;
+        padding: 110px 0;
+        padding-right: 120px;
+    }
+
+    .banner-image::before{
+        content: '';
+        position: absolute;
+        top: 95px;
+        right: 105px;
+        background-color: #202020;
+        height: 300px;
+        width: 400px;
+        object-fit: cover;
+        object-position: right;
+        border-radius: 20px;
+    }
+
+    .main-banner::before {
+        top: 50px;
+        right: 440px;
+    }
+
+    .main-banner::after {
+        bottom: 80px;
+        right: 50px;
+    }
 }

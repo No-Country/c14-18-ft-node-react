@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/providers/auth-provider";
 
 const LoginButton = () => {
 
@@ -15,7 +17,7 @@ const LoginButton = () => {
 }
 
 const LogOutButton = () => {
-
+    const {logout} = useAuth()
     const router = useRouter()
 
     const handleClick = async () => {
@@ -27,7 +29,10 @@ const LogOutButton = () => {
             credentials:"include",
         })
 
-        if (res.status === 200)  router.refresh()
+        if (res.status === 200) {
+            logout()
+            router.refresh()
+        }
     }
 
     return (
@@ -37,13 +42,12 @@ const LogOutButton = () => {
     )
 }
 
-const UserButton = ( token ) => {
-
-    const authSession = token.token
-
+const UserButton = () => {
+    const {isLoggedIn} = useAuth()
+   
     return (
         <>
-           {authSession ? <LogOutButton/> : <LoginButton/>}
+           {isLoggedIn ? <LogOutButton/> : <LoginButton/>}
         </>
      );
 }

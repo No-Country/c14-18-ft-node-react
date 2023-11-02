@@ -1,17 +1,17 @@
-import Navbar from "@/components/Navbar";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+'use client'
+
+import Navbar from "@/components/NavBar/Navbar";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AuthLayout({ children }) {
 
-    const jwt = cookies().get("clinicaUser")?.value;
-
-    if(jwt) redirect('/')
+    const router = useRouter();
 
     return (
         <>
             <Navbar />
-            {children}
+            {children} 
         </>
     )
 }

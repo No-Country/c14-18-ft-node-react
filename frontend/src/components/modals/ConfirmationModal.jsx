@@ -1,12 +1,14 @@
-import { useModal } from "@/hooks/useModal";
+'use client'
+
+import Button from "../ui/Button";
 import ModalOverlay from "../ui/ModalOverlay";
+import { useModal } from "@/hooks/useModal";
+import { toast } from "sonner";
+import { es } from "date-fns/locale";
+import { addHours, format, parse, } from "date-fns";
 import { CalendarIcon, ClockIcon, CloseIcon } from "../Icons";
 
 import './ConfirmationModal.css'
-import Button from "../ui/Button";
-import { addHours, format, parse, } from "date-fns";
-import { es } from "date-fns/locale";
-import { toast } from "sonner";
 
 const ConfirmationModal = () => {
 
@@ -22,7 +24,7 @@ const ConfirmationModal = () => {
 
     const CreateAppointment = async () => {
 
-        const userCredentials = sessionStorage.getItem('userCredentials')
+        const userCredentials = localStorage.getItem('userCredentials')
         const parsedData = JSON.parse(userCredentials);
         const userDocumentId = parsedData?.identity
 
@@ -32,23 +34,14 @@ const ConfirmationModal = () => {
 
         const dateWithTime = parse(timeWithoutSpace, 'hh:mma', new Date())
 
-        console.log(dateWithTime)
-
-
         const dateAndTime = addHours(date, dateWithTime.getHours());
         dateAndTime.setMinutes(dateWithTime.getMinutes());
 
-        // Obtener la zona horaria local
-        const timeZoneOffset = new Date().getTimezoneOffset() / 60; // Obtén el offset en horas
+        const timeZoneOffset = new Date().getTimezoneOffset() / 60;
 
-        // Ajustar la hora para la zona horaria local
         dateAndTime.setHours(dateAndTime.getHours() - timeZoneOffset);
 
-        // Formatear la fecha en formato ISOString
         const isoStringDate = dateAndTime.toISOString();
-
-        console.log(isoStringDate);
-
 
         const jsonData = {
             date: isoStringDate,
@@ -56,8 +49,6 @@ const ConfirmationModal = () => {
             documentId: userDocumentId,
             doctorId: userData.id
         }
-
-        console.log(JSON.stringify(jsonData))
 
         try {
 
@@ -74,6 +65,9 @@ const ConfirmationModal = () => {
 
             if (res.status === 200) {
                 toast.success('Tu cita se ha guardado con exito')
+                closeConfirmationModal()
+            } else {
+                toast.error('Hubo un error al guardar la cita')
                 closeConfirmationModal()
             }
 
@@ -102,7 +96,7 @@ const ConfirmationModal = () => {
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '10px', paddingLeft: '10px' }}>
                                 <div className="modal__doctor__details">
-                                    <span className="modal__doctor__name">Dr. {userData.doctor}</span>
+                                    <span className="modal__doctor__name">Dr. {userData.name}</span>
                                     <span>{userData.specialty}</span>
                                 </div>
 

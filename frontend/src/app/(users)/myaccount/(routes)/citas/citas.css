@@ -139,11 +139,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 670px;
-    margin: 0 auto;
+    max-width: 660px;
+    max-height: 330px;
+    margin: 10px auto;
     width: 100%;
-    padding: 20px 0;
-    margin-bottom: 10px;
+    padding: 20px 15px;
+    overflow: auto;
 }
 
 .doctors__grid {
@@ -188,6 +189,12 @@
 .doctor__card__title {
     color: #265df2;
     font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .citas-container {
+        padding: 0 20px;
+    }
 }
 
 @media (max-width:480px) {

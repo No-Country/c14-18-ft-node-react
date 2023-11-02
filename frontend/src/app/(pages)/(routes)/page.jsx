@@ -1,9 +1,10 @@
 'use client'
 
-import './landing.css'
-import Button from '@/components/ui/Button'
 import { ClockIcon, DoctorIcon, LikeIcon, RightArrowIcon } from '@/components/Icons'
 import { useRouter } from 'next/navigation'
+import Button from '@/components/ui/Button'
+
+import './landing.css'
 
 export default function Home() {
   const router = useRouter()

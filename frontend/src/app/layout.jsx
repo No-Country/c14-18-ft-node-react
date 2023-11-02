@@ -1,6 +1,6 @@
 import { Toaster } from 'sonner'
+import { AuthProvider } from '@/providers/auth-provider'
 import './globals.css'
-
 
 export const metadata = {
   title: 'Cliniconnect',
@@ -11,8 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <AuthProvider>
           {children}
           <Toaster position='top-center' richColors/>
+        </AuthProvider>
       </body>
     </html>
   )

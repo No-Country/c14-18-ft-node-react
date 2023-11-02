@@ -6,11 +6,13 @@ import { ClosedEyeIcon, OpenEyeIcon } from '@/components/Icons';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import Button from '@/components/ui/Button';
+import { useAuth } from '@/providers/auth-provider';
 
 
 const Login = () => {
     const [visible, setVisible] = useState(false)
     const router = useRouter()
+    const { login } = useAuth();
     
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -34,11 +36,11 @@ const Login = () => {
 
         const data = await res.json()
 
-        const credentials = JSON.stringify(data.userCredential)
-
-        sessionStorage.setItem('userCredentials', credentials)
-
         if (res.status === 200) {
+            const credentials = JSON.stringify(data.userCredential)
+
+            login(credentials)
+
             router.refresh()
             router.push('/myaccount/citas')
         };

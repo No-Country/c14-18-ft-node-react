@@ -133,3 +133,10 @@
 .button-container button:hover {
     background-color: #265df2;
 }
+
+@media (max-width: 500px) {
+    .form-container {
+        padding: 30px;
+        margin: 0 15px;
+    }
+}

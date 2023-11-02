@@ -98,6 +98,15 @@
     color: #fff;
 }
 
+button[disabled] {
+    color: #aaa;
+}
+
+button[disabled]:hover {
+    background-color: transparent;
+    color: #aaa;
+}
+
 .selected {
     font-weight: 600;
 }

@@ -14,7 +14,7 @@
     width: 100%;
     min-height: 625px;
     background-color: #fff;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgb(0 0 0 / 0.1);
 }
@@ -26,8 +26,11 @@
 }
 
 .historial__title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 15px;
 }
 
 .historial__header__selections {
@@ -41,6 +44,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    cursor: pointer;
+}
+
+.historial__header__selection.selected {
+    font-weight: 600
 }
 
 .historial__header__selection span {
@@ -51,6 +59,10 @@
     height: 1px;
     width: 100%;
     background-color: #4070f4;
+}
+
+.historial__header__selection.selected hr{
+    height: 2px;
 }
 
 .historial__content {
@@ -75,11 +87,17 @@
     height: 60px;
 }
 
+@media (max-width: 1200px) {
+    .historial__container {
+        padding: 0 20px;
+    }
+}
+
 
 @media (max-width:480px) {
 
     .historial__container {
-        padding: 0 8px;
+        padding: 0 10px;
     }
 
     .historial__header {

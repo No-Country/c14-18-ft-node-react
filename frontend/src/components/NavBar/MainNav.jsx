@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const MainNav = () => {
+const MainNav = ({ column }) => {
 
     const pathname = usePathname()
 
@@ -12,11 +12,6 @@ const MainNav = () => {
             title: 'Home',
             path: '/',
             active: pathname === '/' ? true : false
-        },
-        {
-            title: 'Servicios',
-            path: '/services',
-            active: pathname === '/services' ? true : false
         },
         {
             title: 'Staff Médico',
@@ -32,7 +27,7 @@ const MainNav = () => {
 
     return ( 
         <nav className='main-nav'>
-                <ul className='nav-items'>
+                <ul className={`nav-items ${column}`}>
                     {routes.map(({title, path, active}) => (
                         <li key={title}>
                             <Link href={path} className={active ? 'active-link' : ''}>{title}</Link>

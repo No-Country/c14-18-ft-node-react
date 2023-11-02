@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from "next/navigation";
-import { CrossIcon } from "./Icons";
+import { CrossIcon } from "../Icons";
 import './UserNav.css'
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ const UserNav = () => {
     const routes = [
         {
             title: 'Home',
-            path: '/myaccount/home',
+            path: '/',  
             active: pathname === '/' ? true : false
         },
         {
