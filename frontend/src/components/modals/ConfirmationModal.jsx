@@ -25,7 +25,7 @@ const ConfirmationModal = () => {
 
     const CreateAppointment = async () => {
 
-        const userCredentials = sessionStorage.getItem('userCredentials')
+        const userCredentials = localStorage.getItem('userCredentials')
         const parsedData = JSON.parse(userCredentials);
         const userDocumentId = parsedData?.identity
 

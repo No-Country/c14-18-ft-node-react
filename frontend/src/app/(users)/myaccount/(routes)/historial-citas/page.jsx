@@ -9,8 +9,6 @@ import { useDoctors } from "@/hooks/useDoctors";
 
 import "./historial-citas.css";
 
-import "./historial-citas.css";
-
 const HistorialCitas = () => {
   const [citas, setCitas] = useState([]);
   const [patientName, setPatientName] = useState("");
