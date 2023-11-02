@@ -1,15 +1,56 @@
+'use client'
+
 import MainContainer from '@/components/ui/MainContainer/MainContainer';
 import { SearchIcon } from '@/components/Icons';
-import  mockDoctors  from '@/mocks/doctors.json'
+import { useEffect, useState } from 'react';
+import { fetchDoctors } from '@/services/fetchDoctors';
+import { useDebounce } from '@/hooks/useDebouncer';
 
 import './staffMedico.css'
 
-
 const StaffMedico = () => {
 
-    const doctors = mockDoctors.doctors
+    const [doctors, setDoctors] = useState([])
+    const [selectedSpecialty, setSelectedSpecialty] = useState('')
+    const [selectedLocation, setSelectedLocation] = useState('')
+    const [inputValue, setInputValue] = useState('')
 
-    return ( 
+
+    useEffect(() => {
+        const fetchDoctorsFunction = async () => {
+            const doctorsFetch = await fetchDoctors()
+            setDoctors(doctorsFetch)
+        }
+
+        fetchDoctorsFunction()
+    }, [])
+
+    const handleInput = (event) => {
+        const query = event.target.value;
+        setInputValue(query);
+    }
+
+    const debouncedInput = useDebounce(inputValue, 300)
+
+    const filteredDoctors = doctors.filter(({ speciality, name, location }) => {
+        const hasSelectedLocation = selectedLocation !== '';
+        const hasSelectedSpecialty = selectedSpecialty !== '';
+
+        if (!hasSelectedLocation && !hasSelectedSpecialty && inputValue === '') {
+            return true;
+        } else if (hasSelectedLocation && hasSelectedSpecialty) {
+            return location === selectedLocation && speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else if (hasSelectedLocation) {
+            return location === selectedLocation && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else if (hasSelectedSpecialty) {
+            return speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else {
+            return name.toLowerCase().includes(debouncedInput.toLowerCase());
+        }
+    });
+
+
+    return (
         <MainContainer>
 
             <section className='staff__banner'>
@@ -23,37 +64,38 @@ const StaffMedico = () => {
                     <h3 className='staff__content__title'>Busca a tu médico:</h3>
 
                     <div className='staff__content__filters'>
-                        <select name="sedes" defaultValue={'selected-sede'} className='staff__filters__select'>
-                            <option value="selected-sede" disabled>Selecciona una sede</option>
-                            <option value="1">Franchin</option>
-                            <option value="2">San José</option>
-                            <option value="3">Finochietto</option>
+                        <select onChange={(e) => setSelectedLocation(e.target.value)} name="sedes" defaultValue={'selected-sede'} className='staff__filters__select'>
+                            <option value="">Selecciona una sede</option>
+                            <option value="FRANCHIN">Franchin</option>
+                            <option value="SAN JOSE">San José</option>
+                            <option value="FINOCHIETTO">Finochietto</option>
                         </select>
 
-                        <select name="especialidades" defaultValue={'selected-specialty'} className='staff__filters__select'>
-                            <option value="selected-specialty" disabled>Selecciona una especialidad</option>
+                        <select onChange={(e) => setSelectedSpecialty(e.target.value)}  name="especialidades" defaultValue={'selected-specialty'} className='staff__filters__select'>
+                            <option value="">Selecciona una especialidad</option>
                             <option value="CARDIOLOGIA">Cardiologia</option>
-                            <option value="DERMATOLOGIA">Neurologia</option>   
-                            <option value="NEUROLOGIA">Dermatologia</option>
+                            <option value="NEUROLOGIA">Neurologia</option>
+                            <option value="DERMATOLOGIA">Dermatologia</option>
+                            <option value="PEDIATRIA">Pediatria</option>
                         </select>
 
                         <div className='staff__filter__doctor'>
                             <div className='staff__filter__icon'>
                                 <SearchIcon />
                             </div>
-                            <input type="text" className='staff__filters__input' placeholder='Busca tu médico' />
+                            <input onChange={handleInput} type="text" className='staff__filters__input' placeholder='Busca tu médico' />
                         </div>
                     </div>
                 </header>
 
                 <div className='staff__content__doctors'>
                     <div className='staff__content__doctors__grid' >
-                        {doctors.map(({ id, name, specialty, availability }) => (
+                        {filteredDoctors.map(({ id, name, speciality }) => (
                             <div className='doctor__card' key={id}>
                                 <img src='/medicos-icon.png' alt="doctor-avatar" />
                                 <div className='doctor__card__content'>
                                     <span className='doctor__card__title'>Dr. {name}</span>
-                                    <span>{specialty}</span>
+                                    <span>{speciality}</span>
                                 </div>
                             </div>
                         ))}
@@ -63,7 +105,7 @@ const StaffMedico = () => {
             </section>
 
         </MainContainer>
-     );
+    );
 }
- 
+
 export default StaffMedico;

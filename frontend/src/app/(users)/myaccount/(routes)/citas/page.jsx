@@ -1,23 +1,30 @@
 'use client'
 
 import { SearchIcon } from '@/components/Icons';
-import { useState } from 'react';
-import  mockDoctors  from '@/mocks/doctors.json'
+import { useEffect, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebouncer';
 import { useModal } from '@/hooks/useModal';
 
 import './citas.css'
+import { fetchDoctors } from '@/services/fetchDoctors';
 
 const Citas = () => {
     
+    const [doctors, setDoctors] = useState([])
     const [inputValue, setInputValue] = useState('')
-    const [intervals, setIntervals] = useState([])
     const [selectedSpecialty, setSelectedSpecialty] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
 
     const { openCitasModal } = useModal()
 
-    const doctors = mockDoctors.doctors
+    useEffect(() => {
+        const fetchDoctorsFunction = async () => {
+            const doctorsFetch = await fetchDoctors()
+            setDoctors(doctorsFetch)
+        }
+
+        fetchDoctorsFunction()
+    }, [])
 
     const handleInput = (event) => {
         const query = event.target.value
@@ -26,11 +33,22 @@ const Citas = () => {
 
     const debouncedInput = useDebounce(inputValue, 300)
 
-    const filteredDoctors = doctors.filter(({ specialty, name }) => {
-        return (
-            specialty === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase())
-        )
-    })
+    const filteredDoctors = doctors.filter(({ speciality, name, location }) => {
+        const hasSelectedLocation = selectedLocation !== '';
+        const hasSelectedSpecialty = selectedSpecialty !== '';
+
+        if (!hasSelectedLocation && !hasSelectedSpecialty && inputValue === '') {
+            return true;
+        } else if (hasSelectedLocation && hasSelectedSpecialty) {
+            return location === selectedLocation && speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else if (hasSelectedLocation) {
+            return location === selectedLocation && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else if (hasSelectedSpecialty) {
+            return speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
+        } else {
+            return name.toLowerCase().includes(debouncedInput.toLowerCase());
+        }
+    });
 
     return (
         <div className="citas-container">
@@ -42,10 +60,10 @@ const Citas = () => {
                     <div className='filters'>
                         <div className='filters__selections'>
                                 <select name="sedes" defaultValue={'selected-sede'} onChange={(e) => setSelectedLocation(e.target.value)} className='filters__select'>
-                                    <option value="selected-sede" disabled>Selecciona una sede</option>
-                                    <option value="1">sede 1</option>
-                                    <option value="2">sede 2</option>
-                                    <option value="3">sede 3</option>
+                                    <option value="">Selecciona una sede</option>
+                                    <option value="FRANCHIN">Franchin</option>
+                                    <option value="SAN JOSE">San José</option>
+                                    <option value="FINOCHIETTO">Finochietto</option>
                                 </select>
 
                                 <select name="especialidades" defaultValue={'selected-specialty'} onChange={(e) => setSelectedSpecialty(e.target.value)} className='filters__select'>
@@ -71,12 +89,12 @@ const Citas = () => {
                     <div className='doctors__container'>
                         <div className='doctors'>
                             <div className='doctors__grid'>
-                                {filteredDoctors.map(({ id, name, specialty, availability }) => (
-                                    <div onClick={() => openCitasModal(selectedLocation, specialty, name, id)} className='doctor__card' key={id}>
+                                {filteredDoctors.map(({ id, name, speciality, availability }) => (
+                                    <div onClick={() => openCitasModal(selectedLocation, speciality, name, id)} className='doctor__card' key={id}>
                                         <img src='/medicos-icon.png' alt="doctor-avatar" />
                                         <div className='doctor__card__content'>
                                             <span className='doctor__card__title'>Dr. {name}</span>
-                                            <span>{specialty}</span>
+                                            <span>{speciality}</span>
                                         </div>
                                     </div>
                                 ))}

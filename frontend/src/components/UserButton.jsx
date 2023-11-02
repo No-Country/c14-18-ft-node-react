@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
+import { useEffect, useState } from "react";
 
 const LoginButton = () => {
 
@@ -27,7 +28,10 @@ const LogOutButton = () => {
             credentials:"include",
         })
 
-        if (res.status === 200)  router.refresh()
+        if (res.status === 200) {
+            localStorage.removeItem('userCredentials') 
+            router.refresh()
+        }
     }
 
     return (
@@ -37,13 +41,26 @@ const LogOutButton = () => {
     )
 }
 
-const UserButton = ( token ) => {
+const UserButton = () => {
 
-    const authSession = token.token
+    const [isLogged, setIsLogged] = useState(false);
+
+    const checkLogged = () => {
+        const storedCredentials = localStorage.getItem('userCrendentials');
+        if(!storedCredentials  || storedCredentials === undefined) {
+            setIsLogged(false)
+            return null
+        }
+        setIsLogged(true)
+    }
+
+    useEffect(() => {
+        checkLogged()
+    }, [isLogged])
 
     return (
         <>
-           {authSession ? <LogOutButton/> : <LoginButton/>}
+           {isLogged ? <LogOutButton/> : <LoginButton/>}
         </>
      );
 }

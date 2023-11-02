@@ -1,6 +1,5 @@
 'use client'
 
-import mockDoctors from "@/mocks/doctors.json";
 import CitasCard from "@/components/ui/CitasCard/CitasCard";
 import { fetchCitas } from "@/utils/fetchCitas";
 import { useEffect, useState } from "react";
@@ -12,13 +11,12 @@ import "./historial-citas.css";
 const HistorialCitas = () => {
 
     const [citas, setCitas] = useState([])
-    const [patientName, setPatientName] = useState()
+    const [patientName, setPatientName] = useState('')
 
     const doctors = mockDoctors.doctors;
-
     useEffect(() => {
 
-        const userCredentials = sessionStorage.getItem("userCredentials");
+        const userCredentials = localStorage.getItem("userCredentials");
 
         if (userCredentials) {
             const parsedData = JSON.parse(userCredentials);
@@ -43,7 +41,6 @@ const HistorialCitas = () => {
             setCitas([]);
         }
     }, []);
-    
 
     return (
         <div className="historial__container">
