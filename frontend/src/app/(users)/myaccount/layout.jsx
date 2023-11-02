@@ -1,19 +1,37 @@
-import { redirect } from "next/navigation"
-import { cookies } from "next/headers"
-import UserNav from "@/components/UserNav";
+'use client'
+
+import UserNav from "@/components/UserNav/UserNav";
 import ModalProvider from "@/providers/modal-provider";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default async function UsersLayout({children}) {
-    const jwt = cookies().get("clinicaUser")?.value;
+export default function UsersLayout({ children }) {
+    const router = useRouter()
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-    if (jwt === undefined) {
-        redirect('/log-in')
+    const checkUserCredentials = () => {
+        const storedCredentials = localStorage.getItem('userCredentials');
+        if (!storedCredentials || storedCredentials === 'undefined') {
+            setIsLoggedIn(false);
+            return router.push('/log-in');
+        }
+        setIsLoggedIn(true);
     }
 
+    useEffect(() => {
+        checkUserCredentials();
+    }, [isLoggedIn]);
+
     return (
-        <ModalProvider>
-            <UserNav/>
-            {children}
-        </ModalProvider>
+        <>
+            {
+                isLoggedIn ? 
+                    <ModalProvider>
+                        <UserNav />
+                        {children}
+                    </ModalProvider> 
+                : null
+            }
+        </>
     )
 }

@@ -11,29 +11,36 @@ import { es } from "date-fns/locale";
 const HistorialCitas = () => {
 
     const [citas, setCitas] = useState([])
+    const [patientName, setPatientName] = useState('')
 
     const doctors = mockDoctors.doctors;
-    const userCredentials = sessionStorage.getItem("userCredentials");
-    const parsedData = JSON.parse(userCredentials);
-    const userDocumentId = parsedData?.identity;
-    const userName = `${parsedData?.name} ${parsedData?.lastName}`
-
     useEffect(() => {
 
-        const fetch = async () => {
-            const res = await fetchCitas(userDocumentId)
+        const userCredentials = localStorage.getItem("userCredentials");
+
+        if (userCredentials) {
+            const parsedData = JSON.parse(userCredentials);
+            const userDocumentId = parsedData?.identity;
+            const userName = `${parsedData?.name} ${parsedData?.lastName}`;
+
+            setPatientName(userName);
+
+            const fetchCitasData = async () => {
+            const res = await fetchCitas(userDocumentId);
             const citasData = res?.map(cita => {
                 const date = new Date(cita.date);
-                const formattedDate = format(date, 'EEE dd MMM p', {locale: es});
+                const formattedDate = format(date, 'EEE dd MMM p', { locale: es });
                 return { ...cita, date, formattedDate };
-              });
-          
-            setCitas(citasData);
-        }
+            });
 
-        fetch()
-        
-    }, [])
+            setCitas(citasData);
+            };
+
+            fetchCitasData();
+        } else {
+            setCitas([]);
+        }
+    }, []);
 
     return (
         <div className="historial__container">
@@ -65,7 +72,7 @@ const HistorialCitas = () => {
                                     key={cita.id}
                                     doctor={doctor[0].name}
                                     specialty={doctor[0].specialty}
-                                    patient={userName}
+                                    patient={patientName}
                                     date={cita.formattedDate}
                                 />
                             );

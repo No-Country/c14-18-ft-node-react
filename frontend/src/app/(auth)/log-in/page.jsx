@@ -36,7 +36,7 @@ const Login = () => {
 
         const credentials = JSON.stringify(data.userCredential)
 
-        sessionStorage.setItem('userCredentials', credentials)
+        localStorage.setItem('userCredentials', credentials)
 
         if (res.status === 200) {
             router.refresh()

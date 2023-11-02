@@ -1,14 +1,12 @@
-import BookingButton from "./BookingButton";
-import UserButton from "./UserButton";
+import BookingButton from "../BookingButton";
+import UserButton from "../UserButton";
+import { CrossIcon } from "../Icons";
 import MainNav from "./MainNav";
-import { CrossIcon } from "./Icons";
-import { cookies } from "next/headers";
 
 import './Navbar.css'
 
 const Navbar = () => {
-
-    const jwt = cookies().get("clinicaUser")?.value;
+    
 
     return (
         <header className='landing-header'>
@@ -20,7 +18,7 @@ const Navbar = () => {
             <MainNav/>
 
             <div className='header-buttons'>
-                <UserButton token={jwt}/>
+                <UserButton />
                 <BookingButton/>
             </div>
         </header>

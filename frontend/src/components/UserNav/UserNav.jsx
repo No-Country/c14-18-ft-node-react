@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from "next/navigation";
-import { CrossIcon } from "./Icons";
+import { CrossIcon } from "../Icons";
 import './UserNav.css'
 import Link from "next/link";
 
