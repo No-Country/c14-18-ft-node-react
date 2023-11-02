@@ -77,7 +77,7 @@ export default function Home() {
               </header>
 
               <main className='content__services__main'>
-                <div className='content__services__grid'>
+                <div className='content__services__cards'>
                   <div className='content__services__card'>
                     Agenda Una Cita
                   </div>

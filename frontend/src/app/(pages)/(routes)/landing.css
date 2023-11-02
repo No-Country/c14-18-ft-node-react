@@ -218,6 +218,12 @@
     text-align: center;
 }
 
+.content__services__cards {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+}
+
 @media (min-width: 1300px) {
     .main-banner {
         min-height: 560px;
