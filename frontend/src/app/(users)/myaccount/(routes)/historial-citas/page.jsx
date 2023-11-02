@@ -3,7 +3,7 @@
 import CitasCard from "@/components/ui/CitasCard/CitasCard";
 import { fetchCitas } from "@/utils/fetchCitas";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
+import { format, isAfter, isBefore, startOfToday } from "date-fns";
 import { es } from "date-fns/locale";
 import { useDoctors } from "@/hooks/useDoctors";
 
@@ -14,6 +14,8 @@ import "./historial-citas.css";
 const HistorialCitas = () => {
   const [citas, setCitas] = useState([]);
   const [patientName, setPatientName] = useState("");
+  const [filterCita, setFilterCita] = useState(true)
+
   const { doctors } = useDoctors();
 
   useEffect(() => {
@@ -43,17 +45,27 @@ const HistorialCitas = () => {
     }
   }, []);
 
+  let today = startOfToday();
+
+  const filteredCitas = citas.filter((cita) => {
+    if(filterCita) {
+      return isAfter(new Date(cita.date), today)
+    } else {
+      return isBefore(new Date(cita.date), today)
+    }
+  })
+
   return (
     <div className="historial__container">
       <div className="historial">
         <header className="historial__header">
           <h1 className="historial__title">Historial de Citas</h1>
           <div className="historial__header__selections">
-            <div className="historial__header__selection">
+            <div className={`historial__header__selection ${filterCita ? 'selected' : ''}`} onClick={() => setFilterCita(true)}>
               <span>Programadas</span>
               <hr />
             </div>
-            <div className="historial__header__selection">
+            <div className={`historial__header__selection ${!filterCita ? 'selected' : ''}`} onClick={() => setFilterCita(false)}>
               <span>Historial</span>
               <hr />
             </div>
@@ -62,7 +74,7 @@ const HistorialCitas = () => {
 
         <main className="historial__content">
           <div className="historial__content__grid">
-            {citas?.map((cita) => {
+            {filteredCitas?.map((cita) => {
               const doctor = doctors.filter(
                 (item) => item.id === cita.doctorId
               );
