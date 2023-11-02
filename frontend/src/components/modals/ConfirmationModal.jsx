@@ -41,17 +41,11 @@ const ConfirmationModal = () => {
         const dateAndTime = addHours(date, dateWithTime.getHours());
         dateAndTime.setMinutes(dateWithTime.getMinutes());
 
-        // Obtener la zona horaria local
-        const timeZoneOffset = new Date().getTimezoneOffset() / 60; // Obtén el offset en horas
+        const timeZoneOffset = new Date().getTimezoneOffset() / 60;
 
-        // Ajustar la hora para la zona horaria local
         dateAndTime.setHours(dateAndTime.getHours() - timeZoneOffset);
 
-        // Formatear la fecha en formato ISOString
         const isoStringDate = dateAndTime.toISOString();
-
-        console.log(isoStringDate);
-
 
         const jsonData = {
             date: isoStringDate,
