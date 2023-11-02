@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react"
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true')
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [userCredentials, setUserCredentials] = useState({})
 
     const login = (credentials) => {
