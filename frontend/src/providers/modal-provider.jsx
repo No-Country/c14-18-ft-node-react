@@ -12,8 +12,8 @@ const ModalProvider = ({ children }) => {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false)
   const [userData, setUserData] = useState({})
 
-  const openCitasModal = (sede, specialty, doctor, id) => {
-    setUserData({ sede, specialty, doctor, id });
+  const openCitasModal = (sede, specialty, name, id, availability) => {
+    setUserData({ sede, specialty, name, id, availability });
     setIsCitasModalOpen(true);
   };
 
