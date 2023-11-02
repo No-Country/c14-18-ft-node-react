@@ -7,12 +7,20 @@ import ModalOverlay from '../ui/ModalOverlay';
 import Calendar from '../Calendar/Calendar';
 
 import './CitasModal.css'
+import { useEffect, useState } from 'react';
 
 const CitasModal = () => {
 
-    const { isCitasModalOpen, closeCitasModal, userData, openConfirmationModal, setUserData } = useModal()
+    const { isCitasModalOpen, closeCitasModal, userData, openConfirmationModal } = useModal()
+    const [intervals, setIntervals] = useState([])
 
-    const intervals = generateTimeInterval('08:00 - 16:00')
+
+    useEffect(() => {
+        const intervals = generateTimeInterval(userData.availability ?? '08:00 - 16:00' )
+        setIntervals(intervals)
+
+    }, [userData])
+
 
     const choseDateAndHour = (hour) => {
         openConfirmationModal(hour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
@@ -39,7 +47,7 @@ const CitasModal = () => {
                             </div>
 
                             <div className='modal__header__option'>
-                                {userData.doctor}
+                                {userData.name}
                             </div>
 
                         </div>

@@ -1,111 +1,92 @@
-'use client'
+"use client";
 
-import MainContainer from '@/components/ui/MainContainer/MainContainer';
-import { SearchIcon } from '@/components/Icons';
-import { useEffect, useState } from 'react';
-import { fetchDoctors } from '@/services/fetchDoctors';
-import { useDebounce } from '@/hooks/useDebouncer';
+import MainContainer from "@/components/ui/MainContainer/MainContainer";
+import { SearchIcon } from "@/components/Icons";
+import { useDoctors } from "@/hooks/useDoctors";
 
-import './staffMedico.css'
+import "./staffMedico.css";
 
 const StaffMedico = () => {
+  const {
+    filteredDoctors,
+    setInputValue,
+    setSelectedLocation,
+    setSelectedSpecialty,
+  } = useDoctors();
 
-    const [doctors, setDoctors] = useState([])
-    const [selectedSpecialty, setSelectedSpecialty] = useState('')
-    const [selectedLocation, setSelectedLocation] = useState('')
-    const [inputValue, setInputValue] = useState('')
+  const handleInput = (event) => {
+    const query = event.target.value;
+    setInputValue(query);
+  };
 
+  return (
+    <MainContainer>
+      <section className="staff__banner">
+        <div className="staff__banner__title">
+          <span>Nuestro Staff Médico</span>
+        </div>
+      </section>
 
-    useEffect(() => {
-        const fetchDoctorsFunction = async () => {
-            const doctorsFetch = await fetchDoctors()
-            setDoctors(doctorsFetch)
-        }
+      <section className="staff__content__container">
+        <header className="staff__content__header">
+          <h3 className="staff__content__title">Busca a tu médico:</h3>
 
-        fetchDoctorsFunction()
-    }, [])
+          <div className="staff__content__filters">
+            <select
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              name="sedes"
+              defaultValue={"selected-sede"}
+              className="staff__filters__select"
+            >
+              <option value="">Selecciona una sede</option>
+              <option value="FRANCHIN">Franchin</option>
+              <option value="SAN JOSE">San José</option>
+              <option value="FINOCHIETTO">Finochietto</option>
+            </select>
 
-    const handleInput = (event) => {
-        const query = event.target.value;
-        setInputValue(query);
-    }
+            <select
+              onChange={(e) => setSelectedSpecialty(e.target.value)}
+              name="especialidades"
+              defaultValue={"selected-specialty"}
+              className="staff__filters__select"
+            >
+              <option value="">Selecciona una especialidad</option>
+              <option value="CARDIOLOGIA">Cardiologia</option>
+              <option value="NEUROLOGIA">Neurologia</option>
+              <option value="DERMATOLOGIA">Dermatologia</option>
+              <option value="PEDIATRIA">Pediatria</option>
+            </select>
 
-    const debouncedInput = useDebounce(inputValue, 300)
+            <div className="staff__filter__doctor">
+              <div className="staff__filter__icon">
+                <SearchIcon />
+              </div>
+              <input
+                onChange={handleInput}
+                type="text"
+                className="staff__filters__input"
+                placeholder="Busca tu médico"
+              />
+            </div>
+          </div>
+        </header>
 
-    const filteredDoctors = doctors.filter(({ speciality, name, location }) => {
-        const hasSelectedLocation = selectedLocation !== '';
-        const hasSelectedSpecialty = selectedSpecialty !== '';
-
-        if (!hasSelectedLocation && !hasSelectedSpecialty && inputValue === '') {
-            return true;
-        } else if (hasSelectedLocation && hasSelectedSpecialty) {
-            return location === selectedLocation && speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
-        } else if (hasSelectedLocation) {
-            return location === selectedLocation && name.toLowerCase().includes(debouncedInput.toLowerCase());
-        } else if (hasSelectedSpecialty) {
-            return speciality === selectedSpecialty && name.toLowerCase().includes(debouncedInput.toLowerCase());
-        } else {
-            return name.toLowerCase().includes(debouncedInput.toLowerCase());
-        }
-    });
-
-
-    return (
-        <MainContainer>
-
-            <section className='staff__banner'>
-                <div className='staff__banner__title'>
-                    <span>Nuestro Staff Médico</span>
+        <div className="staff__content__doctors">
+          <div className="staff__content__doctors__grid">
+            {filteredDoctors.map(({ id, name, speciality }) => (
+              <div className="doctor__card" key={id}>
+                <img src="/medicos-icon.png" alt="doctor-avatar" />
+                <div className="doctor__card__content">
+                  <span className="doctor__card__title">Dr. {name}</span>
+                  <span>{speciality}</span>
                 </div>
-            </section>
-
-            <section className='staff__content__container'>
-                <header className='staff__content__header'>
-                    <h3 className='staff__content__title'>Busca a tu médico:</h3>
-
-                    <div className='staff__content__filters'>
-                        <select onChange={(e) => setSelectedLocation(e.target.value)} name="sedes" defaultValue={'selected-sede'} className='staff__filters__select'>
-                            <option value="">Selecciona una sede</option>
-                            <option value="FRANCHIN">Franchin</option>
-                            <option value="SAN JOSE">San José</option>
-                            <option value="FINOCHIETTO">Finochietto</option>
-                        </select>
-
-                        <select onChange={(e) => setSelectedSpecialty(e.target.value)}  name="especialidades" defaultValue={'selected-specialty'} className='staff__filters__select'>
-                            <option value="">Selecciona una especialidad</option>
-                            <option value="CARDIOLOGIA">Cardiologia</option>
-                            <option value="NEUROLOGIA">Neurologia</option>
-                            <option value="DERMATOLOGIA">Dermatologia</option>
-                            <option value="PEDIATRIA">Pediatria</option>
-                        </select>
-
-                        <div className='staff__filter__doctor'>
-                            <div className='staff__filter__icon'>
-                                <SearchIcon />
-                            </div>
-                            <input onChange={handleInput} type="text" className='staff__filters__input' placeholder='Busca tu médico' />
-                        </div>
-                    </div>
-                </header>
-
-                <div className='staff__content__doctors'>
-                    <div className='staff__content__doctors__grid' >
-                        {filteredDoctors.map(({ id, name, speciality }) => (
-                            <div className='doctor__card' key={id}>
-                                <img src='/medicos-icon.png' alt="doctor-avatar" />
-                                <div className='doctor__card__content'>
-                                    <span className='doctor__card__title'>Dr. {name}</span>
-                                    <span>{speciality}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-            </section>
-
-        </MainContainer>
-    );
-}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </MainContainer>
+  );
+};
 
 export default StaffMedico;

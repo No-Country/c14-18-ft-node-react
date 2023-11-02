@@ -11,7 +11,7 @@ const UserNav = () => {
     const routes = [
         {
             title: 'Home',
-            path: '/myaccount/home',
+            path: '/',  
             active: pathname === '/' ? true : false
         },
         {
