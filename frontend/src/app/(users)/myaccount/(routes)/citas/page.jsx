@@ -2,10 +2,14 @@
 
 import { SearchIcon } from "@/components/Icons";
 import { useDoctors } from "@/hooks/useDoctors";
+import { useModal } from "@/hooks/useModal";
 
 import "./citas.css";
 
 const Citas = () => {
+
+  const {openCitasModal} = useModal()
+
   const {
     filteredDoctors,
     setInputValue,

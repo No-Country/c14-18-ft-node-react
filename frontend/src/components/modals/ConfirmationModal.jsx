@@ -105,7 +105,7 @@ const ConfirmationModal = () => {
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '10px', paddingLeft: '10px' }}>
                                 <div className="modal__doctor__details">
-                                    <span className="modal__doctor__name">Dr. {userData.doctor}</span>
+                                    <span className="modal__doctor__name">Dr. {userData.name}</span>
                                     <span>{userData.specialty}</span>
                                 </div>
 
