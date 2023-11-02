@@ -5,6 +5,7 @@ import {
   endOfWeek,
   format,
   getDay,
+  isBefore,
   isEqual,
   isSameMonth,
   isToday,
@@ -140,6 +141,7 @@ const Calendar = () => {
                             }
                             calendar__content__day`}
                   onClick={() => selectDay(day)}
+                  disabled={isBefore(day, new Date())}
                 >
                   <time dateTime={format(day, "yyyy-MM-dd")}>
                     {format(day, "d")}
