@@ -1,12 +1,15 @@
+'use client'
+
 import { useModal } from "@/hooks/useModal";
 import ModalOverlay from "../ui/ModalOverlay";
 import { CalendarIcon, ClockIcon, CloseIcon } from "../Icons";
 
-import './ConfirmationModal.css'
 import Button from "../ui/Button";
 import { addHours, format, parse, } from "date-fns";
 import { es } from "date-fns/locale";
 import { toast } from "sonner";
+
+import './ConfirmationModal.css'
 
 const ConfirmationModal = () => {
 
@@ -22,7 +25,7 @@ const ConfirmationModal = () => {
 
     const CreateAppointment = async () => {
 
-        const userCredentials = sessionStorage.getItem('userCredentials')
+        const userCredentials = localStorage.getItem('userCredentials')
         const parsedData = JSON.parse(userCredentials);
         const userDocumentId = parsedData?.identity
 
@@ -38,17 +41,11 @@ const ConfirmationModal = () => {
         const dateAndTime = addHours(date, dateWithTime.getHours());
         dateAndTime.setMinutes(dateWithTime.getMinutes());
 
-        // Obtener la zona horaria local
-        const timeZoneOffset = new Date().getTimezoneOffset() / 60; // Obtén el offset en horas
+        const timeZoneOffset = new Date().getTimezoneOffset() / 60;
 
-        // Ajustar la hora para la zona horaria local
         dateAndTime.setHours(dateAndTime.getHours() - timeZoneOffset);
 
-        // Formatear la fecha en formato ISOString
         const isoStringDate = dateAndTime.toISOString();
-
-        console.log(isoStringDate);
-
 
         const jsonData = {
             date: isoStringDate,
