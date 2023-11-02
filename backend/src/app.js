@@ -7,6 +7,7 @@ import { sequelize } from './database/database.js'
 import appointmentRouter from './router/api.appointments.routes.js'
 import corsOptions from './configs/cors.config.js';
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 
 async function main() {
     const app = express();
@@ -15,7 +16,7 @@ async function main() {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(cors(corsOptions));
-
+    app.use(cookieParser());
     app.get('/', (req, res) => {
         res.send('hola mundo')
     });

@@ -14,6 +14,14 @@ class UserDTO {
             password: hashedPwd
         }
     }
+
+    static getLoginUser = (user) =>{
+        return{
+            name: user.name ,
+            lastName:user.last_name,
+            identity: user.documentId
+        };
+    }
 }
 
 export default UserDTO;
