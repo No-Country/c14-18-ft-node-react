@@ -37,8 +37,6 @@ export const GetAppointment = async(req, res) => {
         console.log(e)
         res.status(500).send('Hubo un error en el servidor')
     }
-
-    res.status(200).send({payload:appointments})
 }
 
 export const getAvailableAppointments = (req,res) =>{
