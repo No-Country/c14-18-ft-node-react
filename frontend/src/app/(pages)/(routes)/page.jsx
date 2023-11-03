@@ -1,6 +1,6 @@
 'use client'
 
-import { ClockIcon, DoctorIcon, LikeIcon, RightArrowIcon } from '@/components/Icons'
+import { CalendarIcon, ClockIcon, DoctorIcon, LikeIcon, RightArrowIcon } from '@/components/Icons'
 import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
 
@@ -39,7 +39,7 @@ export default function Home() {
 
               <div className='content__card__text'>
                 <span>Atencion 24/7</span>
-                <p>Lorem ipsum dolor sit amet consectecur adipiscing</p>
+                <p>En Cliniconnect atendemos cualquier emergencia</p>
               </div>
             </div>
 
@@ -50,7 +50,7 @@ export default function Home() {
 
               <div className='content__card__text'>
                 <span>Los Mejores Medicos</span>
-                <p>Lorem ipsum dolor sit amet consectecur adipiscing</p>
+                <p>Contamos con excelentes profesionales del area de salud</p>
               </div>
             </div>
 
@@ -61,7 +61,7 @@ export default function Home() {
 
               <div className='content__card__text'>
                 <span>Atencion de Alta Calidad</span>
-                <p>Lorem ipsum dolor sit amet consectecur adipiscing</p>
+                <p>Nuestra prioridad es brindarte la mejor atencion en salud</p>
               </div>
             </div>
 
@@ -78,11 +78,12 @@ export default function Home() {
 
               <main className='content__services__main'>
                 <div className='content__services__cards'>
-                  <div className='content__services__card'>
-                    Agenda una cita con tu medico
+                  <div className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
+                  
+                    <span>Agenda una cita con tu medico</span>
                   </div>
 
-                  <div className='content__services__card'>
+                  <div className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
                     Revisa nuestro Staff Medico
                   </div>
                 </div>
