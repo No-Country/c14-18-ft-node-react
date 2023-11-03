@@ -1,14 +1,13 @@
 import { Op } from "sequelize";
 import { Appointments } from "../models/appointments.js"
-import { Doctor } from "../models/doctor.js";
 import { Patient } from "../models/user.js";
+import transport from '../configs/nodemailer.config.js'
+import dotenvConfig from '../configs/dotenv.config.js';
 
 export const CreateAppointment = async(req, res) => {
 
-    console.log(req.body);
     const userId = await Patient.findOne({where: {documentId: req.body.documentId}})
     console.log(userId.dataValues.id)
-    console.log(req.body.date)
 
     try {
         const newAppointment = await Appointments.create({
@@ -17,8 +16,16 @@ export const CreateAppointment = async(req, res) => {
             patientId: userId.dataValues.id,
             doctorId: req.body.doctorId,
         })
+
+        if (newAppointment) {
+            transport.sendMail({
+                from: `Cliniconnect  ${dotenvConfig.NODE.EMAIL}`,
+                to: 'alvarord519@gmail.com',
+                subject: 'Su Reserva en Cliniconnect',
+                text: `Tienes una cita para el dia ${new Date(req.body.date)}`
+            })
+        }
     
-        console.log(newAppointment)
         return res.status(200).send('Registro exitoso');
     } catch (error) {
         console.log('Ocurrió un error:', error);
