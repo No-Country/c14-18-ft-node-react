@@ -11,7 +11,7 @@ const Contact = () => {
                         <p>Llena el formulario y nuestro equipo respondera a la brevedad</p>
                     </header>
 
-                    <form className='contact__form' action="">
+                    <form className='contact__form'>
                         <div className='form__fields'>
                             <div className='form__inputs'>
                                 <input className='form__input' type="text" name='nombre' placeholder='Ingresa tu nombre'/>
