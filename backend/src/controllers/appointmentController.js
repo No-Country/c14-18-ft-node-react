@@ -1,12 +1,12 @@
 import { Op } from "sequelize";
 import { Appointments } from "../models/appointments.js"
-import { Doctor } from "../models/doctor.js";
 import { Patient } from "../models/user.js";
 import AppointmentsDto from "../DTO/appointment.dto.js";
+import transport from '../configs/nodemailer.config.js'
+import dotenvConfig from '../configs/dotenv.config.js';
 
 export const CreateAppointment = async(req, res) => {
     const { date,location,doctorId,documentId } = req.body;
-
     if (!date || !location || !doctorId || !documentId) return res.status(400).send('datos incompletos');
     
     const dateNow = new Date().toISOString();
@@ -17,6 +17,16 @@ export const CreateAppointment = async(req, res) => {
         const createCita = AppointmentsDto.saveAppointment(req,userId);
         const newAppointment = await Appointments.create(createCita);
         console.log(newAppointment)
+        console.log(userId.dataValues.id)
+
+        if (newAppointment) {
+            transport.sendMail({
+                from: `Cliniconnect  ${dotenvConfig.NODE.EMAIL}`,
+                to: 'alvarord519@gmail.com',
+                subject: 'Su Reserva en Cliniconnect',
+                text: `Tienes una cita para el dia ${new Date(req.body.date)}`
+            })
+        }
         return res.status(200).send('Registro exitoso');
     } catch (error) {
         return res.status(500).send('Hubo un error en el servidor.');

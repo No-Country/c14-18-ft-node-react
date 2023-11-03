@@ -68,7 +68,6 @@ const ConfirmationModal = () => {
                 closeConfirmationModal()
             } else {
                 toast.error('Hubo un error al guardar la cita')
-                closeConfirmationModal()
             }
 
         } catch (e) {
