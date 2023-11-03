@@ -39,13 +39,13 @@ const Navbar = () => {
 
                     <div className="navbar__collapse__navigation">
                         <ul className="collapse__navigation__items">
-                            <li className="collapse__navigation__item">
+                            <li className="collapse__navigation__item" onClick={() => setCollapsed(true)}>
                                 <Link href={'/'}>Home</Link>
                             </li>
-                            <li className="collapse__navigation__item">
+                            <li className="collapse__navigation__item" onClick={() => setCollapsed(true)}>
                                 <Link href={'/staff-medico'}>Staff Médico</Link>
                             </li>
-                            <li className="collapse__navigation__item">
+                            <li className="collapse__navigation__item" onClick={() => setCollapsed(true)}>
                                 <Link href={'/contacto'}>Contacto</Link>
                             </li>
                         </ul>

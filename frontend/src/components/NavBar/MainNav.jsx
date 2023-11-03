@@ -20,8 +20,8 @@ const MainNav = ({ column }) => {
         },
         {
             title: 'Contacto',
-            path: '/contact',
-            active: pathname === '/contact' ? true : false
+            path: '/contacto',
+            active: pathname === '/contacto' ? true : false
         },
     ]
 

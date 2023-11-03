@@ -1,12 +1,15 @@
 'use client'
 
 import { usePathname } from "next/navigation";
-import { CrossIcon } from "../Icons";
-import './UserNav.css'
+import { CloseIcon, CrossIcon } from "../Icons";
 import Link from "next/link";
+import ToggleButton from "../ui/ToggleButton/ToggleButton";
+import { useState } from "react";
+import './UserNav.css'
 
 const UserNav = () => {
     const pathname = usePathname()
+    const [collapsed, setCollapsed] = useState(true)
 
     const routes = [
         {
@@ -35,18 +38,41 @@ const UserNav = () => {
                 </div>
 
                 <nav className='mainNav'>
-                <ul className='mainNav__items'>
-                    {routes.map(({title, path, active}) => (
-                        <li key={title} className="mainNav__item">
-                            <Link href={path} className={active ? 'active-link' : ''}>{title}</Link>
-                        </li>
-                    ))}
-                </ul>
+                    <ul className='mainNav__items'>
+                        {routes.map(({title, path, active}) => (
+                            <li key={title} className="mainNav__item">
+                                <Link href={path} className={active ? 'active-link' : ''}>{title}</Link>
+                            </li>
+                        ))}
+                    </ul>
                 </nav>
 
-                <div className="usernav__button">
-                    Despegable
+                <div className="toggle-button-container" onClick={() => setCollapsed(false)}>
+                    <ToggleButton/>
                 </div>
+
+                <aside className={`navbar-collapse ${collapsed ? 'collapsed' : ''}`}>
+                <div className="navbar-collapse-content">
+                    <div className="navbar-collapse-closeIcon" onClick={() => setCollapsed(true)}>
+                        <CloseIcon size="30"/>
+                    </div>
+
+                    <div className="navbar__collapse__navigation">
+                        <ul className="collapse__navigation__items">
+                            <li className="collapse__navigation__item">
+                                <Link href={'/'}>Home</Link>
+                            </li>
+                            <li className="collapse__navigation__item">
+                                <Link href={'/myaccount/citas'}>Agenda una cita</Link>
+                            </li>
+                            <li className="collapse__navigation__item">
+                                <Link href={'/myaccount/historial-citas'}>Historial de citas</Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </aside>
 
             </div>
 
