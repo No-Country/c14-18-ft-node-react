@@ -5,7 +5,7 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    background-color: #4070f4;
+    background-color: var(--light-blue);
     padding: 0;
 }
 
@@ -17,10 +17,10 @@
     align-items: center;
     max-width: 500px;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--white);
     padding: 30px;
     margin: 0 15px;
-    color: black;
+    color: var(--dark);
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -29,7 +29,7 @@
     font-size: 36px;
     font-weight: 600;
     position: relative;
-    color: #333;
+    color: var(--gray);
 }
 
 .form-container header h1::before{
@@ -40,7 +40,7 @@
     height: 3px;
     width: 27px;
     border-radius: 8px;
-    background-color: #4070f4;
+    background-color: var(--light-blue);
 }
 
 .form-container form{
@@ -52,7 +52,7 @@
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--dark);
     margin-bottom: 10px;
     text-align: center;
     padding-bottom: 10px;
@@ -68,7 +68,7 @@
 .input-field label {
     font-size: 12px;
     font-weight: 600;
-    color: #2e2e2e;
+    color: var(--dark);
 }
 
 .input-field input{
@@ -76,7 +76,7 @@
     outline: none;
     font-size: 14px;
     font-weight: 400;
-    border: 1px solid #aaa;
+    border: 1px solid var(--light-gray);
     padding: 0 15px;
     height: 42px;
     margin: 8px 0;
@@ -111,10 +111,10 @@
     width: 100%;
     border: none;
     outline: none;
-    color: #fff;
+    color: var(--white);
     border-radius: 5px;
     margin: 25px 0;
-    background-color: #4070f4;
+    background-color: var(--light-blue);
     cursor: pointer;
     transition: all 0.3s linear;
 }
@@ -126,12 +126,12 @@
 }
 
 .form-container form .password:hover {
-    color: #265df2;
+    color: var(--blue);
     text-decoration: underline;
 }
 
 .button-container button:hover {
-    background-color: #265df2;
+    background-color: var(--blue);
 }
 
 @media (max-width: 500px) {
