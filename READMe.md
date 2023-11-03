@@ -1,6 +1,6 @@
 # Cohorte 14 - Equipo 18 - Full time - Nodejs - React.
 
-Realizamos un proyecto sobre la pagina web de una clinica en buenos aires, basado en faciliar la necesidad de realizar horas de grande sfilas para sacar un turno, con esta aplicacion el cliente puede registrarse con su dni, y una vez logeado tendra informacion sobre todos los medicos que hay disponibles y y las sedes donde ofrecen sus servicios.
+Realizamos un proyecto sobre una clinica en buenos aires,con el objetivo de facilitar la necesidad de tener que realizar horas filas para sacar un turno de forma presencial, con esta aplicación el cliente puede registrarse con su dni, y una vez logeado tendra información sobre todos los doctores que hay disponibles y las sedes donde puden ser atendidos.
 
 ## LINKS DE DEPLOY 🌐
 
