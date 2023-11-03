@@ -30,7 +30,8 @@ const HistorialCitas = () => {
         const res = await fetchCitas(userDocumentId);
         const citasData = res?.map((cita) => {
           const date = new Date(cita.date);
-          const formattedDate = format(date, "EEE dd MMM p", { locale: es });
+          const addHours = date.setUTCHours(date.getUTCHours() + 5)
+          const formattedDate = format(addHours, "EEE dd MMM p", { locale: es });
           return { ...cita, date, formattedDate };
         });
 
