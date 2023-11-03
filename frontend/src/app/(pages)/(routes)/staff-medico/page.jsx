@@ -5,8 +5,11 @@ import { SearchIcon } from "@/components/Icons";
 import { useDoctors } from "@/hooks/useDoctors";
 
 import "./staffMedico.css";
+import { useRouter } from "next/navigation";
 
 const StaffMedico = () => {
+  const router = useRouter()
+
   const {
     filteredDoctors,
     setInputValue,
@@ -74,7 +77,7 @@ const StaffMedico = () => {
         <div className="staff__content__doctors">
           <div className="staff__content__doctors__grid">
             {filteredDoctors.map(({ id, name, speciality }) => (
-              <div className="doctor__card" key={id}>
+              <div className="doctor__card" key={id} onClick={() => router.push('/myaccount/citas')}>
                 <img src="/medicos-icon.png" alt="doctor-avatar" />
                 <div className="doctor__card__content">
                   <span className="doctor__card__title">Dr. {name}</span>

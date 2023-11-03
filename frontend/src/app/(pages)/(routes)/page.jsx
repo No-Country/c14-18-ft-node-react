@@ -72,18 +72,17 @@ export default function Home() {
               <header className='content__services__header'>
                 <h2 className='services__header__title'>Nuestros <span>Servicios</span> </h2>
                 <p className='services__header__description'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa iusto asperiores praesentium hic deserunt sed vero sit fugiat aliquam inventore dolore nihil in ea, officia consequatur aliquid. Obcaecati, doloremque id.
+                En Cliniconnect, nos enorgullece ofrecerte una amplia gama de servicios de atención médica de calidad. Nuestra pasión por la salud y el bienestar se refleja en cada uno de nuestros servicios, diseñados para atender tus necesidades de manera integral y personalizada.
                 </p>
               </header>
 
               <main className='content__services__main'>
                 <div className='content__services__cards'>
-                  <div className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
-                  
+                  <div onClick={() => router.push('/myaccount/citas')} className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
                     <span>Agenda una cita con tu medico</span>
                   </div>
 
-                  <div className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
+                  <div onClick={() => router.push('/staff-medico')} className='content__services__card' style={{display: 'flex', flexDirection: 'column', gap: '20px', padding: '0'}}>
                     Revisa nuestro Staff Medico
                   </div>
                 </div>
