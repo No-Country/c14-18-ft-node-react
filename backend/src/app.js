@@ -1,3 +1,4 @@
+import './tasks/rememberAppointment.js'
 import express from 'express';
 import userRouter from './router/api.user.routes.js';
 import authRouter from './router/api.auth.routes.js';
@@ -26,6 +27,8 @@ async function main() {
     app.use('/api/doctor',doctorRouter);
     app.use('/api/email',emailRouter);
     app.use('/api/appointment', appointmentRouter)
+
+
     try {
         await sequelize.sync();
         console.log('Connection has been established successfully')

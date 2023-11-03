@@ -3,7 +3,7 @@ class UserDTO {
 
     static getRegisteredUser = (req,hashedPwd) =>{
         return {
-            documentId: documentId,
+            documentId: req.body.documentId,
             name: req.body.name,
             last_name: req.body.lastName,
             email: req.body.email,

@@ -19,12 +19,21 @@ export const CreateAppointment = async(req, res) => {
         console.log(newAppointment)
         console.log(userId.dataValues.id)
 
+        const options = { 
+            weekday: 'long',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          };
+
         if (newAppointment) {
             transport.sendMail({
                 from: `Cliniconnect  ${dotenvConfig.NODE.EMAIL}`,
                 to: 'alvarord519@gmail.com',
-                subject: 'Su Reserva en Cliniconnect',
-                text: `Tienes una cita para el dia ${new Date(req.body.date)}`
+                subject: 'Reserva de su cita en Cliniconnect',
+                text: `Se agendo cita para el dia ${new Date(req.body.date).toLocaleString('es-ES', options)} en la sede ${req.body.location}`
             })
         }
         return res.status(200).send('Registro exitoso');
