@@ -2,26 +2,23 @@ import { Op } from "sequelize";
 import { Appointments } from "../models/appointments.js"
 import { Doctor } from "../models/doctor.js";
 import { Patient } from "../models/user.js";
+import AppointmentsDto from "../DTO/appointment.dto.js";
 
 export const CreateAppointment = async(req, res) => {
+    const { date,location,doctorId,documentId } = req.body;
 
-    console.log(req.body);
-    const userId = await Patient.findOne({where: {documentId: req.body.documentId}})
-    console.log(userId.dataValues.id)
-    console.log(req.body.date)
+    if (!date || !location || !doctorId || !documentId) return res.status(400).send('datos incompletos');
+    
+    const dateNow = new Date().toISOString();
+    if(dateNow > date ) return res.send('no puedes solicitar un turno de una fecha pasada');
 
     try {
-        const newAppointment = await Appointments.create({
-            date: req.body.date,
-            location: req.body.location,
-            patientId: userId.dataValues.id,
-            doctorId: req.body.doctorId,
-        })
-    
+        const userId = await Patient.findOne({where: {documentId: req.body.documentId}});
+        const createCita = AppointmentsDto.saveAppointment(req,userId);
+        const newAppointment = await Appointments.create(createCita);
         console.log(newAppointment)
         return res.status(200).send('Registro exitoso');
     } catch (error) {
-        console.log('Ocurrió un error:', error);
         return res.status(500).send('Hubo un error en el servidor.');
     }
 }

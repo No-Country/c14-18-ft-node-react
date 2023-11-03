@@ -6,9 +6,9 @@ const router = Router();
 
 // router.get('/getAll',getAllApointment);
 router.get('/getAvailableAppointments',getAvailableAppointments);
-// router.post('/medicalHistory',getHistory);
 
 // router.post(loggerUserValidation);
+router.post('/medicalHistory',getHistory);
 router.post('/createAppointment', CreateAppointment);
 router.post('/getAppointment', GetAppointment);
 
