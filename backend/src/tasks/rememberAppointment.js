@@ -37,7 +37,7 @@ cron.schedule('* * * * *', async () => {
         for (const cita of citas) {
             const mailOptions = {
                 from: `Cliniconnect ${dotenvConfig.NODE.EMAIL}`,
-                to: 'alvarord519@gmail.com',
+                to: 'nocountry1418@gmail.com',
                 subject: 'Recordatorio de tu Cita',
                 text: `Recuerda que tienes una cita programada para el dia de mañana ${cita.dataValues.date.toLocaleString('es-ES', options)} en la sede ${cita.dataValues.location}.`,
             };
