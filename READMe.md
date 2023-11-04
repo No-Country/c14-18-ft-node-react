@@ -1,6 +1,6 @@
 # Cohorte 14 - Equipo 18 - Full time - Nodejs - React.
 
-![Screenshot](Landing Page.png)
+![Screenshot](landing-page.png)
 
 Realizamos un proyecto sobre la pagina web de una clinica en Buenos Aires, con el objetivo de faciliar los pasos para sacar un turno y ser atendido en un hospital, con esta aplicación el cliente puede registrarse con su DNI(documento unico de identidad), y una vez logeado tendra información sobre todos los medicos que hay disponibles y las sedes donde ofrecen sus servicios.
 
