@@ -1,5 +1,7 @@
 # Cohorte 14 - Equipo 18 - Full time - Nodejs - React.
 
+![Screenshot](Landing Page.png)
+
 Realizamos un proyecto sobre la pagina web de una clinica en Buenos Aires, con el objetivo de faciliar los pasos para sacar un turno y ser atendido en un hospital, con esta aplicación el cliente puede registrarse con su DNI(documento unico de identidad), y una vez logeado tendra información sobre todos los medicos que hay disponibles y las sedes donde ofrecen sus servicios.
 
 Ademas de agendar el turno, la aplicación te enviara un mail donde te dara la información del dia y la hora que deberas concurrir al centro de salud.
