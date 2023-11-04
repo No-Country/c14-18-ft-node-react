@@ -4,8 +4,9 @@ import { Op } from 'sequelize'
 import transport from '../configs/nodemailer.config.js'
 import dotenvConfig from '../configs/dotenv.config.js';
 
-
-cron.schedule('* * * * *', async () => {
+//Esta tarea manda un correo con un recordatorio si tu cita es para el dia de mañana
+//La tarea se ejecutara todos los dias a las 07:00 am
+cron.schedule('0 7 * * *', async () => {
     try {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
