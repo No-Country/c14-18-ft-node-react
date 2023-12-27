@@ -1,11 +1,11 @@
 "use client";
 
 import CitasCard from "@/components/ui/CitasCard/CitasCard";
-import { fetchCitas } from "@/utils/fetchCitas";
 import { useEffect, useState } from "react";
 import { format, isAfter, isBefore, startOfToday } from "date-fns";
 import { es } from "date-fns/locale";
 import { useDoctors } from "@/hooks/useDoctors";
+import { fetchCitas } from "@/services/getCitas";
 
 import "./historial-citas.css";
 

@@ -4,7 +4,7 @@ import { generateTimeInterval } from '@/utils/generateIntervals';
 import { CloseIcon } from '../Icons';
 import { useModal } from '@/hooks/useModal';
 import ModalOverlay from '../ui/ModalOverlay';
-import Calendar from '../Calendar/Calendar';
+import Calendar from '../calendar/Calendar';
 
 import './CitasModal.css'
 import { useEffect, useState } from 'react';

@@ -11,6 +11,7 @@ import {
   isToday,
   parse,
   startOfToday,
+  startOfTomorrow,
   startOfWeek,
 } from "date-fns";
 import { es } from "date-fns/locale";
@@ -21,10 +22,11 @@ import { useModal } from "@/hooks/useModal";
 
 const Calendar = () => {
   let today = startOfToday();
+  let tomorrow = startOfTomorrow()
   const dayInitials = ["D", "L", "M", "M", "J", "V", "S"];
   const { userData, setUserData } = useModal();
 
-  const [selectedDay, setSelectedDay] = useState(today);
+  const [selectedDay, setSelectedDay] = useState(tomorrow);
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
 
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
@@ -50,6 +52,8 @@ const Calendar = () => {
   };
 
   let colStartClasses = ["", "2", "3", "4", "5", "6", "7"];
+
+  console.log(userData)
 
   return (
     <div className="calendar">

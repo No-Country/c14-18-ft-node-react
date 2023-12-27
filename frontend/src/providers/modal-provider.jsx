@@ -2,6 +2,7 @@
 
 import CitasModal from "@/components/modals/CitasModal";
 import ConfirmationModal from "@/components/modals/ConfirmationModal";
+import { startOfTomorrow } from "date-fns";
 import { createContext, useState } from "react";
 
 export const ModalContext = createContext()
@@ -12,9 +13,10 @@ const ModalProvider = ({ children }) => {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false)
   const [userData, setUserData] = useState({})
 
-  const openCitasModal = (sede, specialty, name, id, availability) => {
-    setUserData({ sede, specialty, name, id, availability });
+  const openCitasModal = (sede, specialty, name, id, availability, day = startOfTomorrow()) => {
+    setUserData({ sede, specialty, name, id, availability, day });
     setIsCitasModalOpen(true);
+    console.log(userData)
   };
 
   const closeCitasModal = () => {

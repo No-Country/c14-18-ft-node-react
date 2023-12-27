@@ -43,11 +43,23 @@ const LogOutButton = () => {
 }
 
 const UserButton = () => {
-    const {isLoggedIn} = useAuth()
+    const [isLogged, setIsLogged] = useState(false)
+
+    useEffect(() => {
+        if(localStorage) {
+            const user  = JSON.parse(localStorage.getItem('userCredentials'))
+            if (user) {
+                setIsLogged(true)
+            } else {
+                return
+            }
+        }
+    }, [])
+
    
     return (
         <>
-           {isLoggedIn ? <LogOutButton/> : <LoginButton/>}
+           {isLogged ? <LogOutButton/> : <LoginButton/>}
         </>
      );
 }

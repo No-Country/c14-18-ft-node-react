@@ -1,6 +1,6 @@
-import { fetchDoctors } from "@/services/fetchDoctors"
 import { useEffect, useState } from "react"
 import { useDebounce } from "./useDebouncer"
+import { fetchDoctors } from "@/services/getDoctors"
 
 export const useDoctors = () => {
     const [doctors, setDoctors] = useState([])
