@@ -3,19 +3,20 @@ import dotenvConfig from "../configs/dotenv.config.js";
 
 const sendEmail = async (req, res) => {
     try {
-        const { email, fullname, messages } = req.body;
-        if (!email || !fullname || !messages) return res.status(401).send('campos incompletos');
+        const { email, name, lastname, phone, message } = req.body;
+        if (!email || !name || !message) return res.status(401).send('campos incompletos');
         const result = await transport.sendMail({
-            from: `${dotenvConfig.NODE.EMAIL}`,
-            to: req.body.email,
-            subject: "nueva consulta realizada",
+            from: email,
+            to: `${dotenvConfig.NODE.EMAIL}`,
+            subject: "Mensaje de contacto",
             html: `
                 <div style:"background-color:#598be7;">
                     <div style:"font-size:20px;color:#fff">CLINICONNECT</div>
-                    <b>Nombre: ${fullname}</b>
+                    <b>Nombre: ${name} ${lastname}</b>
                     <p>Correo: ${email}</p>
+                    <p>Numero: ${phone}</p>
                     <div>
-                        ${messages}
+                        ${message}
                     </div>
                 </div>
             `
