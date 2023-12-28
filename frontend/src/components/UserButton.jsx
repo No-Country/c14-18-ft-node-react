@@ -16,7 +16,7 @@ const LoginButton = () => {
     )
 }
 
-const LogOutButton = () => {
+const LogOutButton = ({logOut}) => {
     const {logout} = useAuth()
     const router = useRouter()
 
@@ -30,7 +30,7 @@ const LogOutButton = () => {
         })
 
         if (res.status === 200) {
-            logout()
+            logOut(false)
             router.refresh()
         }
     }
@@ -59,7 +59,7 @@ const UserButton = () => {
    
     return (
         <>
-           {isLogged ? <LogOutButton/> : <LoginButton/>}
+           {isLogged ? <LogOutButton logOut={setIsLogged}/> : <LoginButton/>}
         </>
      );
 }

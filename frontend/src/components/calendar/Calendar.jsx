@@ -53,8 +53,6 @@ const Calendar = () => {
 
   let colStartClasses = ["", "2", "3", "4", "5", "6", "7"];
 
-  console.log(userData)
-
   return (
     <div className="calendar">
       <div>

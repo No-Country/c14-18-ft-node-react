@@ -16,7 +16,6 @@ const ModalProvider = ({ children }) => {
   const openCitasModal = (sede, specialty, name, id, availability, day = startOfTomorrow()) => {
     setUserData({ sede, specialty, name, id, availability, day });
     setIsCitasModalOpen(true);
-    console.log(userData)
   };
 
   const closeCitasModal = () => {
