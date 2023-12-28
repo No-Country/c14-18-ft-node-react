@@ -7,10 +7,10 @@ import dotenvConfig from '../configs/dotenv.config.js';
 
 export const CreateAppointment = async (req, res) => {
     const { date, location, doctorId, documentId, email } = req.body;
-    if (!date || !location || !doctorId || !documentId) return res.status(400).send('datos incompletos');
+    if (!date || !location || !doctorId || !documentId) return res.status(400).json({error: 'datos incompletos'});
 
     const dateNow = new Date().toISOString();
-    if (dateNow > date) return res.send('no puedes solicitar un turno de una fecha pasada');
+    if (dateNow > date) return res.status(400).json({error: 'no puedes solicitar un turno de una fecha pasada'});
 
     try {
         const userId = await Patient.findOne({ where: { documentId: req.body.documentId } });
@@ -36,13 +36,13 @@ export const CreateAppointment = async (req, res) => {
                 text: `Se agendo tu cita para el dia ${new Date(req.body.date).toLocaleString('es-ES', options)} en la sede ${req.body.location}`
             })
         } else {
-            return res.status(400).send('Hubo un error al enviar el email')
+            return res.status(400).json({error: 'Hubo un error al enviar el email'} )
         }
 
 
-        return res.status(200).send('Registro exitoso');
+        return res.status(200).json({ status: "success", message: "registro exitoso!" });
     } catch (error) {
-        return res.status(500).send('Hubo un error en el servidor.');
+        return res.status(500).json({error: 'Hubo un error en el servidor.'});
     }
 }
 
