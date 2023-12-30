@@ -1,15 +1,15 @@
-import Button from '../Button';
-import './CitasCard.css'
+import Button from '../ui/Button';
+import styles from './CitasCard.module.css'
 
-const CitasCard = ({doctor, specialty, patient, date}) => {
+const CitasCard = ({doctor, specialty, patient, date, onClick}) => {
 
     const parts = date.split(' ')
 
     return ( 
-        <div className="citas__card">
-            <div className='citas__card__details'>
-                <div className='card__date__container'>
-                    <div className='card__date'>
+        <div className={styles.container} onClick={onClick}>
+            <div className={styles.citasCard}>
+                <div className={styles.cardDateContainer}>
+                    <div className={styles.cardDate}>
                         <span>{parts[0]}</span>
                         <br />
                         <span>{parts[1]}</span>
@@ -20,14 +20,14 @@ const CitasCard = ({doctor, specialty, patient, date}) => {
                     </div>
                 </div>
 
-                <div className='card__details'>
+                <div className={styles.cardDetails}>
                     <span>Dr. {doctor}</span>
                     <span>{specialty}</span>
                     <span style={{paddingTop: '5px'}}>Paciente: {patient}</span>
                 </div>
             </div>
             <hr />
-            <footer className='citas__card__footer'>
+            <footer className={styles.cardFooter}>
                 <Button size={'xl'}>
                     <span>Ver detalles de la cita</span>
                 </Button>

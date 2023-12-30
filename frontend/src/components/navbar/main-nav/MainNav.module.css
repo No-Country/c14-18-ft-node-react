@@ -1,0 +1,41 @@
+.mainnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.mainnav .navItems{
+    display: flex;
+    padding: 0;
+    gap: 48px;
+    list-style: none;
+}
+
+.mainnav .navItems.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.navItems li a {
+    color: var(--gray);
+    transition: all 0.1s linear;
+}
+
+.navItems li a:hover {
+    color: var(--light-blue);
+}
+
+.navItems li .activeLink{
+    color: var(--light-blue);
+    transition: all 0.1s linear;
+}
+
+@media (max-width: 1000px) {
+    .mainnav {
+        display: none;
+    }
+
+}

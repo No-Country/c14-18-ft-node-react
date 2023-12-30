@@ -1,0 +1,77 @@
+.navbarCollapse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 40%;
+    height: 100vh;
+    background-color: var(--white);
+    padding: 20px 30px;
+}
+
+.navbarCollapse.collapsed {
+    display: none;
+}
+
+.collapseContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.closeIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeIcon:hover {
+    color: var(--blue);
+}
+
+.collapseNavigation {
+    display: flex;
+}
+
+.navigationItems {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: end;
+}
+
+.navigationItem {
+    cursor: pointer;
+    color: var(--light-blue);
+    font-size: 16px;
+    transition: all 02s;
+    font-weight: 600;
+}
+
+.navigationItem a{
+    color: var(--light-blue);
+}
+
+.navigationItem:hover {
+    color: var(--blue);
+}
+
+@media (max-width: 1000px) {
+    .toggleButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .headerButtons {
+        display: none;
+    }
+
+    .navbarCollapse {
+        width: 70%;
+    }
+}

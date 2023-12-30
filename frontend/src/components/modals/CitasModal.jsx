@@ -3,11 +3,11 @@
 import { generateTimeInterval } from '@/utils/generateIntervals';
 import { CloseIcon } from '../Icons';
 import { useModal } from '@/hooks/useModal';
-import ModalOverlay from '../ui/ModalOverlay';
-import Calendar from '../Calendar/Calendar';
-
-import './CitasModal.css'
+import Calendar from '../calendar/Calendar';
+import ModalOverlay from '../modal-overlay/ModalOverlay';
 import { useEffect, useState } from 'react';
+
+import styles from './CitasModal.module.css'
 
 const CitasModal = () => {
 
@@ -16,7 +16,7 @@ const CitasModal = () => {
 
 
     useEffect(() => {
-        const intervals = generateTimeInterval(userData.availability ?? '08:00 - 16:00' )
+        const intervals = generateTimeInterval(userData.availability ?? '08:00 - 16:00')
         setIntervals(intervals)
 
     }, [userData])
@@ -29,42 +29,42 @@ const CitasModal = () => {
 
     return (
         <ModalOverlay isOpen={isCitasModalOpen}>
-            <div className='modal__container'>
-                <div className='modal'>
-                    <header className='modal__header'>
-                        <h3 className='modal__header__title'>Agenda tu cita | <span>  Elige el día y la hora </span></h3>
+            <div className={styles.container}>
+                <div className={styles.modal}>
+                    <header className={styles.header}>
+                        <h3 className={styles.headerTitle}>Agenda tu cita | <span>  Elige el día y la hora </span></h3>
 
-                        <div className='modal__header__content'>
+                        <div className={styles.headerContent}>
 
-                            <div className='modal__header__options' style={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}>
-                                <div className='modal__header__option'>
+                            <div className={styles.headerOptions} style={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}>
+                                <div className={styles.headerOption}>
                                     <span>SEDE {userData.sede}</span>
                                 </div>
 
-                                <div className='modal__header__option'>
+                                <div className={styles.headerOption}>
                                     {userData.specialty}
                                 </div>
                             </div>
 
-                            <div className='modal__header__option'>
+                            <div className={styles.headerOption}>
                                 {userData.name}
                             </div>
 
                         </div>
 
-                        <div className='modal__close__button' onClick={() => closeCitasModal()}>
+                        <div className={styles.closeButton} onClick={() => closeCitasModal()}>
                             <CloseIcon />
                         </div>
                     </header>
 
-                    <main className='modal__content'>
-                        <h3 className='modal__content__title'>Seleccione la fecha y hora de su cita</h3>
-                        <div className='modal__content__container'>
+                    <main className={styles.content}>
+                        <h3 className={styles.contentTitle}>Seleccione la fecha y hora de su cita</h3>
+                        <div className={styles.contentContainer}>
                             <Calendar />
 
-                            <div className='modal__content__intervals'>
+                            <div className={styles.intervals}>
                                 {intervals.map((interval, index) => (
-                                    <button onClick={() => choseDateAndHour(interval.start)} type='button' key={index} className='modal__content__interval'>
+                                    <button onClick={() => choseDateAndHour(interval.start)} type='button' key={index} className={styles.interval}>
                                         <span>{`${interval.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}</span>
                                     </button>
                                 ))}

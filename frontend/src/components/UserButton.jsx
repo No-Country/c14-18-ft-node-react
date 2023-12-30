@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/providers/auth-provider";
 
 const LoginButton = () => {
 
@@ -16,21 +15,13 @@ const LoginButton = () => {
     )
 }
 
-const LogOutButton = () => {
-    const {logout} = useAuth()
+const LogOutButton = ({setIsLogged}) => {
     const router = useRouter()
 
-    const handleClick = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials:"include",
-        })
-
-        if (res.status === 200) {
-            logout()
+    const handleClick = () => {
+        if(localStorage) {
+            localStorage.removeItem('userCredentials')
+            setIsLogged(false)
             router.refresh()
         }
     }
@@ -43,11 +34,23 @@ const LogOutButton = () => {
 }
 
 const UserButton = () => {
-    const {isLoggedIn} = useAuth()
+    const [isLogged, setIsLogged] = useState(false)
+
+    useEffect(() => {
+        if(localStorage) {
+            const user  = JSON.parse(localStorage.getItem('userCredentials'))
+            if (user) {
+                setIsLogged(true)
+            } else {
+                return
+            }
+        }
+    }, [])
+
    
     return (
         <>
-           {isLoggedIn ? <LogOutButton/> : <LoginButton/>}
+           {isLogged ? <LogOutButton setIsLogged={setIsLogged}/> : <LoginButton/>}
         </>
      );
 }

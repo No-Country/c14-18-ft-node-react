@@ -1,4 +1,4 @@
-.landing-header {
+.header {
     position: fixed;
     top: 0;
     z-index: 50;
@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 
-.header-logo {
+.headerLogo {
     display: flex;
     align-items: center;
     flex-basis: 0;
@@ -21,14 +21,14 @@
     gap: 6px;
 }
 
-.header-logo span{
+.headerLogo span{
     font-family: inherit;
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
 }
 
-.header-buttons{
+.headerButtons{
     display: flex;
     gap: 10px;
     flex-grow: 1;
@@ -36,52 +36,18 @@
     flex-basis: 0;
 }
 
-.main-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-}
 
-.main-nav .nav-items{
-    display: flex;
-    padding: 0;
-    gap: 48px;
-    list-style: none;
-}
-
-.main-nav .nav-items.column{
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-items li a {
-    color: var(--gray);
-    transition: all 0.1s linear;
-}
-
-.nav-items li a:hover {
-    color: var(--light-blue);
-}
-
-.nav-items li .active-link{
-    color: var(--light-blue);
-    transition: all 0.1s linear;
-}
-
-.toggle-button-container {
+.toggleButton {
     padding-left: 15px;
     display: none;
 }
 
-.toggle-button-container:hover {
+.toggleButton:hover {
     color: var(--blue);
     cursor: pointer;
 }
 
-.navbar-collapse {
+.navbarCollapse {
     position: absolute;
     top: 0;
     right: 0;
@@ -92,17 +58,17 @@
     padding: 20px 30px;
 }
 
-.navbar-collapse.collapsed {
+.navbarCollapse.collapsed {
     display: none;
 }
 
-.navbar-collapse-content {
+.collapseContent {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.navbar-collapse-closeIcon {
+.closeIcon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,22 +76,22 @@
     transition: all 0.2s;
 }
 
-.navbar-collapse-closeIcon:hover {
+.closeIcon:hover {
     color: var(--blue);
 }
 
-.navbar__collapse__navigation {
+.collapseNavigation {
     display: flex;
 }
 
-.collapse__navigation__items {
+.navigationItems {
     display: flex;
     flex-direction: column;
     gap: 10px;
     text-align: end;
 }
 
-.collapse__navigation__item {
+.navigationItem {
     cursor: pointer;
     color: var(--light-blue);
     font-size: 16px;
@@ -133,33 +99,28 @@
     font-weight: 600;
 }
 
-.collapse__navigation__item a{
+.navigationItem a{
     color: var(--light-blue);
 }
 
-.collapse__navigation__item:hover {
+.navigationItem:hover {
     color: var(--blue);
 }
 
 @media (max-width: 1000px) {
-    .toggle-button-container {
+    .toggleButton {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
-    .main-nav {
-        display: none;
-    }
-
 }
 
 @media (max-width: 500px) {
-    .header-buttons {
+    .headerButtons {
         display: none;
     }
 
-    .navbar-collapse {
+    .navbarCollapse {
         width: 70%;
     }
 }

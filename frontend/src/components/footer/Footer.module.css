@@ -1,14 +1,14 @@
-.footer {
+.container {
     background-color: var(--blue);
     color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 65px;
+    min-height: 40px;
     padding: 5px 20px;
 }
 
-.footer__logo {
+.logo {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -16,28 +16,33 @@
     flex-grow: 1;
 }
 
-.footer__logo span {
-    font-size: 22px;
+.logo span {
+    font-size: var(--lg);
     font-weight: 600;
 }
 
-.footer__links {
+.description {
+    font-size: var(--sm);
+}
+
+.links {
     display: flex;
     justify-content: flex-end;
     flex-basis: 0;
     flex-grow: 1;
 }
 
-.footer__links__icon {
+.links a {
     display: flex;
     border: solid 2px var(--white);
-    padding: 4px;
+    padding: 4px 4px 4px 4.5px;
     border-radius: 8px;
     color: var(--white);
 }
 
+
 @media (max-width: 900px) {
-    .footer {
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: center;

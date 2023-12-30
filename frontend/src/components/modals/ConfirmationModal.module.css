@@ -1,4 +1,4 @@
-.confirmation__modal__container {
+.container {
     min-height: 600px;
     max-width: 600px;
     width: 100%;
@@ -8,68 +8,100 @@
     position: relative;
 }
 
-.confirmation__modal {
+.modal {
     padding: 20px 50px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.confirmation__modal__content {
+.header {
+    position: relative;
+}
+
+.headerTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #265df2;
+}
+
+.headerTitle span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+}
+.closeButton {
+    position: absolute;
+    top: 19px;
+    right: 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeButton:hover {
+    color: #265df2;
+}
+
+.content {
     padding: 20px 0;
     flex-grow: 1;
 }
 
-.confirmation__modal__doctor {
+.doctor {
     display: flex;
     height: 100%;
 }
 
-.modal__doctor__img {
+.doctorImg {
     width: 70px;
     height: 70px;
     padding: 0 10px;
 }
 
-.modal__doctor__details {
+.doctorDetails {
     display: flex;
     flex-direction: column;
 }
 
-.modal__doctor__name {
+.doctorName {
     font-size: 16px;
     font-weight: 600;
     color: #265df2;
 }
 
-.modal__patient__details span {
-    color: #265df2;
-    font-size: 16px;
-}
-
-.patient__name {
-    font-weight: 600;
-    font-size: 16px;
-}
-
-.modal__patient__details {
+.patientDetails {
     display: flex;
     flex-direction: column;
 }
 
-.modal__cita__details {
+.patientDetails span {
+    color: #265df2;
+    font-size: 16px;
+}
+
+.patientName {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.cita {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.cita__details {
+.citaDetails {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.modal__footer__btns {
+.location {
+    display: flex;
+    gap: 10px;
+}
+
+.footerButtons {
     display: flex;
     justify-content: center;
     align-items: center;

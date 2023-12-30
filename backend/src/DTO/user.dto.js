@@ -19,7 +19,8 @@ class UserDTO {
         return{
             name: user.name ,
             lastName:user.last_name,
-            identity: user.documentId
+            identity: user.documentId,
+            email: user.email
         };
     }
 }
