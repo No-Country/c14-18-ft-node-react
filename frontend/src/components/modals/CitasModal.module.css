@@ -1,7 +1,7 @@
-.modal__container {
+.container {
     min-height: 600px;
     width: 800px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 20px;
     display: flex;
     position: relative;
@@ -14,23 +14,23 @@
     flex-grow: 1;
 }
 
-.modal__header {
+.header {
     position: relative;
 }
 
-.modal__header__title {
+.headerTitle {
     font-size: 18px;
     font-weight: 600;
-    color: #265df2;
+    color: var(--blue);
 }
 
-.modal__header__title span {
+.headerTitle span {
     font-size: 18px;
     font-weight: 400;
-    color: #333;
+    color: var(--gray);
 }
 
-.modal__close__button {
+.closeButton {
     position: absolute;
     top: 19px;
     right: 0;
@@ -38,16 +38,16 @@
     transition: all 0.2s;
 }
 
-.modal__close__button:hover {
-    color: #265df2;
+.closeButton:hover {
+    color: var(--blue);
 }
 
-.modal__header__options {
+.headerOptions {
     display: flex;
     gap: 20px;
 }
 
-.modal__header__option {
+.headerOption {
     display: flex;
     align-items: center;
     outline: none;
@@ -64,30 +64,30 @@
     box-sizing: border-box;
 }
 
-.modal__content {
+.content {
     display: flex;
     flex-direction: column;
     padding: 10px 0;
 }
 
-.modal__content__title {
+.contentTitle {
     color: #265df2;
     font-size: 18px;
     font-weight: 600;
 }
 
-.modal__content__container {
+.contentContainer {
     display: flex;
 }
 
-.modal__content__intervals {
+.intervals {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
     padding: 25px 0;
 }
 
-.modal__content__interval {
+.interval {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -98,14 +98,14 @@
     transition: all 0.1s;
 }
 
-.modal__content__interval:hover {
+.interval:hover {
     background-color: #265df2;
     color: #fff;
 }
 
 @media (max-width:480px) {
 
-    .modal__container {
+    .container {
         margin: 0 10px;
     }
 
@@ -113,34 +113,34 @@
         padding: 20px 30px;
     }
 
-    .modal__close__button {
+    .closeButton {
         top: 13px;
         right: 0;
     }
 
-    .modal__header__options {
+    .headerOptions {
         flex-wrap: wrap;
         gap: 0 !important;
     }
 
-    .modal__header__title {
+    .headerTitle {
         font-size: 14px;
         font-weight: 600;
-        color: #265df2;
+        color: var(--blue);
     }
 
-    .modal__content__title {
+    .contentTitle {
         font-size: 14px;
         font-weight: 600;
     }
     
-    .modal__header__title span {
+    .headerTitle span {
         font-size: 14px;
         font-weight: 400;
-        color: #333;
+        color: var(--gray);
     }
 
-    .modal__content__container {
+    .contentContainer {
         flex-wrap: wrap;
     }
 }

@@ -1,27 +1,19 @@
 'use client'
 
 import Button from "../ui/Button";
-import ModalOverlay from "../ui/ModalOverlay";
 import { useModal } from "@/hooks/useModal";
 import { toast } from "sonner";
-import { es } from "date-fns/locale";
-import { addHours, format, parse, } from "date-fns";
+import { addHours, parse, } from "date-fns";
 import { CalendarIcon, ClockIcon, CloseIcon, LocationIcon } from "../Icons";
 import { createAppointment } from "@/services/createAppointment";
+import { formatDate } from "@/utils/formatDate";
+import ModalOverlay from "../modal-overlay/ModalOverlay";
 
 import styles from './ConfirmationModal.module.css'
 
 const ConfirmationModal = () => {
 
     const { isConfirmationModalOpen, closeConfirmationModal, userData } = useModal()
-
-    const formatDate = (date) => {
-        if (date) {
-            return format(date, "EEEE dd 'de' MMMM 'del' y", { locale: es })
-        } else {
-            return undefined
-        }
-    }
 
     const handleSubmit = async () => {
 

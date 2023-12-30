@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/providers/auth-provider";
 
 const LoginButton = () => {
 
@@ -16,21 +15,13 @@ const LoginButton = () => {
     )
 }
 
-const LogOutButton = ({logOut}) => {
-    const {logout} = useAuth()
+const LogOutButton = ({setIsLogged}) => {
     const router = useRouter()
 
-    const handleClick = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials:"include",
-        })
-
-        if (res.status === 200) {
-            logOut(false)
+    const handleClick = () => {
+        if(localStorage) {
+            localStorage.removeItem('userCredentials')
+            setIsLogged(false)
             router.refresh()
         }
     }
@@ -59,7 +50,7 @@ const UserButton = () => {
    
     return (
         <>
-           {isLogged ? <LogOutButton logOut={setIsLogged}/> : <LoginButton/>}
+           {isLogged ? <LogOutButton setIsLogged={setIsLogged}/> : <LoginButton/>}
         </>
      );
 }

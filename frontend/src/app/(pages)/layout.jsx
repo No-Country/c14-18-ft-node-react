@@ -1,12 +1,15 @@
 import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/NavBar/Navbar";
+import Navbar from "@/components/navbar/Navbar";
+import ModalProvider from "@/providers/modal-provider";
 
 export default function MainLayout({ children }) {
     return (
         <>
-            <Navbar/>
-            { children }
-            <Footer/>
+            <ModalProvider>
+                <Navbar />
+                {children}
+                <Footer />
+            </ModalProvider>
         </>
     )
 }

@@ -2,13 +2,11 @@
 
 import { SearchIcon } from "@/components/Icons";
 import { useDoctors } from "@/hooks/useDoctors";
-import { useModal } from "@/hooks/useModal";
+import DoctorCard from "@/components/doctor-card/DoctorCard";
 
 import "./citas.css";
 
 const Citas = () => {
-
-  const {openCitasModal} = useModal()
 
   const {
     filteredDoctors,
@@ -81,25 +79,7 @@ const Citas = () => {
               <div className="doctors__grid">
                 {filteredDoctors.map(
                   ({ id, name, speciality, availability, location }) => (
-                    <div
-                      onClick={() =>
-                        openCitasModal(
-                          location,
-                          speciality,
-                          name,
-                          id,
-                          availability
-                        )
-                      }
-                      className="doctor__card"
-                      key={id}
-                    >
-                      <img src="/medicos-icon.png" alt="doctor-avatar" />
-                      <div className="doctor__card__content">
-                        <span className="doctor__card__title">Dr. {name}</span>
-                        <span>{speciality}</span>
-                      </div>
-                    </div>
+                    <DoctorCard id={id} name={name} speciality={speciality} availability={availability} location={location} isUser={true} />
                   )
                 )}
               </div>

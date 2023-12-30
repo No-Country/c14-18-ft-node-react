@@ -1,19 +1,24 @@
-.landing-header {
-    position: fixed;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    background-color: var(--white);
+.container {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     min-height: 70px;
-    padding: 0 30px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+    padding: 0 20px 0 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
 }
 
-.header-logo {
+.usernav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+}
+
+.logo {
     display: flex;
     align-items: center;
     flex-basis: 0;
@@ -21,14 +26,45 @@
     gap: 6px;
 }
 
-.header-logo span{
+.logo a {
     font-family: inherit;
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
+    color: #333;
 }
 
-.header-buttons{
+.mainNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.mainNavItems{
+    display: flex;
+    padding: 0;
+    gap: 48px;
+    list-style: none;
+}
+
+.mainNavItem a{
+    color: #333;
+    transition: all 0.1s linear;
+}
+
+.mainNavItem a:hover{
+    color: #4070f4;
+    transition: all 0.1s linear;
+}
+
+.mainNavItem .active-link{
+    color: #4070f4;
+}
+
+.usernav__button {
     display: flex;
     gap: 10px;
     flex-grow: 1;
@@ -36,47 +72,12 @@
     flex-basis: 0;
 }
 
-.main-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-}
-
-.main-nav .nav-items{
-    display: flex;
-    padding: 0;
-    gap: 48px;
-    list-style: none;
-}
-
-.main-nav .nav-items.column{
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-items li a {
-    color: var(--gray);
-    transition: all 0.1s linear;
-}
-
-.nav-items li a:hover {
-    color: var(--light-blue);
-}
-
-.nav-items li .active-link{
-    color: var(--light-blue);
-    transition: all 0.1s linear;
-}
-
-.toggle-button-container {
+.toggleButton {
     padding-left: 15px;
     display: none;
 }
 
-.toggle-button-container:hover {
+.toggleButton:hover {
     color: var(--blue);
     cursor: pointer;
 }
@@ -142,13 +143,13 @@
 }
 
 @media (max-width: 1000px) {
-    .toggle-button-container {
+    .toggleButton {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .main-nav {
+    .mainNav {
         display: none;
     }
 

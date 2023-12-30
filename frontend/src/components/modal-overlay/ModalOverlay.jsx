@@ -1,8 +1,8 @@
-import './ModalOverlay.css'
+import styles from './ModalOverlay.module.css'
 
 const ModalOverlay = ({ children, isOpen }) => {
     return ( 
-        <div className="modal__overlay" style={isOpen ? {} : {display: 'none'}}>
+        <div className={styles.modalOverlay} style={isOpen ? {} : {display: 'none'}}>
             {children}
         </div>
      );

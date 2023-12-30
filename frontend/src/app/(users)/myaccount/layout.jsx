@@ -1,6 +1,6 @@
 'use client'
 
-import UserNav from "@/components/UserNav/UserNav";
+import UserNav from "@/components/navbar/admin-nav/UserNav";
 import ModalProvider from "@/providers/modal-provider";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
